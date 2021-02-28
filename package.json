@@ -1,4 +1,9 @@
 {
+  "scripts": {
+    "server": "cd server && nodemon server",
+    "client": "cd client && yarn start",
+    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+  },
   "dependencies": {
     "concurrently": "^6.0.0",
     "express": "^4.17.1"
