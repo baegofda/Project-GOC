@@ -51,6 +51,12 @@
   backdrop-filter: glassBlur;
   -webkit-backdrop-filter: glassBlur;
   border-right: glassBorder;
+  max-width: 0;
+  overflow: hidden;
+}
+.nav.toggle {
+  max-width: 100%;
+  overflow: visible;
 }
 
 .navContainer {
