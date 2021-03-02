@@ -1,0 +1,9 @@
+/* font color */
+@value categoryBlack: #000;
+@value menuBlack: #333;
+@value contentsHeaderBlack: #333;
+
+/* glassSet */
+@value glassBackground: linear-gradient(to right bottom, rgba(255, 255, 255, 0.6),rgba(255, 255, 255, 0.2));
+@value glassBlur: blur(4px);
+@value glassBorder: 1px solid rgba(255, 255, 255, 0.18);

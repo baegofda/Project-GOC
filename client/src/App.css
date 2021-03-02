@@ -1,3 +1,4 @@
+/* font css */
 @font-face {
   font-family: "Spoqa Han Sans";
   font-weight: 700;
@@ -17,19 +18,23 @@
 }
 
 /* reset css */
+* {
+  box-sizing: border-box;
+}
 
 body,
 html {
   height: 100%;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: "Spoqa Han Sans Neo", "sans-serif";
 }
 
 ul,
 li {
+  margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 a {
@@ -52,9 +57,12 @@ h3 {
   opacity: 0;
 }
 
+/* app css */
 #root {
   height: 100%;
-  background-color: #8ec5fc;
-  background-image: linear-gradient(135deg, #8ec5fc 0%, #e0c3fc 100%);
-  /* background-image: linear-gradient(135deg, #90f7ec 10%, #32ccbc 100%); */
+  background: linear-gradient(
+    to right bottom,
+    rgb(235, 251, 252),
+    rgb(230, 251, 252)
+  );
 }

@@ -1,13 +1,45 @@
+@value glassBackground, glassBlur, glassBorder, categoryBlack, menuBlack from "../../common/colors.module.css";
+
 .header {
+  display: flex;
+  justify-content: center;
   position: fixed;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 0;
+  background: glassBackground;
+  backdrop-filter: glassBlur;
+  -webkit-backdrop-filter: glassBlur;
+  border-bottom: glassBorder;
 }
 
-.selected {
-  color: red;
+.logo {
+  height: 50px;
 }
+
+.logoLink {
+  display: inline-block;
+  height: 100%;
+}
+
+.img {
+  height: 100%;
+}
+
+.nav {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  margin-top: 91px;
+  padding-top: 40px;
+  background: glassBackground;
+  backdrop-filter: glassBlur;
+  -webkit-backdrop-filter: glassBlur;
+  border-right: glassBorder;
+}
+
+/* .navContainer {
+  padding-top: 40px;
+} */
