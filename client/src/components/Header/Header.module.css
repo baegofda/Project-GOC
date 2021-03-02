@@ -1,21 +1,28 @@
-@value glassBackground, glassBlur, glassBorder, categoryBlack, menuBlack from "../../common/colors.module.css";
+@value glassBackground, glassBlur, glassBorder, categoryBlack, menuBlack, navPadding from "../../common/common.module.css";
 
 .header {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  padding: 20px 0;
+  padding: navPadding;
   background: glassBackground;
   backdrop-filter: glassBlur;
   -webkit-backdrop-filter: glassBlur;
   border-bottom: glassBorder;
 }
 
+.gnb {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
 .logo {
-  height: 50px;
+  height: 45px;
+  flex: 1;
 }
 
 .logoLink {
@@ -27,19 +34,59 @@
   height: 100%;
 }
 
+.header::after {
+  content: "";
+  flex: 1;
+}
+
 .nav {
   position: absolute;
   left: 0;
   top: 0;
   height: 100vh;
-  margin-top: 91px;
-  padding-top: 40px;
+  margin-top: 86px;
+  padding-top: navPadding;
   background: glassBackground;
   backdrop-filter: glassBlur;
   -webkit-backdrop-filter: glassBlur;
   border-right: glassBorder;
 }
 
-/* .navContainer {
-  padding-top: 40px;
-} */
+.navContainer {
+  padding: 0 navPadding;
+}
+
+.categoryContainer {
+  padding-bottom: navPadding;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  color: categoryBlack;
+}
+
+.category::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  margin-left: 10px;
+  background-color: categoryBlack;
+}
+
+.menu {
+  color: menuBlack;
+}
+
+.menuItem {
+  display: inline-block;
+  width: 100%;
+  padding: navPadding 0;
+  opacity: 0.8;
+}
+
+.menuItem:hover {
+  font-weight: 700;
+  opacity: 1;
+}
