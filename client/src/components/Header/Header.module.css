@@ -46,33 +46,26 @@
   top: 0;
   width: 200px;
   height: 100vh;
-  margin-top: 86px;
-  padding-top: navPadding;
+  margin-top: 76px;
   background: glassBackground;
   backdrop-filter: glassBlur;
   -webkit-backdrop-filter: glassBlur;
-  border-right: glassBorder;
-  transform: translateX(-300px);
+  box-shadow: 0 5px 6px 0 rgba(31, 38, 135, 0.37);
+  transform: translateX(-250px);
   transition: transform 300ms ease-in-out;
 }
+
 .nav.toggle {
   transform: translateX(0);
-}
-
-.navContainer {
-  padding: 0 navPadding;
-}
-
-.categoryContainer {
-  padding-bottom: navPadding;
 }
 
 .category {
   display: flex;
   align-items: center;
+  padding: navPadding;
+  color: categoryBlack;
   font-size: 0.875rem;
   line-height: 1.5;
-  color: categoryBlack;
 }
 
 .category::after {
@@ -83,29 +76,33 @@
   background-color: categoryBlack;
 }
 
-.menu {
-  color: menuBlack;
-}
-
 .menuItem {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: navPadding 0;
-  opacity: 0.6;
-}
-
-.menuItem:hover {
-  opacity: 1;
-}
-
-.menuItem.selected {
-  background-color: red;
-  color: customWhite;
+  padding: navPadding;
+  color: menuBlack;
+  transition: all 300ms ease-in-out;
 }
 
 .ico {
   margin-right: 16px;
+  transition: all 300ms ease-in-out;
+}
+
+.menuItem:hover {
+  background: linear-gradient(to right, #e0c3fc 10%, #feb7f6 90%);
+  color: customWhite;
+}
+
+.menuItem:hover .ico {
+  fill: customWhite;
+}
+
+.menuItem.selected {
+  color: customWhite;
+  background: linear-gradient(to right, #e0c3fc 10%, #feb7f6 90%);
+  backdrop-filter: glassBlur;
 }
 
 .menuItem.selected .ico {
