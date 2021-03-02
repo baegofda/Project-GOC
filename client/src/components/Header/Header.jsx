@@ -1,13 +1,14 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
+const LOGO = "/assets/images/main-logo.png";
 
 const Header = (props) => {
   return (
     <header className={styles.header}>
       <h1 className={styles.title}>
         <Link to="/">
-          <img src="" alt="" />
+          <img src={LOGO} alt="" />
         </Link>
       </h1>
       <nav>
