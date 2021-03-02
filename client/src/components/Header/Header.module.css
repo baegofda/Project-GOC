@@ -21,8 +21,9 @@
 }
 
 .logo {
-  height: 45px;
   flex: 1;
+  height: 45px;
+  text-align: center;
 }
 
 .logoLink {
@@ -64,6 +65,7 @@
   display: flex;
   align-items: center;
   font-size: 0.875rem;
+  line-height: 1.5;
   color: categoryBlack;
 }
 
@@ -80,13 +82,17 @@
 }
 
 .menuItem {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   width: 100%;
   padding: navPadding 0;
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .menuItem:hover {
-  font-weight: 700;
   opacity: 1;
+}
+
+.ico {
+  margin-right: 16px;
 }
