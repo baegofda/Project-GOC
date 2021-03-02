@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./Header.module.css";
 
 const Header = (props) => {
@@ -16,10 +16,14 @@ const Header = (props) => {
             <h2>국내</h2>
             <ul>
               <li>
-                <Link to="#">국내 종합 현황</Link>
+                <NavLink to="/" activeClassName="selected">
+                  국내 종합 현황
+                </NavLink>
               </li>
               <li>
-                <Link to="#">국내 시도별 현황</Link>
+                <NavLink to="#" activeClassName="selected">
+                  국내 시도별 현황
+                </NavLink>
               </li>
             </ul>
           </li>
@@ -27,13 +31,19 @@ const Header = (props) => {
             <h2>해외</h2>
             <ul>
               <li>
-                <Link to="#">해외 종합 현황</Link>
+                <NavLink to="#" activeClassName="selected">
+                  해외 종합 현황
+                </NavLink>
               </li>
               <li>
-                <Link to="#">해외 주변 국가별 현황</Link>
+                <NavLink to="#" activeClassName="selected">
+                  해외 주변 국가별 현황
+                </NavLink>
               </li>
               <li>
-                <Link to="#">전 세계 대시보드</Link>
+                <NavLink to="#" activeClassName="selected">
+                  전 세계 대시보드
+                </NavLink>
               </li>
             </ul>
           </li>
@@ -41,10 +51,14 @@ const Header = (props) => {
             <h2>정보</h2>
             <ul>
               <li>
-                <Link to="#">코로나19 정보</Link>
+                <NavLink to="#" activeClassName="selected">
+                  코로나19 정보
+                </NavLink>
               </li>
               <li>
-                <Link to="#">주요 뉴스</Link>
+                <NavLink to="#" activeClassName="selected">
+                  주요 뉴스
+                </NavLink>
               </li>
             </ul>
           </li>
@@ -52,7 +66,9 @@ const Header = (props) => {
             <h2>기타</h2>
             <ul>
               <li>
-                <Link to="#">데이터 출처</Link>
+                <NavLink to="#" activeClassName="selected">
+                  데이터 출처
+                </NavLink>
               </li>
             </ul>
           </li>
