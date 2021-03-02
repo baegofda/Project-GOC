@@ -1,4 +1,4 @@
-@value glassBackground, glassBlur, glassBorder, categoryBlack, menuBlack, navPadding from "../../common/common.module.css";
+@value customWhite, glassBackground, glassBlur, glassBorder, categoryBlack, menuBlack, navPadding from "../../common/common.module.css";
 
 .header {
   display: flex;
@@ -44,6 +44,7 @@
   position: absolute;
   left: 0;
   top: 0;
+  width: 200px;
   height: 100vh;
   margin-top: 86px;
   padding-top: navPadding;
@@ -51,12 +52,11 @@
   backdrop-filter: glassBlur;
   -webkit-backdrop-filter: glassBlur;
   border-right: glassBorder;
-  max-width: 0;
-  overflow: hidden;
+  transform: translateX(-300px);
+  transition: transform 300ms ease-in-out;
 }
 .nav.toggle {
-  max-width: 100%;
-  overflow: visible;
+  transform: translateX(0);
 }
 
 .navContainer {
@@ -99,6 +99,15 @@
   opacity: 1;
 }
 
+.menuItem.selected {
+  background-color: red;
+  color: customWhite;
+}
+
 .ico {
   margin-right: 16px;
+}
+
+.menuItem.selected .ico {
+  fill: customWhite;
 }

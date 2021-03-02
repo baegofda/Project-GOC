@@ -4,8 +4,8 @@ import styles from "./Header.module.css";
 const LOGO = "/assets/images/main-logo.png";
 
 const Header = (props) => {
-  const [isToggle, setIsToggle] = useState(false);
   const gnb = useRef();
+  const [isToggle, setIsToggle] = useState(false);
   const toggle = isToggle ? styles.toggle : "";
 
   const onToggle = (e) => {
@@ -43,7 +43,7 @@ const Header = (props) => {
       </span>
       <h1 className={styles.logo}>
         <Link className={styles.logoLink} to="/">
-          <img className={styles.img} src={LOGO} alt="겟아웃코로나" />
+          <img className={styles.img} src={LOGO} alt="코로나야 사라져라 ~!" />
         </Link>
       </h1>
       <nav className={`${styles.nav} ${toggle}`}>
@@ -53,9 +53,10 @@ const Header = (props) => {
             <ul className={styles.menuContainer}>
               <li className={styles.menu}>
                 <NavLink
+                  exact
                   className={styles.menuItem}
                   to="/"
-                  activeClassName="selected"
+                  activeClassName={styles.selected}
                 >
                   <svg
                     className={styles.ico}
@@ -80,8 +81,8 @@ const Header = (props) => {
               <li className={styles.menu}>
                 <NavLink
                   className={styles.menuItem}
-                  to="#"
-                  activeClassName="selected"
+                  to="/city"
+                  activeClassName={styles.selected}
                 >
                   <svg
                     className={styles.ico}
@@ -106,8 +107,8 @@ const Header = (props) => {
               <li className={styles.menu}>
                 <NavLink
                   className={styles.menuItem}
-                  to="#"
-                  activeClassName="selected"
+                  to="/all"
+                  activeClassName={styles.selected}
                 >
                   <svg
                     className={styles.ico}
@@ -132,8 +133,8 @@ const Header = (props) => {
               <li className={styles.menu}>
                 <NavLink
                   className={styles.menuItem}
-                  to="#"
-                  activeClassName="selected"
+                  to="/country"
+                  activeClassName={styles.selected}
                 >
                   <svg
                     className={styles.ico}
@@ -153,8 +154,8 @@ const Header = (props) => {
               <li className={styles.menu}>
                 <NavLink
                   className={styles.menuItem}
-                  to="#"
-                  activeClassName="selected"
+                  to="/dashboard"
+                  activeClassName={styles.selected}
                 >
                   <svg
                     className={styles.ico}
@@ -179,8 +180,8 @@ const Header = (props) => {
               <li className={styles.menu}>
                 <NavLink
                   className={styles.menuItem}
-                  to="#"
-                  activeClassName="selected"
+                  to="/information"
+                  activeClassName={styles.selected}
                 >
                   <svg
                     className={styles.ico}
@@ -200,8 +201,8 @@ const Header = (props) => {
               <li className={styles.menu}>
                 <NavLink
                   className={styles.menuItem}
-                  to="#"
-                  activeClassName="selected"
+                  to="/news"
+                  activeClassName={styles.selected}
                 >
                   <svg
                     className={styles.ico}
@@ -226,8 +227,8 @@ const Header = (props) => {
               <li className={styles.menu}>
                 <NavLink
                   className={styles.menuItem}
-                  to="#"
-                  activeClassName="selected"
+                  to="/source"
+                  activeClassName={styles.selected}
                 >
                   <svg
                     className={styles.ico}
