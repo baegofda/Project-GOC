@@ -11,3 +11,4 @@
 /* header */
 @value headerHeight: 76px;
 @value navPadding: 15px;
+@value boxShadow: 0 5px 6px 0 rgba(31, 38, 135, 0.37);
