@@ -60,10 +60,15 @@ h3 {
 /* app css */
 #root {
   height: 100%;
-  padding-top: 86px;
   background: linear-gradient(
     to right bottom,
     rgb(235, 251, 252),
     rgb(230, 251, 252)
   );
+}
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  #root {
+    padding-top: 0;
+  }
 }

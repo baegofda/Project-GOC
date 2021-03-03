@@ -10,12 +10,14 @@ const App = () => {
   return (
     <>
       <Header />
-      <Switch>
-        <Route exact path={"/"} component={KoreaAllData} />
-        <Route path={"/city"} component={KoreaCityData} />
-        <Route path={"/all"} component={OverseasAllData} />
-        <Route path={"/country"} component={OverseasCountryData} />
-      </Switch>
+      <main>
+        <Switch>
+          <Route exact path={"/"} component={KoreaAllData} />
+          <Route path={"/city"} component={KoreaCityData} />
+          <Route path={"/all"} component={OverseasAllData} />
+          <Route path={"/country"} component={OverseasCountryData} />
+        </Switch>
+      </main>
     </>
   );
 };
