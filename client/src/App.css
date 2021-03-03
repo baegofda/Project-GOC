@@ -26,7 +26,6 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Spoqa Han Sans Neo", "sans-serif";
-  overflow: hidden;
 }
 ul,
 li,
@@ -54,22 +53,32 @@ a {
 
 /* app css */
 #root {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
+  background: linear-gradient(to right bottom, #e6e9f0 0%, #eef1f5 100%);
+  overflow: hidden;
+}
+#root::before {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  top: -2%;
+  right: -3%;
   background: linear-gradient(
     to right bottom,
-    rgb(235, 251, 252),
-    rgb(230, 251, 252)
+    rgb(255, 255, 255, 0.7),
+    rgb(255, 255, 255, 0.3)
   );
-  overflow-x: scroll;
+  border-radius: 50%;
 }
 
 .main {
   height: 100%;
   padding-top: 76px;
 }
-
 /* desktop */
 @media all and (min-width: 1024px) {
   .main {

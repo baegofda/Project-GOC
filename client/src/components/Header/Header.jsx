@@ -69,7 +69,7 @@ const Header = (props) => {
                     className={styles.ico}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 32 32"
-                    fill="rgba(0,0,0,0.6)"
+                    fill="rgba(0,0,0)"
                     width="20"
                     height="20"
                   >
@@ -95,7 +95,7 @@ const Header = (props) => {
                     className={styles.ico}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
-                    fill="rgba(0,0,0,0.6)"
+                    fill="rgba(0,0,0)"
                     width="20"
                     height="20"
                   >
@@ -121,7 +121,7 @@ const Header = (props) => {
                     className={styles.ico}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 32 32"
-                    fill="rgba(0,0,0,0.6)"
+                    fill="rgba(0,0,0)"
                     width="20"
                     height="20"
                   >
@@ -147,7 +147,7 @@ const Header = (props) => {
                     className={styles.ico}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
-                    fill="rgba(0,0,0,0.6)"
+                    fill="rgba(0,0,0)"
                     width="20"
                     height="20"
                   >
@@ -168,7 +168,7 @@ const Header = (props) => {
                     className={styles.ico}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
-                    fill="rgba(0,0,0,0.6)"
+                    fill="rgba(0,0,0)"
                     width="20"
                     height="20"
                   >
@@ -194,7 +194,7 @@ const Header = (props) => {
                     className={styles.ico}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
-                    fill="rgba(0,0,0,0.6)"
+                    fill="rgba(0,0,0)"
                     width="20"
                     height="20"
                   >
@@ -215,7 +215,7 @@ const Header = (props) => {
                     className={styles.ico}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
-                    fill="rgba(0,0,0,0.6)"
+                    fill="rgba(0,0,0)"
                     width="20"
                     height="20"
                   >
@@ -241,7 +241,7 @@ const Header = (props) => {
                     className={styles.ico}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
-                    fill="rgba(0,0,0,0.6)"
+                    fill="rgba(0,0,0)"
                     width="20"
                     height="20"
                   >

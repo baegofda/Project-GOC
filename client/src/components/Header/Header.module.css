@@ -11,7 +11,8 @@
   background: glassBackground;
   backdrop-filter: glassBlur;
   -webkit-backdrop-filter: glassBlur;
-  border-bottom: glassBorder;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 52;
 }
 .wrap {
   display: flex;
@@ -86,6 +87,7 @@
   transition: all 300ms ease-in-out;
 }
 .ico {
+  fill: menuBlack;
   transition: all 300ms ease-in-out;
 }
 .menuItem:hover {

@@ -1,6 +1,9 @@
 /* font */
 @value subFont: 0.8125rem;
 
+/* glass */
+@value glassRadius: 4px;
+
 /* header */
 @value headerHeight: 76px;
 @value navSize: 200px;

@@ -1,5 +1,5 @@
 @value glassBackground,glassBlur,contentTitle,footerColor from "../../../common/colors.module.css";
-@value subFont,mobSize,headerHeight from "../../../common/sizes.module.css";
+@value subFont,glassRadius,headerHeight,mobSize from "../../../common/sizes.module.css";
 
 .container {
   display: flex;
@@ -15,6 +15,7 @@
 }
 .wrap {
   flex: 1;
+  z-index: 51;
 }
 .dashboard {
   width: 100%;
@@ -25,10 +26,6 @@
   color: footerColor;
   font-size: subFont;
   text-align: center;
-}
-
-/* tablet */
-@media all and (min-width: 768px) and (max-width: 1023px) {
 }
 
 /* desktop */
@@ -44,16 +41,17 @@
     backdrop-filter: glassBlur;
     -webkit-backdrop-filter: glassBlur;
     border: glassBorder;
-    border-radius: 8px;
+    border-radius: glassRadius;
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
   }
   .wrap {
-    padding: 40px;
+    min-height: 80%;
+    padding: 30px;
     background: glassBackground;
     backdrop-filter: glassBlur;
     -webkit-backdrop-filter: glassBlur;
     border: glassBorder;
-    border-radius: 8px;
+    border-radius: glassRadius;
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
   }
 }
