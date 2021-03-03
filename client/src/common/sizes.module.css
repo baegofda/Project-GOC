@@ -1,0 +1,10 @@
+/* font */
+@value subFont: 0.8125rem;
+
+/* header */
+@value headerHeight: 76px;
+@value navSize: 200px;
+@value navPadding: 15px;
+
+/* mobile */
+@value mobSize: 20px;

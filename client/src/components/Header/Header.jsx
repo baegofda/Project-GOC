@@ -56,7 +56,7 @@ const Header = (props) => {
       <nav className={`${styles.nav} ${toggle}`}>
         <ul className={styles.navContainer}>
           <li className={styles.categoryContainer}>
-            <h2 className={styles.category}>국내</h2>
+            <span className={styles.category}>국내</span>
             <ul className={styles.menuContainer}>
               <li className={styles.menu}>
                 <NavLink
@@ -109,7 +109,7 @@ const Header = (props) => {
             </ul>
           </li>
           <li className={styles.categoryContainer}>
-            <h2 className={styles.category}>해외</h2>
+            <span className={styles.category}>해외</span>
             <ul className={styles.menuContainer}>
               <li className={styles.menu}>
                 <NavLink
@@ -182,7 +182,7 @@ const Header = (props) => {
             </ul>
           </li>
           <li className={styles.categoryContainer}>
-            <h2 className={styles.category}>정보</h2>
+            <span className={styles.category}>정보</span>
             <ul className={styles.menuContainer}>
               <li className={styles.menu}>
                 <NavLink
@@ -229,7 +229,7 @@ const Header = (props) => {
             </ul>
           </li>
           <li className={styles.categoryContainer}>
-            <h2 className={styles.category}>기타</h2>
+            <span className={styles.category}>기타</span>
             <ul className={styles.menuContainer}>
               <li className={styles.menu}>
                 <NavLink

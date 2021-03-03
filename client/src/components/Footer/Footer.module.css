@@ -1,13 +1,21 @@
-@value subFont, footerColor from "../../common/common.module.css";
+@value footerColor from "../../common/colors.module.css";
+@value subFont,navSize from "../../common/sizes.module.css";
 
 .footer {
   text-align: center;
   margin-top: auto;
-  padding: 10px;
+  padding: 20px;
   font-size: subFont;
   color: footerColor;
 }
 .copy {
   display: inline-block;
   margin-top: 5px;
+}
+
+/* desktop */
+@media all and (min-width: 1024px) {
+  .footer {
+    margin-left: navSize;
+  }
 }

@@ -1,0 +1,59 @@
+@value glassBackground,glassBlur,contentTitle,footerColor from "../../../common/colors.module.css";
+@value subFont,mobSize,headerHeight from "../../../common/sizes.module.css";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: mobSize;
+}
+.title {
+  margin-bottom: mobSize;
+  color: contentTitle;
+}
+.wrap {
+  flex: 1;
+}
+.dashboard {
+  width: 100%;
+  height: 100%;
+  margin-bottom: 5px;
+}
+.resource {
+  color: footerColor;
+  font-size: subFont;
+  text-align: center;
+}
+
+/* tablet */
+@media all and (min-width: 768px) and (max-width: 1023px) {
+}
+
+/* desktop */
+@media all and (min-width: 1024px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+  .title {
+    margin-right: auto;
+    padding: 10px;
+    background: glassBackground;
+    backdrop-filter: glassBlur;
+    -webkit-backdrop-filter: glassBlur;
+    border: glassBorder;
+    border-radius: 8px;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  .wrap {
+    padding: 40px;
+    background: glassBackground;
+    backdrop-filter: glassBlur;
+    -webkit-backdrop-filter: glassBlur;
+    border: glassBorder;
+    border-radius: 8px;
+    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+  }
+}

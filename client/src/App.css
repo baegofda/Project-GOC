@@ -20,8 +20,8 @@
 * {
   box-sizing: border-box;
 }
-body,
-html {
+html,
+body {
   height: 100%;
   margin: 0;
   padding: 0;
@@ -62,22 +62,18 @@ a {
     rgb(235, 251, 252),
     rgb(230, 251, 252)
   );
+  overflow-x: scroll;
 }
 
 .main {
+  height: 100%;
   padding-top: 76px;
-}
-
-/* tablet  */
-@media all and (min-width: 768px) and (max-width: 1023px) {
-  #root {
-    padding-top: 0;
-  }
 }
 
 /* desktop */
 @media all and (min-width: 1024px) {
   .main {
     padding-top: 0;
+    margin-left: 200px;
   }
 }
