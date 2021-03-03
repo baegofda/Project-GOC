@@ -1,4 +1,4 @@
-@value customWhite, categoryBlack, menuBlack, glassBackground, glassBlur, glassBorder, headerHeight, navPadding, boxShadow from "../../common/common.module.css";
+@value subFont, customWhite, categoryBlack, menuBlack, glassBackground, glassBlur, glassBorder, headerHeight, navPadding, boxShadow, footerColor from "../../common/common.module.css";
 
 /* 상단 헤더 */
 .header {
@@ -103,6 +103,7 @@
 }
 .text {
   display: none;
+  margin-left: 16px;
 }
 
 /* 푸터 */
@@ -110,12 +111,13 @@
   display: none;
   margin-top: auto;
   padding: navPadding;
-  font-size: 0.8125rem;
-  color: rgba(133, 136, 150, 0.8);
+  font-size: subFont;
+  color: footerColor;
 }
 .auth {
   font-weight: 400;
 }
+
 /* tablet */
 @media all and (min-width: 768px) and (max-width: 1023px) {
   .nav {
@@ -127,9 +129,6 @@
   .menuItem {
     justify-content: flex-start;
   }
-  .ico {
-    margin-right: 16px;
-  }
   .text {
     display: block;
   }
@@ -138,7 +137,7 @@
   }
 }
 
-/* dekstop */
+/* desktop */
 @media all and (min-width: 1024px) {
   /* 상단 헤더 */
   .header {
@@ -180,9 +179,6 @@
   }
   .menuItem {
     justify-content: flex-start;
-  }
-  .ico {
-    margin-right: 16px;
   }
   .text {
     display: block;

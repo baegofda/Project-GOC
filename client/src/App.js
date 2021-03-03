@@ -11,7 +11,7 @@ const App = () => {
   return (
     <>
       <Header />
-      <main>
+      <main className="main">
         <Switch>
           <Route exact path={"/"} component={KoreaAllData} />
           <Route path={"/city"} component={KoreaCityData} />

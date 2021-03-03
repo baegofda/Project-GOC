@@ -1,0 +1,13 @@
+@value subFont, footerColor from "../../common/common.module.css";
+
+.footer {
+  text-align: center;
+  margin-top: auto;
+  padding: 10px;
+  font-size: subFont;
+  color: footerColor;
+}
+.copy {
+  display: inline-block;
+  margin-top: 5px;
+}

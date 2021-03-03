@@ -7,7 +7,6 @@
     url("./fonts/SpoqaHanSansNeo-Bold.woff") format("woff"),
     url("./fonts/SpoqaHanSansNeo-Bold.ttf") format("truetype");
 }
-
 @font-face {
   font-family: "Spoqa Han Sans";
   font-weight: 400;
@@ -21,7 +20,6 @@
 * {
   box-sizing: border-box;
 }
-
 body,
 html {
   height: 100%;
@@ -30,23 +28,19 @@ html {
   font-family: "Spoqa Han Sans Neo", "sans-serif";
   overflow: hidden;
 }
-
 ul,
-li {
+li,
+h1,
+h2,
+h3,
+p {
   margin: 0;
   padding: 0;
   list-style: none;
 }
-
 a {
   color: inherit;
   text-decoration: none;
-}
-
-h1,
-h2,
-h3 {
-  margin: 0;
 }
 
 .sr-only {
@@ -60,6 +54,8 @@ h3 {
 
 /* app css */
 #root {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   background: linear-gradient(
     to right bottom,
@@ -68,8 +64,20 @@ h3 {
   );
 }
 
+.main {
+  padding-top: 76px;
+}
+
+/* tablet  */
 @media all and (min-width: 768px) and (max-width: 1023px) {
   #root {
+    padding-top: 0;
+  }
+}
+
+/* desktop */
+@media all and (min-width: 1024px) {
+  .main {
     padding-top: 0;
   }
 }
