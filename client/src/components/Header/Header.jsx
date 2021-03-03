@@ -255,6 +255,9 @@ const Header = (props) => {
             </ul>
           </li>
         </ul>
+        <footer className={styles.footer}>
+          <strong className={styles.auth}>제작자 : 이준호(Dale)</strong>
+        </footer>
       </nav>
     </header>
   );

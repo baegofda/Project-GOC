@@ -41,14 +41,18 @@
 /* 메뉴 목록 */
 .nav {
   position: absolute;
+  display: flex;
+  flex-direction: column;
   left: 0;
   top: 0;
   height: 100vh;
   margin-top: headerHeight;
+  padding-bottom: headerHeight;
   background: inherit;
   backdrop-filter: inherit;
   -webkit-backdrop-filter: inherit;
   box-shadow: boxShadow;
+  overflow-y: scroll;
   transform: translateX(-250px);
   transition: transform 300ms ease-in-out;
 }
@@ -101,6 +105,17 @@
   display: none;
 }
 
+/* 푸터 */
+.footer {
+  display: none;
+  margin-top: auto;
+  padding: navPadding;
+  font-size: 0.8125rem;
+  color: rgba(133, 136, 150, 0.8);
+}
+.auth {
+  font-weight: 400;
+}
 /* tablet */
 @media all and (min-width: 768px) and (max-width: 1023px) {
   .nav {
@@ -118,10 +133,14 @@
   .text {
     display: block;
   }
+  .footer {
+    display: block;
+  }
 }
 
 /* dekstop */
 @media all and (min-width: 1024px) {
+  /* 상단 헤더 */
   .header {
     display: flex;
     flex-direction: column;
@@ -144,6 +163,8 @@
   .wrap::after {
     display: none;
   }
+
+  /* 메뉴목록 */
   .nav {
     position: static;
     width: 200px;
@@ -151,6 +172,7 @@
     background: transparent;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
+    box-shadow: none;
     transform: translateX(0);
   }
   .category::after {
@@ -163,6 +185,9 @@
     margin-right: 16px;
   }
   .text {
+    display: block;
+  }
+  .footer {
     display: block;
   }
 }

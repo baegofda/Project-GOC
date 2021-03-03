@@ -5,6 +5,7 @@ import KoreaAllData from "./components/KoreaData/KoreaAllData/KoreaAllData";
 import KoreaCityData from "./components/KoreaData/KoreaCityData/KoreaCityData";
 import OverseasAllData from "./components/OverseasData/OverseasAllData/OverseasAllData";
 import OverseasCountryData from "./components/OverseasData/OverseasCountryData/OverseasCountryData";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path={"/country"} component={OverseasCountryData} />
         </Switch>
       </main>
+      <Footer />
     </>
   );
 };
