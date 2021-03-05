@@ -1,5 +1,5 @@
 @value glassBackground,glassBlur,contentTitle,footerColor from "../../../common/colors.module.css";
-@value subFont,glassRadius,headerHeight,mobSize from "../../../common/sizes.module.css";
+@value subFont,titleFont,glassRadius,headerHeight,mobSize from "../../../common/sizes.module.css";
 
 .container {
   display: flex;
@@ -10,6 +10,7 @@
   padding: mobSize;
 }
 .title {
+  font-size: titleFont;
   margin-bottom: mobSize;
   color: contentTitle;
 }

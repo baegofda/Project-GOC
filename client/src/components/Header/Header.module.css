@@ -1,4 +1,4 @@
-@value customWhite,categoryBlack,menuBlack,glassBackground,glassBlur,glassBorder,boxShadow,footerColor from "../../common/colors.module.css";
+@value categoryBlack,glassBackground,glassBlur,glassBorder,boxShadow,footerColor from "../../common/colors.module.css";
 @value subFont,headerHeight,navSize,navPadding from "../../common/sizes.module.css";
 
 /* 상단 헤더 */
@@ -77,37 +77,6 @@
   margin-left: 10px;
   background-color: categoryBlack;
 }
-.menuItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  padding: navPadding;
-  color: menuBlack;
-  transition: all 300ms ease-in-out;
-}
-.ico {
-  fill: menuBlack;
-  transition: all 300ms ease-in-out;
-}
-.menuItem:hover {
-  background: linear-gradient(to right, #e0c3fc 10%, #feb7f6 90%);
-  color: customWhite;
-}
-.menuItem:hover .ico {
-  fill: customWhite;
-}
-.menuItem.selected {
-  color: customWhite;
-  background: linear-gradient(to right, #e0c3fc 10%, #feb7f6 90%);
-}
-.menuItem.selected .ico {
-  fill: customWhite;
-}
-.text {
-  display: none;
-  margin-left: 16px;
-}
 
 /* 푸터 */
 .footer {
@@ -127,12 +96,6 @@
     width: 200px;
   }
   .category::after {
-    display: block;
-  }
-  .menuItem {
-    justify-content: flex-start;
-  }
-  .text {
     display: block;
   }
   .footer {
@@ -178,12 +141,6 @@
     transform: translateX(0);
   }
   .category::after {
-    display: block;
-  }
-  .menuItem {
-    justify-content: flex-start;
-  }
-  .text {
     display: block;
   }
   .footer {

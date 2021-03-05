@@ -1,5 +1,6 @@
 /* font */
 @value subFont: 0.8125rem;
+@value titleFont: 1.25rem;
 
 /* glass */
 @value glassRadius: 4px;

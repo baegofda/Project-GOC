@@ -1,7 +1,7 @@
 /* font color */
 @value customWhite: #fff;
 @value categoryBlack: #333;
-@value menuBlack: rgba(0,0,0,0.8);
+@value menuBlack: rgba(0,0,0,0.7);
 
 /* glass */
 @value glassBackground: linear-gradient(to right bottom,rgb(255, 255, 255, 0.7),rgb(255, 255, 255, 0.3));

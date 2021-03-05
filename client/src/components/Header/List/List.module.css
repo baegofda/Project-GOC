@@ -1,0 +1,57 @@
+@value customWhite,menuBlack from "../../../common/colors.module.css";
+@value navPadding from "../../../common/sizes.module.css";
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: navPadding;
+  color: menuBlack;
+  transition: all 300ms ease-in-out;
+}
+.ico {
+  fill: menuBlack;
+  transition: all 300ms ease-in-out;
+}
+.menuItem:hover {
+  background: linear-gradient(to right, #e0c3fc 10%, #feb7f6 90%);
+  color: customWhite;
+}
+.menuItem:hover .ico {
+  fill: customWhite;
+}
+.menuItem.selected {
+  color: customWhite;
+  background: linear-gradient(to right, #e0c3fc 10%, #feb7f6 90%);
+}
+.menuItem.selected .ico {
+  fill: customWhite;
+}
+.text {
+  display: none;
+  margin-left: 16px;
+}
+
+/* tablet */
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .menuItem {
+    justify-content: flex-start;
+  }
+  .text {
+    display: block;
+  }
+  .footer {
+    display: block;
+  }
+}
+
+/* desktop */
+@media all and (min-width: 1024px) {
+  .menuItem {
+    justify-content: flex-start;
+  }
+  .text {
+    display: block;
+  }
+}
