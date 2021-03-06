@@ -24,12 +24,7 @@ const Header = (props) => {
     <header className={styles.header}>
       <div className={styles.wrap}>
         <span className={styles.gnb}>
-          <Link
-            ref={gnb}
-            className={styles.gnbToggle}
-            to="#"
-            onClick={onToggle}
-          >
+          <Link ref={gnb} className={styles.btn} to="#" onClick={onToggle}>
             {isToggle ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -54,15 +49,15 @@ const Header = (props) => {
           </Link>
         </span>
         <h1 className={styles.logo}>
-          <Link className={styles.logoLink} to="/">
+          <Link className={styles.link} to="/">
             <img className={styles.img} src={LOGO} alt="코로나야 사라져라 ~!" />
           </Link>
         </h1>
       </div>
       <nav className={`${styles.nav} ${toggle}`}>
-        <ul className={styles.navContainer}>
+        <ul className={styles.container}>
           {category.map((category) => (
-            <li key={category.id} className={styles.categoryContainer}>
+            <li key={category.id} className={styles.list}>
               <span className={styles.category}>{category.categoryName}</span>
               <List type={category.type} />
             </li>

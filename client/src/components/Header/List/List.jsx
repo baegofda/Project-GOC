@@ -60,11 +60,11 @@ const List = ({ type }) => {
     },
     {
       id: 7,
-      link: "/news",
+      link: "/center",
       viewBox: "0 0 24 24",
       path:
-        "M20 22H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1zm-1-2V4H5v16h14zM7 6h4v4H7V6zm0 6h10v2H7v-2zm0 4h10v2H7v-2zm6-9h4v2h-4V7z",
-      listName: "주요 뉴스",
+        "M21.678 7.98l-1.415 1.413-2.12-2.12-2.122 2.12 3.535 3.536-1.414 1.414-.707-.707L11.071 20H5.414l-2.121 2.121-1.414-1.414L4 18.586v-5.657l6.364-6.364-.707-.707 1.414-1.414 3.536 3.535 2.12-2.121-2.12-2.121 1.414-1.415 5.657 5.657zm-5.657 4.242l-4.243-4.243-1.414 1.414 2.121 2.122-1.414 1.414-2.121-2.121-1.414 1.414 2.12 2.121-1.413 1.414-2.122-2.121-.121.121V18h4.243l5.778-5.778z",
+      listName: "백신 접종 센터 정보",
       type: "information",
     },
     {
@@ -87,14 +87,14 @@ const List = ({ type }) => {
     },
   ]);
   return (
-    <ul className={styles.menuContainer}>
+    <ul className={styles.items}>
       {list
         .filter((list) => list.type === type)
         .map((list) => (
-          <li key={list.id} className={styles.menu}>
+          <li key={list.id} className={styles.item}>
             <NavLink
               exact
-              className={styles.menuItem}
+              className={styles.link}
               to={list.link}
               activeClassName={styles.selected}
             >
