@@ -1,15 +1,16 @@
-@value glassBackground,glassBlur,contentTitle,descColor,contentShadow from "../../common/colors.module.css";
-@value subFont,titleFont,mobSize from "../../common/sizes.module.css";
+@value glassBackground,glassBlur,glassBorder,contentTitle,descColor,contentShadow from "../../common/colors.module.css";
+@value subFont,titleFont,titleWeight,glassRadius,pannelPadding,mobSize from "../../common/sizes.module.css";
 
 .wrap {
   margin-bottom: mobSize;
 }
 .title {
-  font-size: titleFont;
   margin-bottom: 5px;
+  font-size: titleFont;
 }
 .item {
   color: contentTitle;
+  font-weight: titleWeight;
 }
 .description {
   color: descColor;
@@ -18,9 +19,9 @@
 
 /* desktop */
 @media all and (min-width: 1024px) {
-  .item {
+  .wrap {
     margin-right: auto;
-    padding: 10px;
+    padding: pannelPadding;
     background: glassBackground;
     backdrop-filter: glassBlur;
     -webkit-backdrop-filter: glassBlur;

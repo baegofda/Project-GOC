@@ -5,6 +5,11 @@ import ContentTitle from "../../ContentTitle/ContentTitle";
 
 const JHUDashboard = () => {
   const [display, setCurrentWidth] = useState(true);
+  const [title, setTitle] = useState({
+    title: "전 세계 대시보드",
+    desc:
+      "Johns Hopkins CSSE(존스 홉킨스 대학교)의 전세계 코로나 현황판을 보여줍니다.",
+  });
 
   const handleResize = debounce(() => {
     const currentWidth = window.innerWidth;
@@ -20,7 +25,8 @@ const JHUDashboard = () => {
 
   return (
     <article className={styles.container}>
-      <ContentTitle />
+      <h3 className="sr-only">전 세계 대시보드</h3>
+      <ContentTitle data={title} />
       <div className={styles.wrap}>
         <iframe
           className={styles.dashboard}
@@ -37,9 +43,6 @@ const JHUDashboard = () => {
               : "https://www.arcgis.com/apps/opsdashboard/index.html#/85320e2ea5424dfaaa75ae62e5c06e61"
           }
         ></iframe>
-        <p className={styles.resource}>
-          출처 :<cite title="존스홉킨스 대학">Johns Hopkins CSSE</cite>
-        </p>
       </div>
     </article>
   );

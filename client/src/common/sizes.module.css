@@ -1,9 +1,11 @@
 /* font */
 @value subFont: 0.8125rem;
 @value titleFont: 1.25rem;
+@value titleWeight: 500;
 
 /* glass */
 @value glassRadius: 6px;
+@value pannelPadding: 20px;
 
 /* header */
 @value headerHeight: 76px;

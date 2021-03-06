@@ -1,5 +1,5 @@
-@value glassBackground,glassBlur,descColor,contentShadow from "../../../common/colors.module.css";
-@value subFont,glassRadius from "../../../common/sizes.module.css";
+@value glassBackground,glassBlur,glassBorder,descColor,contentShadow from "../../../common/colors.module.css";
+@value subFont,glassRadius,pannelPadding from "../../../common/sizes.module.css";
 
 .container {
   display: flex;
@@ -15,11 +15,6 @@
   width: 100%;
   height: 100%;
 }
-.resource {
-  color: descColor;
-  font-size: subFont;
-  text-align: center;
-}
 
 /* desktop */
 @media all and (min-width: 1024px) {
@@ -29,7 +24,7 @@
   }
   .wrap {
     min-height: 80%;
-    padding: 30px;
+    padding: pannelPadding;
     background: glassBackground;
     backdrop-filter: glassBlur;
     -webkit-backdrop-filter: glassBlur;

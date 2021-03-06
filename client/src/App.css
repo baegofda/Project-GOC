@@ -9,6 +9,14 @@
 }
 @font-face {
   font-family: "Spoqa Han Sans";
+  font-weight: 500;
+  src: local("SpoqaHanSansNeo-Medium"),
+    url("./fonts/SpoqaHanSansNeo-Medium.woff2") format("woff2"),
+    url("./fonts/SpoqaHanSansNeo-Medium.woff") format("woff"),
+    url("./fonts/SpoqaHanSansNeo-Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Spoqa Han Sans";
   font-weight: 400;
   src: local("SpoqaHanSansNeo-Regular"),
     url("./fonts/SpoqaHanSansNeo-Regular.woff2") format("woff2"),

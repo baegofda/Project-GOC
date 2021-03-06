@@ -7,6 +7,7 @@ import OverseasAllData from "./components/OverseasData/OverseasAllData/OverseasA
 import OverseasCountryData from "./components/OverseasData/OverseasCountryData/OverseasCountryData";
 import Footer from "./components/Footer/Footer";
 import JHUDashboard from "./components/OverseasData/JHUDashboard/JHUDashboard";
+import Other from "./components/Other/Other";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path={"/all"} component={OverseasAllData} />
           <Route path={"/country"} component={OverseasCountryData} />
           <Route path={"/dashboard"} component={JHUDashboard} />
+          <Route path={"/other"} component={Other} />
         </Switch>
       </main>
       <Footer />
