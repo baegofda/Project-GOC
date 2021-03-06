@@ -1,0 +1,31 @@
+@value glassBackground,glassBlur,contentTitle,descColor,contentShadow from "../../common/colors.module.css";
+@value subFont,titleFont,mobSize from "../../common/sizes.module.css";
+
+.wrap {
+  margin-bottom: mobSize;
+}
+.title {
+  font-size: titleFont;
+  margin-bottom: 5px;
+}
+.item {
+  color: contentTitle;
+}
+.description {
+  color: descColor;
+  font-size: subFont;
+}
+
+/* desktop */
+@media all and (min-width: 1024px) {
+  .item {
+    margin-right: auto;
+    padding: 10px;
+    background: glassBackground;
+    backdrop-filter: glassBlur;
+    -webkit-backdrop-filter: glassBlur;
+    border: glassBorder;
+    border-radius: glassRadius;
+    box-shadow: contentShadow;
+  }
+}

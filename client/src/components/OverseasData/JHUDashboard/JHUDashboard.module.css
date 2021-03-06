@@ -1,5 +1,5 @@
-@value glassBackground,glassBlur,contentTitle,footerColor from "../../../common/colors.module.css";
-@value subFont,titleFont,glassRadius,headerHeight,mobSize from "../../../common/sizes.module.css";
+@value glassBackground,glassBlur,descColor,contentShadow from "../../../common/colors.module.css";
+@value subFont,glassRadius from "../../../common/sizes.module.css";
 
 .container {
   display: flex;
@@ -7,24 +7,16 @@
   max-width: 100%;
   height: 100%;
   margin: 0 auto;
-  padding: mobSize;
-}
-.title {
-  font-size: titleFont;
-  margin-bottom: mobSize;
-  color: contentTitle;
 }
 .wrap {
   flex: 1;
-  z-index: 51;
 }
 .dashboard {
   width: 100%;
   height: 100%;
-  margin-bottom: 5px;
 }
 .resource {
-  color: footerColor;
+  color: descColor;
   font-size: subFont;
   text-align: center;
 }
@@ -35,16 +27,6 @@
     display: flex;
     flex-direction: column;
   }
-  .title {
-    margin-right: auto;
-    padding: 10px;
-    background: glassBackground;
-    backdrop-filter: glassBlur;
-    -webkit-backdrop-filter: glassBlur;
-    border: glassBorder;
-    border-radius: glassRadius;
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
-  }
   .wrap {
     min-height: 80%;
     padding: 30px;
@@ -53,6 +35,6 @@
     -webkit-backdrop-filter: glassBlur;
     border: glassBorder;
     border-radius: glassRadius;
-    box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: contentShadow;
   }
 }

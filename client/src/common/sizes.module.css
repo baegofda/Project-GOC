@@ -3,7 +3,7 @@
 @value titleFont: 1.25rem;
 
 /* glass */
-@value glassRadius: 4px;
+@value glassRadius: 6px;
 
 /* header */
 @value headerHeight: 76px;

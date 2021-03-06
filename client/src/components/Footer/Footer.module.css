@@ -2,11 +2,13 @@
 @value subFont,navSize from "../../common/sizes.module.css";
 
 .footer {
-  text-align: center;
   margin-top: auto;
   padding: 20px;
   font-size: subFont;
   color: footerColor;
+  text-align: center;
+  background: transparent;
+  z-index: 2;
 }
 .copy {
   display: inline-block;

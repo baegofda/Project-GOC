@@ -32,7 +32,10 @@ li,
 h1,
 h2,
 h3,
-p {
+p,
+dl,
+dt,
+dd {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -58,31 +61,42 @@ a {
   flex-direction: column;
   height: 100%;
   background: linear-gradient(to right bottom, #e6e9f0 0%, #eef1f5 100%);
+  background: linear-gradient(to right top, #65dfc9, #6cdbeb);
   overflow: hidden;
 }
-#root::before {
+#root::before,
+#root::after {
   content: "";
   position: absolute;
   width: 240px;
   height: 240px;
-  top: -2%;
-  right: -3%;
   background: linear-gradient(
     to right bottom,
-    rgb(255, 255, 255, 0.7),
+    rgb(255, 255, 255, 0.8),
     rgb(255, 255, 255, 0.3)
   );
   border-radius: 50%;
+  z-index: 1;
+}
+#root::before {
+  top: -2%;
+  right: -3%;
+}
+#root::after {
+  bottom: -4%;
+  left: 5%;
 }
 
 .main {
   height: 100%;
-  padding-top: 76px;
+  margin-top: 76px;
+  padding: 20px;
+  z-index: 2;
 }
 /* desktop */
 @media all and (min-width: 1024px) {
   .main {
-    padding-top: 0;
+    margin-top: 0;
     margin-left: 200px;
   }
 }

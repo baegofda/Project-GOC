@@ -1,18 +1,20 @@
 /* font color */
 @value customWhite: #fff;
 @value categoryBlack: #333;
-@value menuBlack: rgba(0,0,0,0.7);
+@value menuBlack: rgba(0,0,0,0.6);
 
 /* glass */
-@value glassBackground: linear-gradient(to right bottom,rgb(255, 255, 255, 0.7),rgb(255, 255, 255, 0.3));
+@value glassBackground: linear-gradient(to right bottom,rgb(255, 255, 255, 0.6),rgb(255, 255, 255, 0.3));
 @value glassBlur: blur(8px);
-@value glassBorder: 1px solid rgba(255, 255, 255, 0.5);
+@value glassBorder: 1px solid rgba(255, 255, 255, 0.1);
 
 /* header */
 @value boxShadow: 0 5px 7px 0 rgba(31, 38, 135, 0.37);
 
 /* content */
 @value contentTitle: #363636;
+@value descColor: #444;
+@value contentShadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
 
 /* footer */
 @value footerColor: rgba(133, 136, 150, 0.8);

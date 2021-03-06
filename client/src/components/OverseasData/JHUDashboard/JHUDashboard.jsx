@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./JHUDashboard.module.css";
 import debounce from "lodash.debounce";
+import ContentTitle from "../../ContentTitle/ContentTitle";
 
 const JHUDashboard = () => {
   const [display, setCurrentWidth] = useState(true);
@@ -19,12 +20,12 @@ const JHUDashboard = () => {
 
   return (
     <article className={styles.container}>
-      <h2 className={styles.title}>전 세계 대시보드</h2>
+      <ContentTitle />
       <div className={styles.wrap}>
         <iframe
           className={styles.dashboard}
-          width="625"
-          height="500"
+          width="auto"
+          height="auto"
           frameBorder="0"
           scrolling="no"
           marginHeight="0"
@@ -37,10 +38,7 @@ const JHUDashboard = () => {
           }
         ></iframe>
         <p className={styles.resource}>
-          출처 :
-          <cite title="존스홉킨스 대학">
-            Johns Hopkins University & Medicine(JHU)
-          </cite>
+          출처 :<cite title="존스홉킨스 대학">Johns Hopkins CSSE</cite>
         </p>
       </div>
     </article>

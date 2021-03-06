@@ -11,8 +11,8 @@
   background: glassBackground;
   backdrop-filter: glassBlur;
   -webkit-backdrop-filter: glassBlur;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  z-index: 52;
+  border-bottom: glassBorder;
+  z-index: 3;
 }
 .wrap {
   display: flex;
@@ -51,7 +51,7 @@
   margin-top: headerHeight;
   padding-bottom: headerHeight;
   background: inherit;
-  backdrop-filter: inherit;
+  backdrop-filter: blur(32px);
   -webkit-backdrop-filter: inherit;
   box-shadow: boxShadow;
   overflow-y: scroll;
