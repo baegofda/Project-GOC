@@ -1,7 +1,9 @@
 /* font */
-@value subFont: 0.8125rem;
+@value categoryFont: 0.875rem;
 @value titleFont: 1.25rem;
 @value titleWeight: 500;
+@value subFont: 0.8125rem;
+@value pannelFont: 1.125rem;
 
 /* glass */
 @value glassRadius: 6px;
@@ -11,6 +13,4 @@
 @value headerHeight: 76px;
 @value navSize: 200px;
 @value navPadding: 15px;
-
-/* mobile */
-@value mobSize: 20px;
+@value titleMargin: 20px;

@@ -1,0 +1,46 @@
+@value glassBackground,glassBlur,glassBorder,descColor,contentShadow from "../../common/colors.module.css";
+@value categoryFont,subFont,pannelFont,glassRadius,pannelPadding from "../../common/sizes.module.css";
+
+.wrap {
+  padding: pannelPadding;
+  background: glassBackground;
+  backdrop-filter: glassBlur;
+  -webkit-backdrop-filter: glassBlur;
+  border: glassBorder;
+  border-radius: glassRadius;
+  box-shadow: contentShadow;
+}
+.title {
+  margin-bottom: 10px;
+  font-size: pannelFont;
+  font-weight: 500;
+}
+.link {
+  margin-right: auto;
+  color: #369fff;
+}
+.link:hover,
+.link:hover .site {
+  text-decoration: underline;
+}
+.site {
+  display: inline-block;
+  width: 100%;
+}
+
+/* tablet */
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .link {
+    flex-direction: row;
+  }
+  .site {
+    width: auto;
+  }
+}
+
+/* desktop */
+@media all and (min-width: 1024px) {
+  .site {
+    width: auto;
+  }
+}

@@ -7,7 +7,7 @@ const ContentTitle = ({ data }) => {
       <dt className={styles.title}>
         <h2 className={styles.item}>{data.title}</h2>
       </dt>
-      <dd className={styles.description}>*{data.desc}</dd>
+      <dd className={styles.description}>{data.desc}</dd>
     </dl>
   );
 };

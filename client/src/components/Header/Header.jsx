@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import List from "./List/List";
 const LOGO = "/assets/images/main-logo.png";

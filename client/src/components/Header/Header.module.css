@@ -1,5 +1,5 @@
-@value categoryBlack,glassBackground,glassBlur,glassBorder,boxShadow,footerColor from "../../common/colors.module.css";
-@value subFont,headerHeight,navSize,navPadding from "../../common/sizes.module.css";
+@value categoryBlack,glassBackground,glassBlur,glassBorder,boxShadow,footerBlack from "../../common/colors.module.css";
+@value categoryFont,subFont,headerHeight,navSize,navPadding from "../../common/sizes.module.css";
 
 /* 상단 헤더 */
 .header {
@@ -51,7 +51,7 @@
   margin-top: headerHeight;
   padding-bottom: headerHeight;
   background: inherit;
-  backdrop-filter: blur(32px);
+  backdrop-filter: inherit;
   -webkit-backdrop-filter: inherit;
   box-shadow: boxShadow;
   overflow-y: scroll;
@@ -66,7 +66,7 @@
   align-items: center;
   padding: navPadding;
   color: categoryBlack;
-  font-size: 0.875rem;
+  font-size: categoryFont;
   line-height: 1.5;
 }
 .category::after {
@@ -84,7 +84,7 @@
   margin-top: auto;
   padding: navPadding;
   font-size: subFont;
-  color: footerColor;
+  color: footerBlack;
 }
 .auth {
   font-weight: 400;

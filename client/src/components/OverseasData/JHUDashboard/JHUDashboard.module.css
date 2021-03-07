@@ -1,29 +1,30 @@
-@value glassBackground,glassBlur,glassBorder,descColor,contentShadow from "../../../common/colors.module.css";
+@value glassBackground,glassBlur,glassBorder,descBlack,contentShadow from "../../../common/colors.module.css";
 @value subFont,glassRadius,pannelPadding from "../../../common/sizes.module.css";
 
-.container {
+.wrap {
   display: flex;
   flex-direction: column;
   max-width: 100%;
   height: 100%;
-  margin: 0 auto;
-}
-.wrap {
-  flex: 1;
 }
 .dashboard {
   width: 100%;
   height: 100%;
+  margin-bottom: 5px;
+}
+.resource {
+  font-size: subFont;
+  color: descBlack;
+  text-align: right;
+  opacity: 0.6;
+}
+.resource:hover {
+  text-decoration: underline;
 }
 
 /* desktop */
 @media all and (min-width: 1024px) {
-  .container {
-    display: flex;
-    flex-direction: column;
-  }
   .wrap {
-    min-height: 80%;
     padding: pannelPadding;
     background: glassBackground;
     backdrop-filter: glassBlur;

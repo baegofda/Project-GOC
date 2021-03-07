@@ -1,24 +1,24 @@
 /* font css */
 @font-face {
-  font-family: "Spoqa Han Sans";
+  font-family: "Spoqa Han Sans Neo";
   font-weight: 700;
-  src: local("SpoqaHanSansNeo-Bold"),
+  src: local("Spoqa Han Sans-Bold"),
     url("./fonts/SpoqaHanSansNeo-Bold.woff2") format("woff2"),
     url("./fonts/SpoqaHanSansNeo-Bold.woff") format("woff"),
     url("./fonts/SpoqaHanSansNeo-Bold.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Spoqa Han Sans";
+  font-family: "Spoqa Han Sans Neo";
   font-weight: 500;
-  src: local("SpoqaHanSansNeo-Medium"),
+  src: local("Spoqa Han Sans-Medium"),
     url("./fonts/SpoqaHanSansNeo-Medium.woff2") format("woff2"),
     url("./fonts/SpoqaHanSansNeo-Medium.woff") format("woff"),
     url("./fonts/SpoqaHanSansNeo-Medium.ttf") format("truetype");
 }
 @font-face {
-  font-family: "Spoqa Han Sans";
+  font-family: "Spoqa Han Sans Neo";
   font-weight: 400;
-  src: local("SpoqaHanSansNeo-Regular"),
+  src: local("Spoqa Han Sans-Regular"),
     url("./fonts/SpoqaHanSansNeo-Regular.woff2") format("woff2"),
     url("./fonts/SpoqaHanSansNeo-Regular.woff") format("woff"),
     url("./fonts/SpoqaHanSansNeo-Regular.ttf") format("truetype");
@@ -96,6 +96,8 @@ a {
 }
 
 .main {
+  display: flex;
+  flex-direction: column;
   height: 100%;
   margin-top: 76px;
   padding: 20px;
