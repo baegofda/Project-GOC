@@ -68,16 +68,17 @@ a {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background: linear-gradient(to right bottom, #e6e9f0 0%, #eef1f5 100%);
-  background: linear-gradient(to right top, #65dfc9, #6cdbeb);
-  overflow: hidden;
+  background-color: #ffdee9;
+  background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 #root::before,
 #root::after {
   content: "";
   position: absolute;
-  width: 240px;
-  height: 240px;
+  width: 220px;
+  height: 220px;
   background: linear-gradient(
     to right bottom,
     rgb(255, 255, 255, 0.8),
@@ -88,13 +89,12 @@ a {
 }
 #root::before {
   top: -2%;
-  right: -3%;
+  right: -2%;
 }
 #root::after {
-  bottom: -4%;
-  left: 5%;
+  bottom: 3%;
+  left: -5%;
 }
-
 .main {
   display: flex;
   flex-direction: column;
@@ -102,9 +102,21 @@ a {
   margin-top: 76px;
   padding: 20px;
   z-index: 2;
+  flex: 1;
 }
+
+/* tablet */
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  #root::after {
+    left: 5%;
+  }
+}
+
 /* desktop */
 @media all and (min-width: 1024px) {
+  #root::after {
+    left: 5%;
+  }
   .main {
     margin-top: 0;
     margin-left: 200px;

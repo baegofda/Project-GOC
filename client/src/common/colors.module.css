@@ -1,11 +1,11 @@
 /* font color */
 @value customWhite: #fff;
 @value categoryBlack: #333;
-@value menuBlack: rgba(0,0,0,0.6);
+@value menuBlack: rgba(0,0,0,0.8);
 
 /* glass */
 @value glassBackground: linear-gradient(to right bottom,rgb(255, 255, 255, 0.6),rgb(255, 255, 255, 0.3));
-@value glassBlur: blur(8px);
+@value glassBlur: blur(6px);
 @value glassBorder: 1px solid rgba(255, 255, 255, 0.1);
 
 /* header */

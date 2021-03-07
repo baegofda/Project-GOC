@@ -55,7 +55,7 @@ const List = ({ type }) => {
       viewBox: "0 0 24 24",
       path:
         "M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zM11 7h2v2h-2V7zm0 4h2v6h-2v-6z",
-      listName: "거리두기 현황",
+      listName: "거리두기 정보",
       type: "information",
     },
     {
@@ -92,7 +92,7 @@ const List = ({ type }) => {
         .filter((list) => list.type === type)
         .map((list) => (
           <li key={list.id} className={styles.item}>
-            {list.listName !== "거리두기 현황" ? (
+            {list.listName !== "거리두기 정보" ? (
               <NavLink
                 exact
                 className={styles.link}

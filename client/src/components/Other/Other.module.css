@@ -10,13 +10,18 @@
   border-radius: glassRadius;
   box-shadow: contentShadow;
 }
+.wrap:not(:last-child) {
+  margin-bottom: 30px;
+}
 .title {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   font-size: pannelFont;
   font-weight: 500;
 }
+.items:not(:last-child) {
+  margin-bottom: 20px;
+}
 .link {
-  margin-right: auto;
   color: #369fff;
 }
 .link:hover,
