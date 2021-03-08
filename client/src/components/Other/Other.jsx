@@ -69,7 +69,6 @@ const Other = () => {
                   <a className={styles.link} href={link.url} target="blank">
                     <span className={styles.site}>{link.name}</span> -{" "}
                     {link.desc}
-                    {process.env.REACT_APP_DAUM_KEY}
                   </a>
                 </li>
               ))}
