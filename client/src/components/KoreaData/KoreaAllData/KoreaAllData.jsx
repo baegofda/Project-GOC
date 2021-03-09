@@ -3,11 +3,15 @@ import axios from "axios";
 import styles from "./KoreaAllData.module.css";
 
 const KoreaAllData = () => {
-  useEffect(() => {
-    axios.get("/").then((res) => console.log(res));
-  });
+  const callApi = async () => {
+    axios.get("/api").then((res) => console.log(res));
+  };
 
-  return <div></div>;
+  useEffect(() => {
+    callApi();
+  }, []);
+
+  return <div>test</div>;
 };
 
 export default KoreaAllData;
