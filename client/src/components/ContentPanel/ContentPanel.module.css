@@ -1,22 +1,15 @@
-@value customWhite,glassBackground,glassBlur,glassBorder,contentBottom,panelRed,panelOrange,panelBlue,panelGreen,panelBlack,contentShadow from "../../common/colors.module.css";
-@value pannelFont,glassRadius,pannelPadding,contentBlack,descBlack,contentBottom from "../../common/sizes.module.css";
-
-.wrap {
-  max-width: 100%;
-}
+@value customWhite,glassBackground,glassBlur,glassBorder,panelRed,panelOrange,panelBlue,panelGreen,panelBlack,contentShadow from "../../common/colors.module.css";
+@value panelFont,glassRadius,panelPadding,contentBlack,descBlack,panelTitleBottom,contentBottom,panelBottom from "../../common/sizes.module.css";
 
 .panel {
   display: flex;
   flex-direction: column;
-  max-width: 90%;
-  margin: 0 auto;
 }
 
 .card {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: pannelPadding;
+  padding: panelPadding;
   background: glassBackground;
   backdrop-filter: glassBlur;
   -webkit-backdrop-filter: glassBlur;
@@ -25,29 +18,25 @@
   box-shadow: contentShadow;
 }
 .card:not(:last-child) {
-  margin-bottom: contentBottom;
+  margin-bottom: panelBottom;
 }
 
 .title,
 .count,
 .sub {
-  flex: 1;
+  width: 33.333%;
+  text-align: center;
 }
 
 .title,
 .count {
-  margin-right: 5px;
-}
-
-.title {
-  font-size: pannelFont;
+  margin-right: 3%;
 }
 
 .count {
   font-weight: 700;
   text-overflow: ellipsis;
   white-space: nowrap;
-  word-wrap: normal;
   overflow: hidden;
 }
 .card:nth-child(1) .count {
@@ -69,7 +58,6 @@
 .sub {
   color: customWhite;
   font-weight: 500;
-  text-align: center;
   border-radius: glassRadius;
 }
 .card:nth-child(1) .sub {
@@ -92,40 +80,30 @@
 @media all and (min-width: 768px) and (max-width: 1023px) {
   .panel {
     flex-direction: row;
-    max-width: 100%;
     flex-wrap: wrap;
   }
 
   .card {
     flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
     width: 48%;
   }
-  .card:not(:last-child) {
-    margin-right: 2%;
-    margin-bottom: 2%;
-  }
-
-  .title,
-  .count,
-  .sub {
-    width: 100%;
+  .card:nth-child(2n + 1) {
+    margin-right: 4%;
   }
 
   .title,
   .count {
     margin-right: 0;
-    margin-bottom: contentBottom;
-    text-align: center;
+  }
+
+  .title {
+    margin-bottom: panelTitleBottom;
   }
 
   .count {
-    font-size: 1.5rem;
-  }
-
-  .sub {
-    max-width: 50%;
+    width: 100%;
+    margin-bottom: contentBottom;
+    font-size: 1.4rem;
   }
 }
 
@@ -133,11 +111,35 @@
 @media all and (min-width: 1024px) {
   .panel {
     flex-direction: row;
-    max-width: 100%;
-    flex-wrap: nowrap;
+    justify-content: center;
   }
+
   .card {
+    flex-direction: column;
+    width: 19.5%;
+  }
+  .card:not(:last-child) {
+    margin-right: 0.5%;
     margin-bottom: 0;
-    flex: 1;
+  }
+
+  .title,
+  .count {
+    margin-right: 0;
+  }
+
+  .title {
+    width: 100%;
+    margin-bottom: panelTitleBottom;
+  }
+
+  .count {
+    width: 100%;
+    margin-bottom: contentBottom;
+    font-size: 1.4rem;
+  }
+
+  .sub {
+    width: 55%;
   }
 }

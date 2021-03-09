@@ -1,8 +1,8 @@
 @value glassBackground,glassBlur,glassBorder,descColor,contentShadow from "../../common/colors.module.css";
-@value categoryFont,subFont,pannelFont,glassRadius,pannelPadding,contentBottom from "../../common/sizes.module.css";
+@value categoryFont,subFont,panelFont,glassRadius,panelPadding,panelTitleBottom,contentBottom,panelBottom from "../../common/sizes.module.css";
 
 .wrap {
-  padding: pannelPadding;
+  padding: panelPadding;
   background: glassBackground;
   backdrop-filter: glassBlur;
   -webkit-backdrop-filter: glassBlur;
@@ -11,11 +11,12 @@
   box-shadow: contentShadow;
 }
 .wrap:not(:last-child) {
-  margin-bottom: 30px;
+  margin-bottom: panelBottom;
 }
+
 .title {
-  margin-bottom: 15px;
-  font-size: pannelFont;
+  margin-bottom: panelTitleBottom;
+  font-size: panelFont;
   font-weight: 500;
 }
 .items:not(:last-child) {

@@ -3,11 +3,10 @@
 @value titleFont: 1.25rem;
 @value titleWeight: 500;
 @value subFont: 0.8125rem;
-@value pannelFont: 1.125rem;
+@value panelFont: 1.125rem;
 
 /* glass */
 @value glassRadius: 6px;
-@value pannelPadding: 20px;
 
 /* header */
 @value headerHeight: 76px;
@@ -16,4 +15,7 @@
 @value titleMargin: 30px;
 
 /* content */
+@value panelTitleBottom: 15px;
 @value contentBottom: 20px;
+@value panelPadding: 20px;
+@value panelBottom: 30px;
