@@ -9,27 +9,27 @@ const ContentPanel = () => {
         <div className={styles.card}>
           <dt className={styles.title}>확진자 수</dt>
           <dd className={styles.count}>12345677</dd>
-          <dd className={styles.sub}>+555</dd>
+          <dd className={styles.sub}>+ 555</dd>
         </div>
         <div className={styles.card}>
-          <dt className={styles.title}>격리해제 수</dt>
+          <dt className={styles.title}>검사 진행</dt>
           <dd className={styles.count}>12345677</dd>
-          <dd className={styles.sub}>+444</dd>
+          <dd className={styles.sub}>+ 3232</dd>
         </div>
         <div className={styles.card}>
-          <dt className={styles.title}>검사진행 수</dt>
+          <dt className={styles.title}>치료 중</dt>
           <dd className={styles.count}>12345677</dd>
-          <dd className={styles.sub}>+3232</dd>
+          <dd className={styles.sub}>+ 422</dd>
+        </div>
+        <div className={styles.card}>
+          <dt className={styles.title}>완치자 수</dt>
+          <dd className={styles.count}>12345677</dd>
+          <dd className={styles.sub}>+ 444</dd>
         </div>
         <div className={styles.card}>
           <dt className={styles.title}>사망자 수</dt>
           <dd className={styles.count}>12345677</dd>
-          <dd className={styles.sub}>+33</dd>
-        </div>
-        <div className={styles.card}>
-          <dt className={styles.title}>치료중 환자 수</dt>
-          <dd className={styles.count}>12345677</dd>
-          <dd className={styles.sub}>+422</dd>
+          <dd className={styles.sub}>+ 33</dd>
         </div>
       </dl>
     </section>

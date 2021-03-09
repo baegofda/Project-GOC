@@ -6,10 +6,17 @@
 /* glass */
 @value glassBackground: linear-gradient(to right bottom,rgb(255, 255, 255, 0.3),rgb(255, 255, 255, 0.3));
 @value glassBlur: blur(8px);
-@value glassBorder: 1px solid rgba(255, 255, 255, 0.1);
+@value glassBorder: 1px solid rgba(255, 255, 255, 0.5);
 
 /* header */
 @value boxShadow: 0 5px 7px 0 rgba(31, 38, 135, 0.37);
+
+/* panel */
+@value panelRed: #ff4949;
+@value panelOrange: #e9c158;
+@value panelBlue: #118eff;
+@value panelGreen: #58e319;
+@value panelBlack: #333;
 
 /* content */
 @value contentBlack: #363636;

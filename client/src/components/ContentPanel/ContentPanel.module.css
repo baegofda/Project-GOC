@@ -1,22 +1,21 @@
-@value glassBackground,glassBlur,glassBorder,contentShadow from "../../common/colors.module.css";
+@value customWhite,glassBackground,glassBlur,glassBorder,contentBottom,panelRed,panelOrange,panelBlue,panelGreen,panelBlack,contentShadow from "../../common/colors.module.css";
 @value pannelFont,glassRadius,pannelPadding,contentBlack,descBlack,contentBottom from "../../common/sizes.module.css";
 
-/* .wrap {
-  padding: pannelPadding;
-  background: glassBackground;
-  backdrop-filter: glassBlur;
-  -webkit-backdrop-filter: glassBlur;
-  border: glassBorder;
-  border-radius: glassRadius;
-  box-shadow: contentShadow;
-} */
+.wrap {
+  max-width: 100%;
+}
 
 .panel {
   display: flex;
   flex-direction: column;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: pannelPadding;
   background: glassBackground;
   backdrop-filter: glassBlur;
@@ -25,11 +24,120 @@
   border-radius: glassRadius;
   box-shadow: contentShadow;
 }
-
 .card:not(:last-child) {
   margin-bottom: contentBottom;
 }
 
+.title,
+.count,
+.sub {
+  flex: 1;
+}
+
+.title,
+.count {
+  margin-right: 5px;
+}
+
 .title {
   font-size: pannelFont;
+}
+
+.count {
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
+}
+.card:nth-child(1) .count {
+  color: panelRed;
+}
+.card:nth-child(2) .count {
+  color: panelOrange;
+}
+.card:nth-child(3) .count {
+  color: panelBlue;
+}
+.card:nth-child(4) .count {
+  color: panelGreen;
+}
+.card:nth-child(5) .count {
+  color: panelBlack;
+}
+
+.sub {
+  color: customWhite;
+  font-weight: 500;
+  text-align: center;
+  border-radius: glassRadius;
+}
+.card:nth-child(1) .sub {
+  background-color: panelRed;
+}
+.card:nth-child(2) .sub {
+  background-color: panelOrange;
+}
+.card:nth-child(3) .sub {
+  background-color: panelBlue;
+}
+.card:nth-child(4) .sub {
+  background-color: panelGreen;
+}
+.card:nth-child(5) .sub {
+  background-color: panelBlack;
+}
+
+/* tablet */
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .panel {
+    flex-direction: row;
+    max-width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 48%;
+  }
+  .card:not(:last-child) {
+    margin-right: 2%;
+    margin-bottom: 2%;
+  }
+
+  .title,
+  .count,
+  .sub {
+    width: 100%;
+  }
+
+  .title,
+  .count {
+    margin-right: 0;
+    margin-bottom: contentBottom;
+    text-align: center;
+  }
+
+  .count {
+    font-size: 1.5rem;
+  }
+
+  .sub {
+    max-width: 50%;
+  }
+}
+
+/* desktop */
+@media all and (min-width: 1024px) {
+  .panel {
+    flex-direction: row;
+    max-width: 100%;
+    flex-wrap: nowrap;
+  }
+  .card {
+    margin-bottom: 0;
+    flex: 1;
+  }
 }
