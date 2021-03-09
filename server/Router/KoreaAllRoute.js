@@ -12,37 +12,19 @@ const month =
 const day = date.getDate() > 10 ? date.getDate() : "0" + date.getDate();
 const today = year + "" + month + "" + day;
 
-// api url
-var url =
-  "http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson";
-var queryParams =
-  "?" + encodeURIComponent("ServiceKey") + `=${process.env.OPENAPI_KEY}`;
-queryParams +=
-  "&" + encodeURIComponent("pageNo") + "=" + encodeURIComponent("1"); /* */
-queryParams +=
-  "&" + encodeURIComponent("numOfRows") + "=" + encodeURIComponent("10"); /* */
-queryParams +=
-  "&" +
-  encodeURIComponent("startCreateDt") +
-  "=" +
-  encodeURIComponent(today - 6); /* */
-queryParams +=
-  "&" +
-  encodeURIComponent("endCreateDt") +
-  "=" +
-  encodeURIComponent(today); /* */
-
+var options = {
+  method: "GET",
+  url: `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=${
+    process.env.OPENAPI_KEY
+  }&pageNo=1&numOfRows=10&startCreateDt=${today - 6}&endCreateDt=${today}`,
+  headers: {},
+};
 router.get("/", (req, res) => {
-  request(
-    {
-      url: url + queryParams,
-      method: "GET",
-    },
-    (error, response, body) => {
-      const xmlToJson = converter.xml2json(body);
-      res.send(xmlToJson);
-    }
-  );
+  request(options, (error, response, body) => {
+    if (error) throw new Error(error);
+    const xmlToJson = converter.xml2json(body);
+    res.send(xmlToJson);
+  });
 });
 
 module.exports = router;
