@@ -8,7 +8,7 @@ var url =
 var queryParams =
   "?" +
   encodeURIComponent("ServiceKey") +
-  "=gpSyPXPYCk9xr1O7VtI5ttMqiLU9SMZgCvwMQ2%2BgVbxlDXEGxjj%2BjaYPHk3DndqxVEDroD70wv2XItDpRCPF4A%3D%3D"; /* Service Key*/
+  `=${process.env.OPENAPI_KEY}`; /* Service Key*/
 queryParams +=
   "&" + encodeURIComponent("pageNo") + "=" + encodeURIComponent("1"); /* */
 queryParams +=
@@ -25,7 +25,6 @@ queryParams +=
   encodeURIComponent("20210308"); /* */
 
 router.get("/", (req, res) => {
-  // res.send({ test: "hihi" });
   request(
     {
       url: url + queryParams,
