@@ -7,17 +7,33 @@ import ContentPanel from "../../ContentPanel/ContentPanel";
 const KoreaAllData = () => {
   const [title, setTitle] = useState({
     title: "국내 종합 현황",
-    desc: "국내 코로나 종합 현황판과 일주일 현황 차트를 제공합니다.",
+    desc: "국내 코로나 종합 현황판과 일별 현황 차트를 제공합니다.",
   });
   const [panelData, setPanelData] = useState([]);
   const [cardsData, setCardsData] = useState([]);
 
-  // // 전일대비증감
-  // const totalIncCnt = totalData[6].elements[0].text;
-  // // 지역발생
-  // const totalLocalCnt = totalData[9].elements[0].text;
-  // // 해외유입
-  // const totalOverflowCnt = totalData[10].elements[0].text;
+  const panelDataHandler = (data) => {
+    // 전일대비증감
+    const totalIncCnt = data[6].elements[0].text;
+    // 지역발생
+    const totalLocalCnt = data[9].elements[0].text;
+    // 해외유입
+    const totalOverflowCnt = data[10].elements[0].text;
+
+    setPanelData([
+      {
+        id: "1",
+        category: "일일 현황",
+        cnt: totalIncCnt,
+      },
+      { id: "2", category: "국내 발생", cnt: totalLocalCnt },
+      {
+        id: "3",
+        category: "해외 유입",
+        cnt: totalOverflowCnt,
+      },
+    ]);
+  };
 
   const cardsDataHandler = (totalData, yesterDayData) => {
     const totalDefCnt = totalData[2].elements[0].text;
@@ -63,7 +79,7 @@ const KoreaAllData = () => {
   };
 
   useEffect(() => {
-    const callApi = async () => {
+    const callPanelData = async () => {
       axios
         .get("/api")
         .then((res) => {
@@ -72,18 +88,18 @@ const KoreaAllData = () => {
           const yesterDayData =
             res.data.elements[0].elements[1].elements[0].elements[37].elements;
           cardsDataHandler(totalData, yesterDayData);
-          console.log(totalData);
+          panelDataHandler(totalData);
         })
         .catch((err) => console.log(err));
     };
 
-    callApi();
+    callPanelData();
   }, []);
 
   return (
     <>
       <ContentTitle data={title} />
-      <ContentPanel data={cardsData} />
+      <ContentPanel panelData={panelData} cardsData={cardsData} />
     </>
   );
 };
