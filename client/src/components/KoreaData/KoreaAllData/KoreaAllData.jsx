@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { ColumnChart, PieChart } from "@toast-ui/react-chart";
 import axios from "axios";
 import styles from "./KoreaAllData.module.css";
 import ContentTitle from "../../ContentTitle/ContentTitle";
@@ -11,6 +12,26 @@ const KoreaAllData = () => {
   });
   const [panelData, setPanelData] = useState([]);
   const [cardsData, setCardsData] = useState([]);
+  const [chartData, setChartData] = useState({
+    categories: ["Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    series: [
+      {
+        name: "Income",
+        data: [8000, 4000, 7000, 2000, 6000, 3000, 5000],
+      },
+      {
+        name: "Expenses",
+        data: [4000, 4000, 6000, 3000, 4000, 5000, 7000],
+      },
+      {
+        name: "Debt",
+        data: [3000, 4000, 3000, 1000, 2000, 4000, 3000],
+      },
+    ],
+  });
+  const [options, setOptions] = useState({
+    chart: { animation: true, title: "일별 현황", height: 200 },
+  });
 
   const panelDataHandler = (data) => {
     // 전일대비증감
@@ -78,6 +99,7 @@ const KoreaAllData = () => {
     ]);
   };
 
+  const chartDataHandler = (data) => {};
   useEffect(() => {
     const callPanelData = async () => {
       axios
@@ -87,8 +109,9 @@ const KoreaAllData = () => {
             res.data.elements[0].elements[1].elements[0].elements[18].elements;
           const yesterDayData =
             res.data.elements[0].elements[1].elements[0].elements[37].elements;
-          cardsDataHandler(totalData, yesterDayData);
           panelDataHandler(totalData);
+          cardsDataHandler(totalData, yesterDayData);
+          chartDataHandler();
         })
         .catch((err) => console.log(err));
     };
@@ -100,6 +123,9 @@ const KoreaAllData = () => {
     <>
       <ContentTitle data={title} />
       <ContentPanel panelData={panelData} cardsData={cardsData} />
+      <article className={styles.wrap}>
+        <ColumnChart data={chartData} options={options} />
+      </article>
     </>
   );
 };
