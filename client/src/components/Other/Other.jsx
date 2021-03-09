@@ -63,7 +63,7 @@ const Other = () => {
           <h3 className={styles.title}>{title.title}</h3>
           <ul className={styles.items}>
             {resource.link
-              .filter((link) => link.category == title.category)
+              .filter((link) => link.category === title.category)
               .map((link) => (
                 <li key={link.id} className={styles.items}>
                   <a className={styles.link} href={link.url} target="blank">

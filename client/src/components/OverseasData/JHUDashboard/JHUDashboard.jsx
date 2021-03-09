@@ -11,12 +11,12 @@ const JHUDashboard = () => {
       "Johns Hopkins CSSE(존스 홉킨스 대학교)의 전세계 코로나 현황판을 보여줍니다.",
   });
 
-  const handleResize = debounce(() => {
-    const currentWidth = window.innerWidth;
-    setCurrentWidth(currentWidth >= 768 ? true : false);
-  }, 300);
-
   useEffect(() => {
+    const handleResize = debounce(() => {
+      const currentWidth = window.innerWidth;
+      setCurrentWidth(currentWidth >= 768 ? true : false);
+    }, 300);
+
     window.addEventListener("resize", handleResize);
     return () => {
       window.addEventListener("resize", handleResize);
