@@ -1,5 +1,5 @@
 @value glassBackground,glassBlur,glassBorder,descColor,contentShadow from "../../common/colors.module.css";
-@value categoryFont,subFont,pannelFont,glassRadius,pannelPadding from "../../common/sizes.module.css";
+@value categoryFont,subFont,pannelFont,glassRadius,pannelPadding,contentBottom from "../../common/sizes.module.css";
 
 .wrap {
   padding: pannelPadding;
@@ -19,7 +19,7 @@
   font-weight: 500;
 }
 .items:not(:last-child) {
-  margin-bottom: 20px;
+  margin-bottom: contentBottom;
 }
 .link {
   color: #369fff;

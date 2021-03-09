@@ -14,3 +14,6 @@
 @value navSize: 200px;
 @value navPadding: 15px;
 @value titleMargin: 30px;
+
+/* content */
+@value contentBottom: 20px;

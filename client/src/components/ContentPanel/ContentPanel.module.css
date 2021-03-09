@@ -1,0 +1,35 @@
+@value glassBackground,glassBlur,glassBorder,contentShadow from "../../common/colors.module.css";
+@value pannelFont,glassRadius,pannelPadding,contentBlack,descBlack,contentBottom from "../../common/sizes.module.css";
+
+/* .wrap {
+  padding: pannelPadding;
+  background: glassBackground;
+  backdrop-filter: glassBlur;
+  -webkit-backdrop-filter: glassBlur;
+  border: glassBorder;
+  border-radius: glassRadius;
+  box-shadow: contentShadow;
+} */
+
+.panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  padding: pannelPadding;
+  background: glassBackground;
+  backdrop-filter: glassBlur;
+  -webkit-backdrop-filter: glassBlur;
+  border: glassBorder;
+  border-radius: glassRadius;
+  box-shadow: contentShadow;
+}
+
+.card:not(:last-child) {
+  margin-bottom: contentBottom;
+}
+
+.title {
+  font-size: pannelFont;
+}
