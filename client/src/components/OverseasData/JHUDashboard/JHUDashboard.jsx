@@ -22,7 +22,6 @@ const JHUDashboard = () => {
       window.addEventListener("resize", handleResize);
     };
   }, []);
-
   return (
     <>
       <ContentTitle data={title} />
@@ -30,8 +29,6 @@ const JHUDashboard = () => {
         <h3 className="sr-only">전 세계 대시보드</h3>
         <iframe
           className={styles.dashboard}
-          width="500"
-          height="400"
           frameBorder="0"
           scrolling="no"
           marginHeight="0"

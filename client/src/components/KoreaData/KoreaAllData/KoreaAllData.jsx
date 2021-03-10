@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { ColumnChart, PieChart } from "@toast-ui/react-chart";
+import { ColumnChart, BarChart } from "@toast-ui/react-chart";
+import debounce from "lodash.debounce";
 import axios from "axios";
 import styles from "./KoreaAllData.module.css";
 import ContentTitle from "../../ContentTitle/ContentTitle";
 import ContentPanel from "../../ContentPanel/ContentPanel";
 
 const KoreaAllData = () => {
+  const [display, setCurrentWidth] = useState(true);
+  const chartDate = [];
+  const chartLocal = [];
+  const chartOverFlow = [];
   const [title, setTitle] = useState({
     title: "국내 종합 현황",
     desc: "국내 코로나 종합 현황판과 일별 현황 차트를 제공합니다.",
@@ -13,24 +18,129 @@ const KoreaAllData = () => {
   const [panelData, setPanelData] = useState([]);
   const [cardsData, setCardsData] = useState([]);
   const [chartData, setChartData] = useState({
-    categories: ["Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    categories: chartDate,
     series: [
       {
-        name: "Income",
-        data: [8000, 4000, 7000, 2000, 6000, 3000, 5000],
+        name: "지역 발생",
+        data: chartLocal,
       },
       {
-        name: "Expenses",
-        data: [4000, 4000, 6000, 3000, 4000, 5000, 7000],
-      },
-      {
-        name: "Debt",
-        data: [3000, 4000, 3000, 1000, 2000, 4000, 3000],
+        name: "해외 유입",
+        data: chartOverFlow,
       },
     ],
   });
-  const [options, setOptions] = useState({
-    chart: { animation: true, title: "일별 현황", height: 200 },
+  const [columnOptions, setColumnOptions] = useState({
+    chart: {
+      animation: { duration: 500 },
+      width: "100%",
+      height: 400,
+      title: {
+        text: "일별 현황",
+        offsetX: 0,
+        offsetY: 0,
+        align: "center",
+      },
+    },
+    legend: {
+      align: "bottom",
+    },
+    series: {
+      dataLabels: {
+        visible: true,
+      },
+      eventDetectType: "grouped",
+    },
+    xAxis: {
+      title: "날짜",
+      height: 30,
+    },
+    yAxis: {
+      title: "0 명",
+      width: 40,
+    },
+    tooltip: {
+      template: (model, defaultTooltipTemplate, theme) => {
+        const { background } = theme;
+        return `
+       <div style="
+       background: ${background};
+       width: 120px;
+       padding: 10px;
+       font-size : 14px;
+       text-align: center;
+       color: #fff;
+       ">
+         <p style="margin-bottom:10px;">📅 ${model.category} </p>
+         <p>${model.data[0].label} <span style="color: ${model.data[0].color};">${model.data[0].value}</span></p>
+         <p>${model.data[1].label} <span style="color: ${model.data[1].color};">${model.data[1].value}</span></p>
+       </div>`;
+      },
+      offsetX: 30,
+      offsetY: -60,
+    },
+    theme: {
+      chart: {
+        fontFamily: "Spoqa Han Sans Neo",
+        color: "#333",
+      },
+      series: {
+        colors: ["#118eff", "#bc31e0"],
+      },
+      legend: {
+        label: {
+          fontSize: 15,
+        },
+      },
+      noData: {
+        fontSize: 30,
+      },
+    },
+  });
+  const [barOptions, setBarOptions] = useState({
+    chart: {
+      animation: { duration: 500 },
+      width: "100%",
+      height: 400,
+      title: {
+        text: "일별 현황",
+        offsetX: 0,
+        offsetY: 0,
+        align: "center",
+      },
+    },
+    legend: {
+      align: "bottom",
+    },
+    series: {
+      dataLabels: {
+        visible: true,
+      },
+    },
+    xAxis: {
+      title: "날짜",
+      height: 30,
+    },
+    yAxis: {
+      title: "명",
+    },
+    theme: {
+      chart: {
+        fontFamily: "Spoqa Han Sans Neo",
+        color: "#333",
+      },
+      series: {
+        colors: ["#118eff", "#bc31e0"],
+      },
+      legend: {
+        label: {
+          fontSize: 15,
+        },
+      },
+      noData: {
+        fontSize: 30,
+      },
+    },
   });
 
   const panelDataHandler = (data) => {
@@ -47,7 +157,7 @@ const KoreaAllData = () => {
         category: "일일 현황",
         cnt: totalIncCnt,
       },
-      { id: "2", category: "국내 발생", cnt: totalLocalCnt },
+      { id: "2", category: "지역 발생", cnt: totalLocalCnt },
       {
         id: "3",
         category: "해외 유입",
@@ -99,9 +209,47 @@ const KoreaAllData = () => {
     ]);
   };
 
-  const chartDataHandler = (data) => {};
+  const ChartData = (item) => {
+    //지역 발생
+    const localData = item.elements[9].elements[0].text;
+    // 해외유입
+    const overFlowData = item.elements[10].elements[0].text;
+    // 날짜
+    const date = item.elements[13].elements[0].text;
+    const split = date.split(" ").slice(1, 3);
+    const month = split[0].split("월").slice(0, 1);
+    const day = split[1].split("일").slice(0, 1);
+    const newDate = `${month}.${day}`;
+
+    chartOverFlow.push(overFlowData);
+    chartDate.push(newDate);
+    chartLocal.push(localData);
+
+    setChartData((chartData) => {
+      const updated = { ...chartData };
+      return updated;
+    });
+  };
+  const chartDataHandler = (data) => {
+    data
+      .filter((item) => item.elements[3].elements[0].text === "합계")
+      .map((item) => ChartData(item));
+  };
+
   useEffect(() => {
-    const callPanelData = async () => {
+    const handleResize = debounce(() => {
+      const currentWidth = window.innerWidth;
+      setCurrentWidth(currentWidth >= 768 ? true : false);
+    }, 300);
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.addEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const callPanelData = () => {
       axios
         .get("/api")
         .then((res) => {
@@ -109,13 +257,14 @@ const KoreaAllData = () => {
             res.data.elements[0].elements[1].elements[0].elements[18].elements;
           const yesterDayData =
             res.data.elements[0].elements[1].elements[0].elements[37].elements;
+          const chartData =
+            res.data.elements[0].elements[1].elements[0].elements;
           panelDataHandler(totalData);
           cardsDataHandler(totalData, yesterDayData);
-          chartDataHandler();
+          chartDataHandler(chartData);
         })
         .catch((err) => console.log(err));
     };
-
     callPanelData();
   }, []);
 
@@ -124,7 +273,11 @@ const KoreaAllData = () => {
       <ContentTitle data={title} />
       <ContentPanel panelData={panelData} cardsData={cardsData} />
       <article className={styles.wrap}>
-        <ColumnChart data={chartData} options={options} />
+        {display ? (
+          <ColumnChart data={chartData} options={columnOptions} />
+        ) : (
+          <BarChart data={chartData} options={barOptions} />
+        )}
       </article>
     </>
   );

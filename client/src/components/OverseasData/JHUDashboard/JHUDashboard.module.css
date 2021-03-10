@@ -4,11 +4,12 @@
 .wrap {
   display: flex;
   flex-direction: column;
-  max-width: 100%;
+  flex: 1;
 }
 .dashboard {
   width: 100%;
   margin-bottom: 5px;
+  flex: 1;
 }
 .resource {
   font-size: subFont;

@@ -98,6 +98,7 @@ a {
 .main {
   display: flex;
   flex-direction: column;
+  min-height: 450px;
   margin-top: 76px;
   padding: 20px;
   z-index: 2;

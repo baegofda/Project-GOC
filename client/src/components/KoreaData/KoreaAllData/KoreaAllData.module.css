@@ -3,10 +3,10 @@
   height: 100%;
 }
 
-.wrap div {
-  height: 100%;
+.wrap > div > div > div {
+  position: absolute;
 }
 
-/* .test {
-  color: red;
- } */
+/* .toastui-chart-tooltip-container {
+  width: 30px !important;
+} */
