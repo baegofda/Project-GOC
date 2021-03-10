@@ -4,6 +4,7 @@
 .wrap {
   display: flex;
   flex-direction: column;
+  min-height: 450px;
   flex: 1;
 }
 .dashboard {
