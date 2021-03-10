@@ -367,6 +367,7 @@ const KoreaAllData = (props) => {
           <ContentTitle data={title} />
           <ContentPanel panelData={panelData} cardsData={cardsData} />
           <article className={styles.wrap}>
+            <h3 className="sr-only">국내 종합 현황</h3>
             {display ? (
               <ColumnChart data={chartData} options={columnOptions} />
             ) : (
