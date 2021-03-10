@@ -1,0 +1,23 @@
+@value glassBackground,glassBlur,glassBorder,descColor,contentShadow from "../../common/colors.module.css";
+@value categoryFont,subFont,panelFont,glassRadius,panelPadding,panelTitleBottom,contentBottom,panelBottom from "../../common/sizes.module.css";
+
+.wrap {
+  padding: panelPadding;
+  background: glassBackground;
+  backdrop-filter: glassBlur;
+  -webkit-backdrop-filter: glassBlur;
+  border: glassBorder;
+  border-radius: glassRadius;
+  box-shadow: contentShadow;
+}
+.wrap:not(:last-child) {
+  margin-bottom: panelBottom;
+}
+.title {
+  margin-bottom: panelTitleBottom;
+  font-size: panelFont;
+  font-weight: 500;
+}
+.items:not(:last-child) {
+  margin-bottom: contentBottom;
+}

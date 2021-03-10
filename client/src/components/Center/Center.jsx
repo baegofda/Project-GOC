@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import ContentTitle from "../ContentTitle/ContentTitle";
 import styles from "./Center.module.css";
 const { kakao } = window;
@@ -18,6 +19,13 @@ const Center = () => {
     };
     var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
   }, []);
+
+  useEffect(() => {
+    axios
+      .get("/api/center")
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  });
 
   return (
     <>
