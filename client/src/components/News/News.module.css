@@ -13,7 +13,7 @@
 .wrap:not(:last-child) {
   margin-bottom: panelBottom;
 }
-.title {
+.category {
   margin-bottom: panelTitleBottom;
   font-size: panelFont;
   font-weight: 500;
