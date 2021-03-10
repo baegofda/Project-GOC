@@ -1,6 +1,10 @@
 @value customWhite,glassBackground,glassBlur,glassBorder,panelRed,panelOrange,panelBlue,panelGreen,panelBlack,contentShadow from "../../common/colors.module.css";
 @value panelFont,glassRadius,panelPadding,contentBlack,descBlack,panelTitleBottom,contentBottom,panelBottom from "../../common/sizes.module.css";
 
+.wrap {
+  margin-bottom: panelBottom;
+}
+
 .panels {
   display: flex;
   margin-bottom: panelBottom;
@@ -54,6 +58,10 @@
   border-radius: glassRadius;
   box-shadow: contentShadow;
 }
+.card:last-child {
+  margin-bottom: 0;
+}
+
 .title,
 .count,
 .sub {
@@ -102,6 +110,10 @@
 
 /* tablet */
 @media all and (min-width: 768px) and (max-width: 1023px) {
+  .wrap {
+    margin-bottom: 0;
+  }
+
   .panel {
     display: flex;
     align-items: center;
@@ -120,9 +132,13 @@
     flex-direction: column;
     width: 48%;
   }
+  .card:last-child {
+    margin-bottom: panelBottom;
+  }
   .card:nth-child(2n + 1) {
     margin-right: 4%;
   }
+
   .title,
   .count {
     margin-right: 0;

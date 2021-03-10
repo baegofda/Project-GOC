@@ -1,10 +1,10 @@
-import React, { useRef, useState } from "react";
+import React, { memo, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import List from "./List/List";
 const LOGO = "/assets/images/main-logo.png";
 
-const Header = (props) => {
+const Header = memo((props) => {
   const gnb = useRef();
   const [category, setCategory] = useState([
     { id: 1, categoryName: "국내", type: "korea" },
@@ -69,6 +69,6 @@ const Header = (props) => {
       </nav>
     </header>
   );
-};
+});
 
 export default Header;

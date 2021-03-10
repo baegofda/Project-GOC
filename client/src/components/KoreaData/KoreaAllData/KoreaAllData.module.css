@@ -1,12 +1,16 @@
+@value glassBackground,glassBlur,glassBorder,contentShadow from "../../../common/colors.module.css";
+@value glassRadius,panelPadding from "../../../common/sizes.module.css";
+
 .wrap {
-  width: 100%;
-  height: 100%;
+  padding: panelPadding;
+  background: glassBackground;
+  backdrop-filter: glassBlur;
+  -webkit-backdrop-filter: glassBlur;
+  border: glassBorder;
+  border-radius: glassRadius;
+  box-shadow: contentShadow;
 }
 
 .wrap > div > div > div {
   position: absolute;
 }
-
-/* .toastui-chart-tooltip-container {
-  width: 30px !important;
-} */
