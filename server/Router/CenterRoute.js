@@ -12,7 +12,6 @@ const options = {
 router.get("/", (req, res) => {
   request(options, (error, response, body) => {
     if (error) throw new Error(error);
-    console.log(body);
     res.send(body);
   });
 });
