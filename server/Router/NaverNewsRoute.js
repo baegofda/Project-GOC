@@ -8,8 +8,8 @@ const options = {
   method: "GET",
   url: `https://openapi.naver.com/v1/search/news.json?query=${query}&sort=date`,
   headers: {
-    "X-Naver-Client-Id": `${process.env.NAVERAPI_KEY}`,
-    "X-Naver-Client-Secret": "5hm30IFys0",
+    "X-Naver-Client-Id": `${process.env.NAVERAPI_ID}`,
+    "X-Naver-Client-Secret": `${process.env.NAVERAPI_SECRET}`,
   },
 };
 
