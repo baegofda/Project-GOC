@@ -68,8 +68,17 @@ a {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #ffdee9;
-  background-image: linear-gradient(0deg, #ffdee9 0%, #b5fffc 100%);
+  background: #e0eafc; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to bottom,
+    #cfdef3,
+    #e0eafc
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #cfdef3,
+    #e0eafc
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   overflow-y: scroll;
   overflow-x: hidden;
 }
