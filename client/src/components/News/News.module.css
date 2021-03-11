@@ -13,6 +13,7 @@
 .wrap:not(:last-child) {
   margin-bottom: panelBottom;
 }
+
 .category {
   margin-bottom: panelTitleBottom;
   font-size: panelFont;
@@ -21,13 +22,78 @@
 .item:not(:last-child) {
   margin-bottom: contentBottom;
 }
-.link:hover {
+.link {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.link:hover .title,
+.link:hover .desc {
   text-decoration: underline;
 }
 .title {
   color: linkColor;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
+  order: 1;
 }
 .date {
+  margin-left: 5px;
   color: descBlack;
   font-size: subFont;
+  text-align: right;
+  flex: 1;
+  order: 3;
+}
+.desc {
+  width: 100%;
+  margin: 5px 0;
+  font-size: subFont;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
+  order: 2;
+}
+
+/* tablet */
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .title {
+    order: 1;
+  }
+  .date {
+    text-align: left;
+    order: 2;
+  }
+  .desc {
+    margin-bottom: 0;
+    white-space: normal;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height: 1.2em;
+    height: 2.4em;
+    order: 3;
+  }
+}
+
+/* desktop */
+@media all and (min-width: 1024px) {
+  .title {
+    order: 1;
+  }
+  .date {
+    text-align: left;
+    order: 2;
+  }
+  .desc {
+    margin-bottom: 0;
+    white-space: normal;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    line-height: 1.2em;
+    height: 2.4em;
+    order: 3;
+  }
 }
