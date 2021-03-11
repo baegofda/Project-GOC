@@ -1,4 +1,4 @@
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
 import KoreaAllData from "./components/KoreaData/KoreaAllData/KoreaAllData";
@@ -10,6 +10,7 @@ import Center from "./components/Center/Center";
 import News from "./components/News/News";
 import Other from "./components/Other/Other";
 import Footer from "./components/Footer/Footer";
+import NotFound from "./components/NotFound/NotFound";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path={"/center"} component={Center} />
           <Route path={"/news"} component={News} />
           <Route path={"/other"} component={Other} />
+          <Route to={"/404"} component={NotFound} />
         </Switch>
       </main>
       <Footer />
