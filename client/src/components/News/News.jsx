@@ -11,7 +11,8 @@ const News = () => {
   const newsArticles = [];
   const [title, setTitle] = useState({
     title: "주요 뉴스",
-    desc: "코로나 백신과 관련된 주요 뉴스들을 보여줍니다.",
+    desc:
+      "코로나 백신과 관련된 주요 뉴스들을 보여줍니다. (최신 뉴스 10개 기준)",
   });
   const [news, setNews] = useState({
     categories: [
@@ -20,9 +21,13 @@ const News = () => {
     ],
     articles: newsArticles,
   });
-  const naverArticleHandler = (item) => {
+  const articleHandler = (item, type) => {
+    console.log(item);
     const reg = /[<b>|<\/b>|&qout|amp|lt|gt;]/g;
-    const regTitle = item.title.replace(reg, "");
+    const regTitle = item.title
+      .replace(reg, "")
+      .replace(/#39/g, "'")
+      .replace(/#34/g, '"');
     const itemDate = moment(item.pubDate).format("L");
     const itemYear = itemDate.split("/")[2];
     const itemMonth = itemDate.split("/")[1];
@@ -31,36 +36,11 @@ const News = () => {
     const data = {
       id: i++,
       title: regTitle,
-      url: item.link,
+      url: type === "naver" ? item.link : item.url,
       date: articleDate,
-      type: "naver",
+      type: type,
     };
-
     newsArticles.push(data);
-
-    setNews((news) => {
-      const updated = { ...news };
-      return updated;
-    });
-  };
-  const daumArticleHandler = (item) => {
-    const reg = /[<b>|<\/b>|&qout|amp|lt|gt;]/g;
-    const regTitle = item.title.replace(reg, "");
-    const itemDate = moment(item.pubDate).format("L");
-    const itemYear = itemDate.split("/")[2];
-    const itemMonth = itemDate.split("/")[1];
-    const itemDay = itemDate.split("/")[0];
-    const articleDate = `${itemYear}.${itemMonth}.${itemDay}`;
-    const data = {
-      id: i++,
-      title: regTitle,
-      url: item.url,
-      date: articleDate,
-      type: "daum",
-    };
-
-    newsArticles.push(data);
-
     setNews((news) => {
       const updated = { ...news };
       return updated;
@@ -71,7 +51,8 @@ const News = () => {
       .get("/api/news/naver")
       .then((res) => {
         const items = res.data.items;
-        items.map((item) => naverArticleHandler(item));
+        const type = "naver";
+        items.map((item) => articleHandler(item, type));
       })
       .catch((err) => {
         setStatus(false);
@@ -83,7 +64,8 @@ const News = () => {
       .get("/api/news/daum")
       .then((res) => {
         const items = res.data.documents;
-        items.map((item) => daumArticleHandler(item));
+        const type = "daum";
+        items.map((item) => articleHandler(item, type));
       })
       .catch((err) => {
         setStatus(false);

@@ -41,13 +41,20 @@ const Other = () => {
       },
       {
         id: "4",
+        name: "Johns Hopkins CSSE",
+        url: "https://systems.jhu.edu/",
+        desc: "전 세계 대시보드",
+        category: "resource",
+      },
+      {
+        id: "5",
         name: "네이버 뉴스 API",
         url: "https://developers.naver.com/docs/search/news/",
         desc: "주요 뉴스 (네이버 뉴스)",
         category: "resource",
       },
       {
-        id: "5",
+        id: "6",
         name: "다음 뉴스 API",
         url:
           "https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide",
