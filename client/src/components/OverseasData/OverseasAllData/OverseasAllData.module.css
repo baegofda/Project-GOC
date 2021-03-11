@@ -1,4 +1,4 @@
-@value glassBackground,glassBlur,glassBorder,panelRed,panelOrange,panelGreen,panelBlack,contentShadow from "../../../common/colors.module.css";
+@value glassBackground,glassBlur,glassBorder,panelRed,panelOrange,panelGreen,panelBlack,linkColor,contentShadow from "../../../common/colors.module.css";
 @value glassRadius,panelPadding,panelTitleBottom,contentBottom,panelBottom from "../../../common/sizes.module.css";
 
 .wrap {
@@ -20,6 +20,10 @@
   border: glassBorder;
   border-radius: glassRadius;
   box-shadow: contentShadow;
+  transition: all 300ms ease-in-out;
+}
+.card:hover {
+  transform: translateY(-2px);
 }
 .card:last-child {
   margin-bottom: 0;
@@ -48,6 +52,31 @@
 }
 .card:nth-child(4) .count {
   color: panelBlack;
+}
+
+.tooltip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+.link {
+  color: linkColor;
+}
+.link::before {
+  content: "👉";
+  position: relative;
+  bottom: 3px;
+}
+.link:hover {
+  font-weight: 500;
+}
+.link:hover .desc {
+  text-decoration: underline;
+}
+.desc {
+  text-decoration: none;
 }
 
 /* tablet */
@@ -83,6 +112,14 @@
     width: 100%;
     font-size: 1.5rem;
   }
+
+  .tooltip {
+    flex-direction: row;
+    font-size: 1.2rem;
+  }
+  .text {
+    margin-right: 10px;
+  }
 }
 
 /* desktop */
@@ -114,5 +151,13 @@
   .count {
     width: 100%;
     font-size: 1.5rem;
+  }
+
+  .tooltip {
+    flex-direction: row;
+    font-size: 1.2rem;
+  }
+  .text {
+    margin-right: 10px;
   }
 }

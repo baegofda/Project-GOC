@@ -12,7 +12,7 @@ const KoreaAllData = (props) => {
   const [status, setStatus] = useState(true);
   const [title, setTitle] = useState({
     title: "국내 종합 현황",
-    desc: "국내 코로나 종합 현황판과 일별 현황 차트를 제공합니다.",
+    desc: "국내 코로나 종합 현황판과 일별 현황 차트를 제공합니다. (단위: 명)",
   });
   const chartDate = [];
   const chartLocal = [];
@@ -34,7 +34,7 @@ const KoreaAllData = (props) => {
   });
   const [columnOptions, setColumnOptions] = useState({
     chart: {
-      animation: { duration: 300 },
+      animation: { duration: 600 },
       height: 450,
       title: {
         text: "일별 현황",
@@ -57,14 +57,14 @@ const KoreaAllData = (props) => {
     },
     xAxis: {
       title: "날짜",
-      height: "100%",
+      height: 20,
     },
     yAxis: {
       title: "0 명",
       width: 40,
     },
     responsive: {
-      animation: { duration: 300 },
+      animation: { duration: 600 },
       rules: [
         {
           condition: ({ width: w }) => {
@@ -339,21 +339,14 @@ const KoreaAllData = (props) => {
       axios
         .get("/api")
         .then((res) => {
-          const errData = res.data.elements[0].elements;
-          if (errData.length !== 1) {
-            const totalData =
-              res.data.elements[0].elements[1].elements[0].elements[18]
-                .elements;
-            const yesterDayData =
-              res.data.elements[0].elements[1].elements[0].elements[37]
-                .elements;
-            const resData =
-              res.data.elements[0].elements[1].elements[0].elements;
-            panelDataHandler(totalData);
-            cardsDataHandler(totalData, yesterDayData);
-            chartDataHandler(resData);
-          }
-          setStatus(false);
+          const totalData =
+            res.data.elements[0].elements[1].elements[0].elements[18].elements;
+          const yesterDayData =
+            res.data.elements[0].elements[1].elements[0].elements[37].elements;
+          const resData = res.data.elements[0].elements[1].elements[0].elements;
+          panelDataHandler(totalData);
+          cardsDataHandler(totalData, yesterDayData);
+          chartDataHandler(resData);
         })
         .catch((err) => {
           setStatus(false);
