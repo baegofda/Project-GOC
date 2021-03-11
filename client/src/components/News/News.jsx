@@ -43,6 +43,29 @@ const News = () => {
       return updated;
     });
   };
+  const daumArticleHandler = (item) => {
+    const reg = /[<b>|<\/b>|&qout|amp|lt|gt;]/g;
+    const regTitle = item.title.replace(reg, "");
+    const itemDate = moment(item.pubDate).format("L");
+    const itemYear = itemDate.split("/")[2];
+    const itemMonth = itemDate.split("/")[1];
+    const itemDay = itemDate.split("/")[0];
+    const articleDate = `${itemYear}.${itemMonth}.${itemDay}`;
+    const data = {
+      id: i++,
+      title: regTitle,
+      url: item.url,
+      date: articleDate,
+      type: "daum",
+    };
+
+    newsArticles.push(data);
+
+    setNews((news) => {
+      const updated = { ...news };
+      return updated;
+    });
+  };
   useEffect(() => {
     axios
       .get("/api/news/naver")
@@ -59,7 +82,8 @@ const News = () => {
     axios
       .get("/api/news/daum")
       .then((res) => {
-        console.log(res);
+        const items = res.data.documents;
+        items.map((item) => daumArticleHandler(item));
       })
       .catch((err) => {
         setStatus(false);
