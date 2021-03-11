@@ -18,6 +18,12 @@
   font-size: panelFont;
   font-weight: 500;
 }
-.items:not(:last-child) {
+.item:not(:last-child) {
   margin-bottom: contentBottom;
+}
+.link:hover {
+  text-decoration: underline;
+}
+.title {
+  color: #369fff;
 }

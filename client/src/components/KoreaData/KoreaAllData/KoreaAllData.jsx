@@ -355,7 +355,10 @@ const KoreaAllData = (props) => {
           }
           setStatus(false);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          setStatus(false);
+          console.log(err);
+        });
     };
     callPanelData();
   }, []);

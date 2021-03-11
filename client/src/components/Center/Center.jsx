@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ContentTitle from "../ContentTitle/ContentTitle";
 import styles from "./Center.module.css";
+import Err from "../Err/Err";
 const { kakao } = window;
 
 const Center = () => {
+  const [status, setStatus] = useState(true);
   const [title, setTitle] = useState({
     title: "백신 접종센터 정보",
     desc: "국내 백신 접종 센터의 위치를 지도에 표시해 줍니다.",
@@ -24,13 +26,22 @@ const Center = () => {
     axios
       .get("/api/center")
       .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setStatus(false);
+        console.log(err);
+      });
   });
 
   return (
     <>
-      <ContentTitle data={title} />
-      <div id="map" className={styles.map}></div>
+      {status ? (
+        <>
+          <ContentTitle data={title} />
+          <div id="map" className={styles.map}></div>
+        </>
+      ) : (
+        <Err />
+      )}
     </>
   );
 };
