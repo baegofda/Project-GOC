@@ -1,5 +1,46 @@
-@value customWhite,glassBackground,glassBlur,glassBorder,panelRed,panelOrange,panelGreen,panelBlack,contentShadow from "../../common/colors.module.css";
-@value glassRadius,panelTitleBottom,contentBottom,panelBottom from "../../common/sizes.module.css";
+@value customWhite,glassBackground,glassBlur,glassBorder,panelRed,panelOrange,panelBlue,panelGreen,panelBlack,contentShadow from "../../common/colors.module.css";
+@value panelFont,glassRadius,panelPadding,contentBlack,descBlack,panelTitleBottom,contentBottom,panelBottom from "../../common/sizes.module.css";
+
+.wrap {
+  margin-bottom: panelBottom;
+}
+
+.panels {
+  display: flex;
+  margin-bottom: panelBottom;
+  padding: panelPadding;
+  background: glassBackground;
+  backdrop-filter: glassBlur;
+  -webkit-backdrop-filter: glassBlur;
+  border: glassBorder;
+  border-radius: glassRadius;
+  box-shadow: contentShadow;
+}
+.panel {
+  width: 33.333%;
+}
+.panel:not(:last-child) {
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+.panel:nth-child(1) .cnt {
+  color: #e02c04;
+}
+.panel:nth-child(2) .cnt {
+  color: panelBlue;
+}
+.panel:nth-child(3) .cnt {
+  color: #bc31e0;
+}
+.category {
+  margin-bottom: panelTitleBottom;
+}
+.category,
+.cnt {
+  text-align: center;
+}
+.cnt {
+  font-weight: 500;
+}
 
 .cards {
   display: flex;
@@ -70,6 +111,19 @@
 
 /* tablet */
 @media all and (min-width: 768px) and (max-width: 1023px) {
+  .wrap {
+    margin-bottom: 0;
+  }
+
+  .panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .category {
+    margin-bottom: 0;
+  }
+
   .cards {
     flex-direction: row;
     justify-content: center;
@@ -102,6 +156,15 @@
 
 /* desktop */
 @media all and (min-width: 1024px) {
+  .panel {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  .category {
+    margin-bottom: 0;
+  }
+
   .cards {
     flex-direction: row;
     justify-content: center;
