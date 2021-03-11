@@ -1,7 +1,9 @@
 @value navSize from "../../common/sizes.module.css";
+@value linkColor from "../../common/colors.module.css";
 
 .err {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
@@ -9,4 +11,15 @@
   font-weight: 700;
   color: #000;
   flex: 1;
+}
+
+.text {
+  margin-bottom: 20px;
+}
+
+.link {
+  color: linkColor;
+}
+.link:hover {
+  text-decoration: underline;
 }

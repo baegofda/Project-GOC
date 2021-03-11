@@ -22,7 +22,6 @@ const News = () => {
     articles: newsArticles,
   });
   const articleHandler = (item, type) => {
-    console.log(item);
     const reg = /[<b>|<\/b>|&qout|amp|lt|gt;]/g;
     const regTitle = item.title
       .replace(reg, "")
