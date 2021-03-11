@@ -76,6 +76,7 @@
   font-weight: 700;
   text-overflow: ellipsis;
   white-space: nowrap;
+  word-wrap: normal;
   overflow: hidden;
 }
 .card:nth-child(1) .count {

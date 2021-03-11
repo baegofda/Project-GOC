@@ -22,6 +22,7 @@
 @value contentBlack: #363636;
 @value descBlack: rgba(51,48,0,0.8);
 @value contentShadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+@value linkColor: #369fff;
 
 /* footer */
 @value footerBlack: rgba(133, 136, 150, 0.8);

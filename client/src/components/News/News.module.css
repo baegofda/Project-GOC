@@ -1,5 +1,5 @@
-@value glassBackground,glassBlur,glassBorder,descColor,contentShadow from "../../common/colors.module.css";
-@value categoryFont,subFont,panelFont,glassRadius,panelPadding,panelTitleBottom,contentBottom,panelBottom from "../../common/sizes.module.css";
+@value glassBackground,glassBlur,glassBorder,descBlack,contentShadow,linkColor from "../../common/colors.module.css";
+@value subFont,panelFont,glassRadius,panelPadding,panelTitleBottom,contentBottom,panelBottom from "../../common/sizes.module.css";
 
 .wrap {
   padding: panelPadding;
@@ -25,5 +25,9 @@
   text-decoration: underline;
 }
 .title {
-  color: #369fff;
+  color: linkColor;
+}
+.date {
+  color: descBlack;
+  font-size: subFont;
 }

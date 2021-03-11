@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import moment from "moment";
 import ContentTitle from "../ContentTitle/ContentTitle";
 import styles from "./News.module.css";
 import Err from "../Err/Err";
@@ -22,11 +23,16 @@ const News = () => {
   const naverArticleHandler = (item) => {
     const reg = /[<b>|<\/b>|&qout|amp|lt|gt;]/g;
     const regTitle = item.title.replace(reg, "");
-    console.log(item.pubDate);
+    const itemDate = moment(item.pubDate).format("L");
+    const itemYear = itemDate.split("/")[2];
+    const itemMonth = itemDate.split("/")[1];
+    const itemDay = itemDate.split("/")[0];
+    const articleDate = `${itemYear}.${itemMonth}.${itemDay}`;
     const data = {
       id: i++,
       title: regTitle,
       url: item.link,
+      date: articleDate,
       type: "naver",
     };
 
@@ -39,10 +45,21 @@ const News = () => {
   };
   useEffect(() => {
     axios
-      .get("/api/news")
+      .get("/api/news/naver")
       .then((res) => {
         const items = res.data.items;
         items.map((item) => naverArticleHandler(item));
+      })
+      .catch((err) => {
+        setStatus(false);
+        console.log(err);
+      });
+  }, []);
+  useEffect(() => {
+    axios
+      .get("/api/news/daum")
+      .then((res) => {
+        console.log(res);
       })
       .catch((err) => {
         setStatus(false);
@@ -71,7 +88,7 @@ const News = () => {
                         <strong className={styles.title}>
                           {article.title}
                         </strong>
-                        <span className={styles.date}></span>
+                        <span className={styles.date}> - {article.date}</span>
                       </a>
                     </li>
                   ))}

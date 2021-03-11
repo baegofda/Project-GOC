@@ -1,5 +1,5 @@
-@value glassBackground,glassBlur,glassBorder,descColor,contentShadow from "../../common/colors.module.css";
-@value categoryFont,subFont,panelFont,glassRadius,panelPadding,panelTitleBottom,contentBottom,panelBottom from "../../common/sizes.module.css";
+@value glassBackground,glassBlur,glassBorder,contentShadow,linkColor from "../../common/colors.module.css";
+@value panelFont,glassRadius,panelPadding,panelTitleBottom,contentBottom,panelBottom from "../../common/sizes.module.css";
 
 .wrap {
   padding: panelPadding;
@@ -23,7 +23,7 @@
   margin-bottom: contentBottom;
 }
 .link {
-  color: #369fff;
+  color: linkColor;
 }
 .link:hover,
 .link:hover .site {
