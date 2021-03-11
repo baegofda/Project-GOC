@@ -22,15 +22,15 @@ const News = () => {
     articles: newsArticles,
   });
   const articleHandler = (item, type) => {
-    const reg = /[<b>|<\/b>|&qout|amp|lt|gt;]/g;
+    const reg = /[<b>|</b>|&qout|amp|lt|gt;]/g;
     const regTitle = item.title
       .replace(reg, "")
       .replace(/#39/g, "'")
       .replace(/#34/g, '"');
     const itemDate = moment(item.pubDate).format("L");
     const itemYear = itemDate.split("/")[2];
-    const itemMonth = itemDate.split("/")[1];
-    const itemDay = itemDate.split("/")[0];
+    const itemMonth = itemDate.split("/")[0];
+    const itemDay = itemDate.split("/")[1];
     const itemDesc = type === "naver" ? item.description : item.contents;
     const articleDate = `${itemYear}.${itemMonth}.${itemDay}`;
     const articleDesc = itemDesc

@@ -12,7 +12,7 @@ const month =
 const day = date.getDate() >= 10 ? date.getDate() : "0" + date.getDate();
 const today = year + "" + month + "" + day;
 
-var options = {
+const options = {
   method: "GET",
   url: `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=${
     process.env.OPENAPI_KEY

@@ -1,4 +1,4 @@
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header/Header";
 import KoreaAllData from "./components/KoreaData/KoreaAllData/KoreaAllData";
