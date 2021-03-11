@@ -5,8 +5,11 @@ const request = require("request");
 const options = {
   method: "GET",
   url: "https://corona.lmao.ninja/v2/all?yesterday=",
-  headers: {},
+  headers: {
+    Cookie: "__cfduid=d58c27a867343ef9ed1741405f09c6e8e1614119574",
+  },
 };
+
 router.get("/", (req, res) => {
   request(options, (error, response, body) => {
     if (error) throw new Error(error);

@@ -368,9 +368,20 @@ const KoreaAllData = (props) => {
       {status ? (
         <>
           <ContentTitle data={title} />
-          <ContentPanel panelData={panelData} cardsData={cardsData} />
+          <section className={styles.header}>
+            <dl className={styles.panels}>
+              {panelData.map((item) => (
+                <div key={item.id} className={styles.panel}>
+                  <dt className={styles.category}>{item.category}</dt>
+                  <dd className={styles.cnt}>{item.cnt}</dd>
+                </div>
+              ))}
+            </dl>
+            <h3 className="sr-only">국내 종합 현황 수</h3>
+            <ContentPanel cardsData={cardsData} />
+          </section>
           <article className={styles.wrap}>
-            <h3 className="sr-only">국내 종합 현황</h3>
+            <h3 className="sr-only">국내 종합 현황 차트</h3>
             {display ? (
               <ColumnChart data={chartData} options={columnOptions} />
             ) : (
