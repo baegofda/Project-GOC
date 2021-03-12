@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const request = require("request");
-const query = encodeURI("코로나백신뉴스");
+const query = encodeURI("코로나백신");
 require("dotenv").config({ path: "../.env" });
 
 const options = {

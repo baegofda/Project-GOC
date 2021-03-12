@@ -18,7 +18,9 @@ const ContentPanel = ({ panelData, cardsData }) => {
           <div key={item.id} className={styles.card}>
             <dt className={styles.title}>{item.title}</dt>
             <dd className={styles.count}>{item.count}</dd>
-            <dd className={styles.sub}>+ {item.new}</dd>
+            <dd className={styles.sub}>
+              {item.new >= 0 ? `+${item.new}` : item.new}
+            </dd>
           </div>
         ))}
       </dl>

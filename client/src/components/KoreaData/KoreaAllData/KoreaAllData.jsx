@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { ColumnChart, BarChart } from "@toast-ui/react-chart";
+import { Bar } from "@reactchartjs/react-chart.js";
 import debounce from "lodash.debounce";
 import axios from "axios";
 import styles from "./KoreaAllData.module.css";
 import ContentTitle from "../../ContentTitle/ContentTitle";
-import ContentPanel from "../../ContentPanel/ContentPanel";
+import ContentPanel from "./ContentPanel/ContentPanel";
 import Err from "../../Err/Err";
 import Loading from "../../Loading/Loading";
 
 const KoreaAllData = (props) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [display, setCurrentWidth] = useState(true);
+  const [display, setDisplay] = useState();
   const [status, setStatus] = useState(true);
   const [title, setTitle] = useState({
     title: "국내 종합 현황",
@@ -37,11 +37,9 @@ const KoreaAllData = (props) => {
   const [columnOptions, setColumnOptions] = useState({
     chart: {
       animation: { duration: 600 },
-      height: 450,
+      height: 600,
       title: {
         text: "일별 현황",
-        offsetX: 0,
-        offsetY: 0,
         align: "center",
       },
     },
@@ -64,50 +62,6 @@ const KoreaAllData = (props) => {
     yAxis: {
       title: "0 명",
       width: 40,
-    },
-    responsive: {
-      animation: { duration: 600 },
-      rules: [
-        {
-          condition: ({ width: w }) => {
-            return w <= 800;
-          },
-          options: {
-            xAxis: {
-              tick: { interval: 2 },
-              label: { interval: 2 },
-            },
-            legend: {
-              align: "bottom",
-            },
-          },
-        },
-        {
-          condition: ({ width: w }) => {
-            return w <= 600;
-          },
-          options: {
-            xAxis: {
-              tick: { interval: 6 },
-              label: { interval: 6 },
-            },
-          },
-        },
-        {
-          condition: ({ width: w, height: h }) => {
-            return w <= 500 && h <= 400;
-          },
-          options: {
-            chart: { title: "" },
-            legend: {
-              visible: false,
-            },
-            exportMenu: {
-              visible: false,
-            },
-          },
-        },
-      ],
     },
     tooltip: {
       template: (model, defaultTooltipTemplate, theme) => {
@@ -318,47 +272,51 @@ const KoreaAllData = (props) => {
     });
   };
 
-  const chartDataHandler = (data) => {
-    data
-      .filter((item) => item.elements[3].elements[0].text === "합계")
-      .map((item) => resChartData(item));
+  const chartDataHandler = (datas) => {
+    // data
+    //   .filter((item) => item.elements[3].elements[0].text === "합계")
+    //   .map((item) => resChartData(item));
+    console.log(datas);
+    // const arr = datas
   };
 
   useEffect(() => {
+    setDisplay(window.innerWidth);
+
     const handleResize = debounce(() => {
-      const currentWidth = window.innerWidth;
-      setCurrentWidth(currentWidth >= 768 ? true : false);
+      const resizeWidth = window.innerWidth;
+      setDisplay(resizeWidth);
     }, 300);
 
-    window.addEventListener("resize", handleResize);
+    window.addEventListener("resize", () => {
+      handleResize();
+    });
     return () => {
-      window.addEventListener("resize", handleResize);
+      window.addEventListener("resize", () => {
+        handleResize();
+      });
     };
   }, []);
 
   useEffect(() => {
-    const callPanelData = () => {
-      axios
-        .get("/api")
-        .then((res) => {
-          const totalData =
-            res.data.elements[0].elements[1].elements[0].elements[18].elements;
-          const yesterDayData =
-            res.data.elements[0].elements[1].elements[0].elements[37].elements;
-          const resData = res.data.elements[0].elements[1].elements[0].elements;
-          panelDataHandler(totalData);
-          cardsDataHandler(totalData, yesterDayData);
-          chartDataHandler(resData);
-          setIsLoading(false);
-        })
-        .catch((err) => {
-          setStatus(false);
-          console.log(err);
-        });
-    };
-    callPanelData();
+    axios
+      .get("/api")
+      .then((res) => {
+        const totalData =
+          res.data.elements[0].elements[1].elements[0].elements[18].elements;
+        const yesterDayData =
+          res.data.elements[0].elements[1].elements[0].elements[37].elements;
+        const resData = res.data.elements[0].elements[1].elements[0].elements;
+        panelDataHandler(totalData);
+        cardsDataHandler(totalData, yesterDayData);
+        chartDataHandler(resData);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setStatus(false);
+        console.log(err);
+      });
   }, []);
-
   return (
     <>
       {status ? (
@@ -371,10 +329,12 @@ const KoreaAllData = (props) => {
               <ContentPanel panelData={panelData} cardsData={cardsData} />
               <article className={styles.wrap}>
                 <h3 className="sr-only">국내 종합 현황</h3>
-                {display ? (
-                  <ColumnChart data={chartData} options={columnOptions} />
+                {display >= 768 ? (
+                  // <ColumnChart data={chartData} options={columnOptions} />
+                  <div></div>
                 ) : (
-                  <BarChart data={chartData} options={barOptions} />
+                  // <BarChart data={chartData} options={barOptions} />
+                  <div></div>
                 )}
               </article>
             </>

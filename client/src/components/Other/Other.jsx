@@ -57,10 +57,10 @@ const Other = () => {
       },
       {
         id: "6",
-        name: "다음 뉴스 API",
+        name: "다음 검색 API",
         url:
           "https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide",
-        desc: "주요 뉴스 (다음 뉴스)",
+        desc: "웹 문서 (다음 뉴스, 글, 문서)",
         category: "resource",
       },
     ],

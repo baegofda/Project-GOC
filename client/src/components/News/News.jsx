@@ -12,24 +12,27 @@ const News = () => {
   let i = 0;
   const newsArticles = [];
   const [title, setTitle] = useState({
-    title: "주요 뉴스",
+    title: "주요 소식",
     desc:
-      "코로나 백신과 관련된 주요 뉴스들을 보여줍니다. (최신 뉴스 10개 기준)",
+      "'코로나 백신'과 관련된 웹 문서들을 보여줍니다. (최신 문서 10개 기준)",
   });
   const [news, setNews] = useState({
     categories: [
-      { id: "1", name: "네이버 뉴스 목록", type: "naver" },
-      { id: "2", name: "다음 뉴스 목록", type: "daum" },
+      { id: "1", name: "네이버 검색 목록", type: "naver" },
+      { id: "2", name: "다음 문서 목록", type: "daum" },
     ],
     articles: newsArticles,
   });
-  const articleHandler = (item, type) => {
+  const dataHandler = (item, type) => {
     const reg = /[<b>|</b>|&qout|amp|lt|gt;]/g;
     const regTitle = item.title
       .replace(reg, "")
       .replace(/#39/g, "'")
       .replace(/#34/g, '"');
-    const itemDate = moment(item.pubDate).format("L");
+
+    const itemDate = moment(
+      type === "naver" ? item.pubDate : item.datetime
+    ).format("L");
     const itemYear = itemDate.split("/")[2];
     const itemMonth = itemDate.split("/")[0];
     const itemDay = itemDate.split("/")[1];
@@ -64,7 +67,7 @@ const News = () => {
       .then((res) => {
         const items = res.data.items;
         const type = "naver";
-        items.map((item) => articleHandler(item, type));
+        items.map((item) => dataHandler(item, type));
       })
       .catch((err) => {
         setStatus(false);
@@ -77,7 +80,7 @@ const News = () => {
       .then((res) => {
         const items = res.data.documents;
         const type = "daum";
-        items.map((item) => articleHandler(item, type));
+        items.map((item) => dataHandler(item, type));
       })
       .catch((err) => {
         setStatus(false);
