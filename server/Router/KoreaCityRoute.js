@@ -16,7 +16,7 @@ const options = {
   method: "GET",
   url: `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=${
     process.env.OPENAPI_KEY
-  }&pageNo=1&numOfRows=10&startCreateDt=${today - 7}&endCreateDt=${today}`,
+  }&pageNo=1&numOfRows=10&startCreateDt=${today - 2}&endCreateDt=${today}`,
   headers: {},
 };
 router.get("/", (req, res) => {

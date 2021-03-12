@@ -1,5 +1,5 @@
 @value linkColor,glassBackground,glassBlur,glassBorder,contentShadow from "../../../common/colors.module.css";
-@value glassRadius,panelPadding from "../../../common/sizes.module.css";
+@value glassRadius,panelPadding,panelBottom from "../../../common/sizes.module.css";
 
 .wrap {
   height: 100%;
@@ -11,6 +11,9 @@
   border-radius: glassRadius;
   box-shadow: contentShadow;
   flex: 1;
+}
+.wrap:nth-child(1) {
+  margin-bottom: panelBottom;
 }
 
 .tooltip {

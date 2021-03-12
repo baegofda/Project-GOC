@@ -13,8 +13,8 @@ const Err = () => {
     <>
       <div className={styles.err}>
         <p className={styles.text}>
-          🚫 죄송합니다. 에러가 발생하였습니다. 나중에 다시 시도하시거나 다른
-          서비스를 이용해 주세요.
+          🚫 에러가 발생하였습니다. 나중에 다시 시도하시거나 다른 서비스를
+          이용해 주세요.
         </p>
         <a
           className={styles.link}
