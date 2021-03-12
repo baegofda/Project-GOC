@@ -1,4 +1,4 @@
-@value glassBackground,glassBlur,glassBorder,contentShadow from "../../../common/colors.module.css";
+@value linkColor,glassBackground,glassBlur,glassBorder,contentShadow from "../../../common/colors.module.css";
 @value glassRadius,panelPadding from "../../../common/sizes.module.css";
 
 .wrap {
@@ -10,8 +10,29 @@
   border: glassBorder;
   border-radius: glassRadius;
   box-shadow: contentShadow;
+  flex: 1;
 }
 
-/* .wrap > div > div > div {
-  position: absolute;
-} */
+.tooltip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-left: 10px;
+}
+.tooltip:hover {
+  cursor: pointer;
+}
+.tooltip:hover .link {
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.text::after {
+  content: "👉";
+  position: relative;
+  bottom: 3px;
+}
+.link {
+  color: linkColor;
+}
