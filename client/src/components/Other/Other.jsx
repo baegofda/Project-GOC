@@ -21,10 +21,9 @@ const Other = () => {
     link: [
       {
         id: "1",
-        name: "TOAST UI",
-        url: "https://ui.toast.com/",
-        desc:
-          "Data Visualisation을 위한 BarChart, ColumnChart, PieChart 라이브러리",
+        name: "Chart.js",
+        url: "https://www.chartjs.org/",
+        desc: "Data Visualisation을 위한 라이브러리",
         category: "visual",
       },
       {
