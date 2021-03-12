@@ -20,22 +20,22 @@ const OverseasAllData = () => {
         {
           id: "1",
           title: "전 세계 확진자 수",
-          count: item.cases,
+          count: Number(item.cases).toLocaleString(),
         },
         {
           id: "2",
           title: "전 세계 환자 수",
-          count: item.active,
+          count: Number(item.active).toLocaleString(),
         },
         {
           id: "3",
           title: "전 세계 완치자 수",
-          count: item.recovered,
+          count: Number(item.recovered).toLocaleString(),
         },
         {
           id: "4",
           title: "전 세계 사망자 수",
-          count: item.deaths,
+          count: Number(item.deaths).toLocaleString(),
         },
       ]);
     };

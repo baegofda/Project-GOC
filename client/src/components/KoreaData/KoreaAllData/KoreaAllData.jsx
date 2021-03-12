@@ -19,7 +19,17 @@ const KoreaAllData = (props) => {
   const [panelData, setPanelData] = useState([]);
   const [cardsData, setCardsData] = useState([]);
   const [chartData, setChartData] = useState([]);
-
+  const [chartOptions, setChartOptions] = useState({
+    title: {
+      display: true,
+      text: "일일 차트 현황",
+      padding: 20,
+    },
+    legend: {
+      position: "bottom",
+      padding: 20,
+    },
+  });
   useEffect(() => {
     setDisplay(window.innerWidth);
 
@@ -51,13 +61,17 @@ const KoreaAllData = (props) => {
         {
           id: "1",
           category: "일일 현황",
-          cnt: totalIncCnt,
+          cnt: Number(totalIncCnt).toLocaleString(),
         },
-        { id: "2", category: "지역 발생", cnt: totalLocalCnt },
+        {
+          id: "2",
+          category: "지역 발생",
+          cnt: Number(totalLocalCnt).toLocaleString(),
+        },
         {
           id: "3",
           category: "해외 유입",
-          cnt: totalOverflowCnt,
+          cnt: Number(totalOverflowCnt).toLocaleString(),
         },
       ]);
     };
@@ -67,7 +81,6 @@ const KoreaAllData = (props) => {
       const totalIngCnt = totalData[8].elements[0].text;
       const totalClearCnt = totalData[7].elements[0].text;
       const totalDeathCnt = totalData[1].elements[0].text;
-
       const yesterDayDefCnt = yesterDayData[2].elements[0].text;
       const yesterDayIngCnt = yesterDayData[8].elements[0].text;
       const yesterDayClearCnt = yesterDayData[7].elements[0].text;
@@ -86,21 +99,26 @@ const KoreaAllData = (props) => {
         {
           id: "1",
           title: "확진자 수",
-          count: totalDefCnt,
-          new: newDefCnt,
+          count: Number(totalDefCnt).toLocaleString(),
+          new: Number(newDefCnt).toLocaleString(),
         },
-        { id: "2", title: "치료 중", count: totalIngCnt, new: newIngCnt },
+        {
+          id: "2",
+          title: "치료 중",
+          count: Number(totalIngCnt).toLocaleString(),
+          new: Number(newIngCnt).toLocaleString(),
+        },
         {
           id: "3",
           title: "완치자 수",
-          count: totalClearCnt,
-          new: newClearCnt,
+          count: Number(totalClearCnt).toLocaleString(),
+          new: Number(newClearCnt).toLocaleString(),
         },
         {
           id: "4",
           title: "사망자 수",
-          count: totalDeathCnt,
-          new: newDeathCnt,
+          count: Number(totalDeathCnt).toLocaleString(),
+          new: Number(newDeathCnt).toLocaleString(),
         },
       ]);
     };
@@ -128,10 +146,10 @@ const KoreaAllData = (props) => {
         return obj.date;
       });
       const localData = objsRe.map((obj) => {
-        return obj.localData;
+        return Number(obj.localData).toLocaleString();
       });
       const overFlowData = objsRe.map((obj) => {
-        return obj.overFlowData;
+        return Number(obj.overFlowData).toLocaleString();
       });
 
       setChartData({
@@ -176,17 +194,7 @@ const KoreaAllData = (props) => {
         console.log(err);
       });
   }, []);
-  const [chartOptions, setChartOptions] = useState({
-    title: {
-      display: true,
-      text: "일일 차트 현황",
-      padding: 20,
-    },
-    legend: {
-      position: "bottom",
-      padding: 20,
-    },
-  });
+
   return (
     <>
       {status ? (
