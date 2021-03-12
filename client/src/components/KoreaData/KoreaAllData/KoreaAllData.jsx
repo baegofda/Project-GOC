@@ -6,8 +6,10 @@ import styles from "./KoreaAllData.module.css";
 import ContentTitle from "../../ContentTitle/ContentTitle";
 import ContentPanel from "../../ContentPanel/ContentPanel";
 import Err from "../../Err/Err";
+import Loading from "../../Loading/Loading";
 
 const KoreaAllData = (props) => {
+  const [isLoading, setIsLoading] = useState(true);
   const [display, setCurrentWidth] = useState(true);
   const [status, setStatus] = useState(true);
   const [title, setTitle] = useState({
@@ -347,6 +349,7 @@ const KoreaAllData = (props) => {
           panelDataHandler(totalData);
           cardsDataHandler(totalData, yesterDayData);
           chartDataHandler(resData);
+          setIsLoading(false);
         })
         .catch((err) => {
           setStatus(false);
@@ -360,16 +363,22 @@ const KoreaAllData = (props) => {
     <>
       {status ? (
         <>
-          <ContentTitle data={title} />
-          <ContentPanel panelData={panelData} cardsData={cardsData} />
-          <article className={styles.wrap}>
-            <h3 className="sr-only">국내 종합 현황</h3>
-            {display ? (
-              <ColumnChart data={chartData} options={columnOptions} />
-            ) : (
-              <BarChart data={chartData} options={barOptions} />
-            )}
-          </article>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <>
+              <ContentTitle data={title} />
+              <ContentPanel panelData={panelData} cardsData={cardsData} />
+              <article className={styles.wrap}>
+                <h3 className="sr-only">국내 종합 현황</h3>
+                {display ? (
+                  <ColumnChart data={chartData} options={columnOptions} />
+                ) : (
+                  <BarChart data={chartData} options={barOptions} />
+                )}
+              </article>
+            </>
+          )}
         </>
       ) : (
         <Err />

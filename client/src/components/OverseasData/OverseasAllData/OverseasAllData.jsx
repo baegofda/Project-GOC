@@ -1,9 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import ContentTitle from "../../ContentTitle/ContentTitle";
+import Err from "../../Err/Err";
+import Loading from "../../Loading/Loading";
 import styles from "./OverseasAllData.module.css";
 
 const OverseasAllData = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [status, setStatus] = useState(true);
   const [cardsData, setCardsData] = useState([]);
   const [title, setTitle] = useState({
     title: "해외 종합 현황",
@@ -36,44 +40,63 @@ const OverseasAllData = () => {
       ]);
     };
 
-    axios.get("/api/all").then((res) => {
-      const item = res.data;
-      dataHandler(item);
-    });
+    axios
+      .get("/api/all")
+      .then((res) => {
+        const item = res.data;
+        dataHandler(item);
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        setStatus(false);
+        console.log(err);
+      });
   }, []);
 
   return (
     <>
-      <ContentTitle data={title} />
-      <section className={styles.wrap}>
-        <h3 className="sr-only">전 세계 현황 수</h3>
-        <dl className={styles.cards}>
-          {cardsData.map((card) => (
-            <div key={card.id} className={styles.card}>
-              <dt className={styles.title}>{card.title}</dt>
-              <dd className={styles.count}>{card.count}</dd>
-            </div>
-          ))}
-        </dl>
-      </section>
-      <div className={styles.tooltip}>
-        <span className={styles.text}>지도로 확인하고 싶으신가요?</span>
-        <a
-          className={styles.link}
-          href="https://covid19.who.int/"
-          target="blank"
-        >
-          <dfn>
-            <abbr
-              className={styles.desc}
-              title="World Health Organization - 세계보건기구"
-            >
-              WHO
-            </abbr>
-          </dfn>{" "}
-          에서 알아보기
-        </a>
-      </div>
+      {status ? (
+        <>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <>
+              <ContentTitle data={title} />
+              <section className={styles.wrap}>
+                <h3 className="sr-only">전 세계 현황 수</h3>
+                <dl className={styles.cards}>
+                  {cardsData.map((card) => (
+                    <div key={card.id} className={styles.card}>
+                      <dt className={styles.title}>{card.title}</dt>
+                      <dd className={styles.count}>{card.count}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </section>
+              <div className={styles.tooltip}>
+                <span className={styles.text}>지도로 확인하고 싶으신가요?</span>
+                <a
+                  className={styles.link}
+                  href="https://covid19.who.int/"
+                  target="blank"
+                >
+                  <dfn>
+                    <abbr
+                      className={styles.desc}
+                      title="World Health Organization - 세계보건기구"
+                    >
+                      WHO
+                    </abbr>
+                  </dfn>{" "}
+                  에서 알아보기
+                </a>
+              </div>
+            </>
+          )}
+        </>
+      ) : (
+        <Err />
+      )}
     </>
   );
 };

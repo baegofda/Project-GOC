@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import ContentTitle from "../ContentTitle/ContentTitle";
+import Loading from "../Loading/Loading";
 import styles from "./Other.module.css";
 
 const Other = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [title, setTitle] = useState({
     title: "데이터 출처",
     desc: "사이트에 사용된 자료 & 데이터들의 출처등을 나타냅니다.",
@@ -63,26 +65,35 @@ const Other = () => {
       },
     ],
   });
+  setInterval(() => {
+    setIsLoading(false);
+  }, 500);
   return (
     <>
-      <ContentTitle data={title} />
-      {resource.title.map((title) => (
-        <article key={title.id} className={styles.wrap}>
-          <h3 className={styles.title}>{title.title}</h3>
-          <ul className={styles.items}>
-            {resource.link
-              .filter((link) => link.category === title.category)
-              .map((link) => (
-                <li key={link.id} className={styles.items}>
-                  <a className={styles.link} href={link.url} target="blank">
-                    <span className={styles.site}>{link.name}</span> -{" "}
-                    {link.desc}
-                  </a>
-                </li>
-              ))}
-          </ul>
-        </article>
-      ))}
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <>
+          <ContentTitle data={title} />
+          {resource.title.map((title) => (
+            <article key={title.id} className={styles.wrap}>
+              <h3 className={styles.title}>{title.title}</h3>
+              <ul className={styles.items}>
+                {resource.link
+                  .filter((link) => link.category === title.category)
+                  .map((link) => (
+                    <li key={link.id} className={styles.items}>
+                      <a className={styles.link} href={link.url} target="blank">
+                        <span className={styles.site}>{link.name}</span> -{" "}
+                        {link.desc}
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            </article>
+          ))}
+        </>
+      )}
     </>
   );
 };

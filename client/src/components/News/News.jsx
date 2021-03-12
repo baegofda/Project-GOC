@@ -4,8 +4,10 @@ import moment from "moment";
 import ContentTitle from "../ContentTitle/ContentTitle";
 import styles from "./News.module.css";
 import Err from "../Err/Err";
+import Loading from "../Loading/Loading";
 
 const News = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [status, setStatus] = useState(true);
   let i = 0;
   const newsArticles = [];
@@ -47,11 +49,15 @@ const News = () => {
       type: type,
     };
     newsArticles.push(data);
+
     setNews((news) => {
       const updated = { ...news };
       return updated;
     });
   };
+  setInterval(() => {
+    setIsLoading(false);
+  }, 500);
   useEffect(() => {
     axios
       .get("/api/news/naver")
@@ -83,31 +89,40 @@ const News = () => {
     <>
       {status ? (
         <>
-          <ContentTitle data={title} />
-          {news.categories.map((category) => (
-            <section key={category.id} className={styles.wrap}>
-              <h3 className={styles.category}>{category.name}</h3>
-              <ul className={styles.items}>
-                {news.articles
-                  .filter((item) => item.type === category.type)
-                  .map((article) => (
-                    <li key={article.id} className={styles.item}>
-                      <a
-                        className={styles.link}
-                        href={article.url}
-                        target="blank"
-                      >
-                        <strong className={styles.title}>
-                          {article.title}
-                        </strong>
-                        <span className={styles.date}> - {article.date}</span>
-                        <span className={styles.desc}>{article.desc}</span>
-                      </a>
-                    </li>
-                  ))}
-              </ul>
-            </section>
-          ))}
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <>
+              <ContentTitle data={title} />
+              {news.categories.map((category) => (
+                <section key={category.id} className={styles.wrap}>
+                  <h3 className={styles.category}>{category.name}</h3>
+                  <ul className={styles.items}>
+                    {news.articles
+                      .filter((item) => item.type === category.type)
+                      .map((article) => (
+                        <li key={article.id} className={styles.item}>
+                          <a
+                            className={styles.link}
+                            href={article.url}
+                            target="blank"
+                          >
+                            <strong className={styles.title}>
+                              {article.title}
+                            </strong>
+                            <span className={styles.date}>
+                              {" "}
+                              - {article.date}
+                            </span>
+                            <span className={styles.desc}>{article.desc}</span>
+                          </a>
+                        </li>
+                      ))}
+                  </ul>
+                </section>
+              ))}
+            </>
+          )}
         </>
       ) : (
         <Err />
