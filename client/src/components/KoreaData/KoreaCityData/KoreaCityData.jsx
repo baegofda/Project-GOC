@@ -347,8 +347,6 @@ const KoreaCityData = () => {
         setStatus(false);
         console.log(err);
       });
-
-    setIsLoading(false);
   }, []);
   return (
     <>

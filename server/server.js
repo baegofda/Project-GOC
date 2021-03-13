@@ -7,6 +7,7 @@ const naverNewsRoute = require("./Router/NaverNewsRoute");
 const daumNewsRoute = require("./Router/DaumNewsRoute");
 const centerRoute = require("./Router/CenterRoute");
 const overseasAllRoute = require("./Router/OverseasAllRoute");
+const overseasCountryRoute = require("./Router/OverseasCountryRoute");
 
 app.use(cors());
 
@@ -16,6 +17,7 @@ app.use("/api/center", centerRoute);
 app.use("/api/news/naver", naverNewsRoute);
 app.use("/api/news/daum", daumNewsRoute);
 app.use("/api/all", overseasAllRoute);
+app.use("/api/country", overseasCountryRoute);
 
 const port = 5000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
