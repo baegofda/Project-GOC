@@ -7,6 +7,8 @@ import ContentTitle from "../../ContentTitle/ContentTitle";
 import ContentPanel from "./ContentPanel/ContentPanel";
 import Err from "../../Err/Err";
 import Loading from "../../Loading/Loading";
+import "chart.piecelabel.js";
+import "chartjs-plugin-datalabels";
 
 const KoreaAllData = (props) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -46,6 +48,22 @@ const KoreaAllData = (props) => {
         },
       },
     },
+    plugins: {
+      datalabels: {
+        anchor: "center",
+        color: "#333",
+        display: function (context) {
+          const dataset = context.dataset;
+          const count = dataset.data.length;
+          const value = dataset.data[context.dataIndex];
+          return value > count * 1.5;
+        },
+        font: {
+          weight: "bold",
+        },
+        formatter: Math.round,
+      },
+    },
   });
   const [barOptions, setBarOptions] = useState({
     title: {
@@ -56,6 +74,22 @@ const KoreaAllData = (props) => {
     legend: {
       position: "right",
       padding: 10,
+    },
+    plugins: {
+      datalabels: {
+        align: "end",
+        color: "#333",
+        display: function (context) {
+          const dataset = context.dataset;
+          const count = dataset.data.length;
+          const value = dataset.data[context.dataIndex];
+          return value > count * 1.5;
+        },
+        font: {
+          weight: "bold",
+        },
+        formatter: Math.round,
+      },
     },
   });
   useEffect(() => {
@@ -237,6 +271,7 @@ const KoreaAllData = (props) => {
               "rgba(255, 0, 0, 1)",
               "rgba(158, 158, 158, 1)",
             ],
+
             borderWidth: 1,
           },
         ],
