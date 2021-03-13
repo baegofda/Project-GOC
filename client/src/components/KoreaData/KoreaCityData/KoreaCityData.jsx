@@ -196,10 +196,6 @@ const KoreaCityData = () => {
       const totalIngCnt = [...mainIngCnt, otherIngCnt];
       const totalClearCnt = [...mainClearCnt, otherClearCnt];
       const totalDeathCnt = [...mainDeathCnt, otherDeathCnt];
-      console.log("확진자", totalConfirmeCnt);
-      console.log("치료중", totalIngCnt);
-      console.log("완치자", totalClearCnt);
-      console.log("사망자", totalDeathCnt);
 
       setConfirmeData({
         labels: totalCategory,
@@ -363,22 +359,24 @@ const KoreaCityData = () => {
           ) : (
             <>
               <ContentTitle data={title} />
-              <article className={styles.wrap}>
-                <h3 className="sr-only">시도별 확진자 비율</h3>
-                <Doughnut data={confirmeData} options={confirmeOptions} />
-              </article>
-              <article className={styles.wrap}>
-                <h3 className="sr-only">시도별 치료중 비율</h3>
-                <Doughnut data={ingData} options={ingOptions} />
-              </article>
-              <article className={styles.wrap}>
-                <h3 className="sr-only">시도별 완치자 비율</h3>
-                <Doughnut data={clearData} options={clearOptions} />
-              </article>
-              <article className={styles.wrap}>
-                <h3 className="sr-only">시도별 사망자 비율</h3>
-                <Doughnut data={deathData} options={deathOptions} />
-              </article>
+              <section className={styles.container}>
+                <article className={styles.wrap}>
+                  <h3 className="sr-only">시도별 확진자 비율</h3>
+                  <Doughnut data={confirmeData} options={confirmeOptions} />
+                </article>
+                <article className={styles.wrap}>
+                  <h3 className="sr-only">시도별 치료중 비율</h3>
+                  <Doughnut data={ingData} options={ingOptions} />
+                </article>
+                <article className={styles.wrap}>
+                  <h3 className="sr-only">시도별 완치자 비율</h3>
+                  <Doughnut data={clearData} options={clearOptions} />
+                </article>
+                <article className={styles.wrap}>
+                  <h3 className="sr-only">시도별 사망자 비율</h3>
+                  <Doughnut data={deathData} options={deathOptions} />
+                </article>
+              </section>
             </>
           )}
         </>

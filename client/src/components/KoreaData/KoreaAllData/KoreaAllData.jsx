@@ -295,7 +295,7 @@ const KoreaAllData = (props) => {
               <ContentTitle data={title} />
               <ContentPanel panelData={panelData} cardsData={cardsData} />
               {display >= 500 ? (
-                <div className={styles.container}>
+                <section className={styles.container}>
                   <article className={styles.wrap}>
                     <h3 className="sr-only">일일 시도별 확진자 증감 비율</h3>
                     <Doughnut data={doughnutData} options={doughnutOptions} />
@@ -304,7 +304,7 @@ const KoreaAllData = (props) => {
                     <h3 className="sr-only">일별 현황 차트</h3>
                     <Bar data={barData} options={barOptions} />
                   </article>
-                </div>
+                </section>
               ) : (
                 <div className={styles.tooltip}>
                   <span className={styles.text}>일주일 현황 차트 보러가기</span>

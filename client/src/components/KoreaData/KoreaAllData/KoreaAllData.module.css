@@ -2,7 +2,6 @@
 @value glassRadius,panelPadding,panelBottom from "../../../common/sizes.module.css";
 
 .wrap {
-  height: 100%;
   padding: panelPadding;
   background: glassBackground;
   backdrop-filter: glassBlur;
