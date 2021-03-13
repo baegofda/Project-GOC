@@ -1,0 +1,17 @@
+@value linkColor,glassBackground,glassBlur,glassBorder,contentShadow from "../../../common/colors.module.css";
+@value glassRadius,panelPadding,panelBottom from "../../../common/sizes.module.css";
+
+.wrap {
+  height: 100%;
+  padding: panelPadding;
+  background: glassBackground;
+  backdrop-filter: glassBlur;
+  -webkit-backdrop-filter: glassBlur;
+  border: glassBorder;
+  border-radius: glassRadius;
+  box-shadow: contentShadow;
+  flex: 1;
+}
+.wrap:not(:last-child) {
+  margin-bottom: panelBottom;
+}

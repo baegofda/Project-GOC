@@ -25,7 +25,6 @@ const KoreaAllData = (props) => {
     title: {
       display: true,
       text: "일일 시도별 확진자 증감 비율",
-      padding: 20,
     },
     legend: {
       position: "right",
@@ -239,7 +238,6 @@ const KoreaAllData = (props) => {
               "rgba(158, 158, 158, 1)",
             ],
             borderWidth: 1,
-            hoverOffset: 4,
           },
         ],
       });

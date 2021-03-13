@@ -21,7 +21,6 @@ const KoreaCityData = () => {
     title: {
       display: true,
       text: "시도별 확진자 비율",
-      padding: 20,
     },
     legend: {
       position: "right",
@@ -48,7 +47,6 @@ const KoreaCityData = () => {
     title: {
       display: true,
       text: "시도별 치료중 비율",
-      padding: 20,
     },
     legend: {
       position: "right",
@@ -75,7 +73,6 @@ const KoreaCityData = () => {
     title: {
       display: true,
       text: "시도별 완치자 비율",
-      padding: 20,
     },
     legend: {
       position: "right",
@@ -102,7 +99,6 @@ const KoreaCityData = () => {
     title: {
       display: true,
       text: "시도별 사망자 비율",
-      padding: 20,
     },
     legend: {
       position: "right",
@@ -176,19 +172,19 @@ const KoreaCityData = () => {
       });
       //주요 데이터 확진자
       const mainConfirmeCnt = mainObjs.map((obj) => {
-        return Number(obj.confirmeCnt).toLocaleString();
+        return Number(obj.confirmeCnt);
       });
       //주요 데이터 치료중
       const mainIngCnt = mainObjs.map((obj) => {
-        return Number(obj.ingCnt).toLocaleString();
+        return Number(obj.ingCnt);
       });
       //주요 데이터 완치자
       const mainClearCnt = mainObjs.map((obj) => {
-        return Number(obj.clearCnt).toLocaleString();
+        return Number(obj.clearCnt);
       });
       //주요 데이터 사망자
       const mainDeathCnt = mainObjs.map((obj) => {
-        return Number(obj.deathCnt).toLocaleString();
+        return Number(obj.deathCnt);
       });
       //주요 데이터 카테고리
       const category = mainObjs.map((obj) => {
@@ -200,6 +196,11 @@ const KoreaCityData = () => {
       const totalIngCnt = [...mainIngCnt, otherIngCnt];
       const totalClearCnt = [...mainClearCnt, otherClearCnt];
       const totalDeathCnt = [...mainDeathCnt, otherDeathCnt];
+      console.log("확진자", totalConfirmeCnt);
+      console.log("치료중", totalIngCnt);
+      console.log("완치자", totalClearCnt);
+      console.log("사망자", totalDeathCnt);
+
       setConfirmeData({
         labels: totalCategory,
         datasets: [
@@ -362,10 +363,22 @@ const KoreaCityData = () => {
           ) : (
             <>
               <ContentTitle data={title} />
-              {/* <article className={styles.wrap}>
-                    <h3 className="sr-only">일일 시도별 확진자 비율</h3>
-                    <Doughnut data={confirmeData} options={doughnutOptions} />
-                  </article> */}
+              <article className={styles.wrap}>
+                <h3 className="sr-only">시도별 확진자 비율</h3>
+                <Doughnut data={confirmeData} options={confirmeOptions} />
+              </article>
+              <article className={styles.wrap}>
+                <h3 className="sr-only">시도별 치료중 비율</h3>
+                <Doughnut data={ingData} options={ingOptions} />
+              </article>
+              <article className={styles.wrap}>
+                <h3 className="sr-only">시도별 완치자 비율</h3>
+                <Doughnut data={clearData} options={clearOptions} />
+              </article>
+              <article className={styles.wrap}>
+                <h3 className="sr-only">시도별 사망자 비율</h3>
+                <Doughnut data={deathData} options={deathOptions} />
+              </article>
             </>
           )}
         </>
