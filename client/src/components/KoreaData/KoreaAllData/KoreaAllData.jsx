@@ -15,7 +15,7 @@ const KoreaAllData = (props) => {
   const [title, setTitle] = useState({
     title: "국내 종합 현황",
     desc:
-      "국내 코로나 종합 현황판과 일일 시도별 확진자 비율과 일별 현황 차트를 제공합니다. (단위: 명)",
+      "국내 코로나 종합 현황판과 일일 시도별 확진자 증감 비율과 일별 현황 차트를 제공합니다. (단위: 명)",
   });
   const [panelData, setPanelData] = useState([]);
   const [cardsData, setCardsData] = useState([]);
@@ -24,7 +24,7 @@ const KoreaAllData = (props) => {
   const [doughnutOptions, setDoughnutOptions] = useState({
     title: {
       display: true,
-      text: "일일 시도별 확진자 비율",
+      text: "일일 시도별 확진자 증감 비율",
       padding: 20,
     },
     legend: {
@@ -191,21 +191,20 @@ const KoreaAllData = (props) => {
       });
       const totalCategory = [...category, "기타"];
       const totalConfirmed = [...confirmed, otherConfirmed];
-      console.log(totalCategory);
+
       //막대 차트 데이터
       const barObjs = arr
         .filter((item) => item.category === "합계")
         .map((item) => {
           return item;
         });
-      const barObjsRe = barObjs;
-      const date = barObjsRe.map((obj) => {
+      const date = barObjs.map((obj) => {
         return obj.date;
       });
-      const localData = barObjsRe.map((obj) => {
+      const localData = barObjs.map((obj) => {
         return Number(obj.localData).toLocaleString();
       });
-      const overFlowData = barObjsRe.map((obj) => {
+      const overFlowData = barObjs.map((obj) => {
         return Number(obj.overFlowData).toLocaleString();
       });
 
@@ -300,7 +299,7 @@ const KoreaAllData = (props) => {
               {display >= 500 ? (
                 <div className={styles.container}>
                   <article className={styles.wrap}>
-                    <h3 className="sr-only">일일 시도별 확진자 비율</h3>
+                    <h3 className="sr-only">일일 시도별 확진자 증감 비율</h3>
                     <Doughnut data={doughnutData} options={doughnutOptions} />
                   </article>
                   <article className={styles.wrap}>
