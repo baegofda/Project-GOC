@@ -1,7 +1,12 @@
 @value linkColor,glassBackground,glassBlur,glassBorder,contentShadow from "../../../common/colors.module.css";
 @value glassRadius,panelPadding,panelBottom from "../../../common/sizes.module.css";
 
+.container {
+  display: flex;
+  flex-direction: column;
+}
 .wrap {
+  width: 100%;
   padding: panelPadding;
   background: glassBackground;
   backdrop-filter: glassBlur;
@@ -9,9 +14,8 @@
   border: glassBorder;
   border-radius: glassRadius;
   box-shadow: contentShadow;
-  flex: 1;
 }
-.wrap:nth-child(1) {
+.wrap:nth-child(2n + 1) {
   margin-bottom: panelBottom;
 }
 
@@ -37,4 +41,18 @@
 }
 .link {
   color: linkColor;
+}
+
+@media all and (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+  }
+
+  .wrap {
+    width: 49%;
+  }
+  .wrap:nth-child(2n + 1) {
+    margin-bottom: 0;
+    margin-right: 2%;
+  }
 }
