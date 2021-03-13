@@ -14,9 +14,117 @@ const KoreaCityData = () => {
     desc: "시도별 현황 차트를 제공합니다. (단위: 명)",
   });
   const [confirmeData, setConfirmeData] = useState({});
-  const [recoveryData, setRecoveryData] = useState({});
+  const [ingData, setIngData] = useState({});
+  const [clearData, setClearData] = useState({});
   const [deathData, setDeathData] = useState({});
-  const [chartData, setChartData] = useState({});
+  const [confirmeOptions, setConfirmeOptions] = useState({
+    title: {
+      display: true,
+      text: "시도별 확진자 비율",
+      padding: 20,
+    },
+    legend: {
+      position: "right",
+    },
+    tooltips: {
+      callbacks: {
+        label: (tooltipItem, data) => {
+          const dataset = data.datasets[tooltipItem.datasetIndex];
+          const meta = dataset._meta[Object.keys(dataset._meta)[0]];
+          const total = meta.total;
+          const currentValue = dataset.data[tooltipItem.index];
+          const percentage = parseFloat(
+            ((currentValue / total) * 100).toFixed(1)
+          );
+          return currentValue + " (" + percentage + "%)";
+        },
+        title: function (tooltipItem, data) {
+          return data.labels[tooltipItem[0].index];
+        },
+      },
+    },
+  });
+  const [ingOptions, setIngOptions] = useState({
+    title: {
+      display: true,
+      text: "시도별 치료중 비율",
+      padding: 20,
+    },
+    legend: {
+      position: "right",
+    },
+    tooltips: {
+      callbacks: {
+        label: (tooltipItem, data) => {
+          const dataset = data.datasets[tooltipItem.datasetIndex];
+          const meta = dataset._meta[Object.keys(dataset._meta)[0]];
+          const total = meta.total;
+          const currentValue = dataset.data[tooltipItem.index];
+          const percentage = parseFloat(
+            ((currentValue / total) * 100).toFixed(1)
+          );
+          return currentValue + " (" + percentage + "%)";
+        },
+        title: function (tooltipItem, data) {
+          return data.labels[tooltipItem[0].index];
+        },
+      },
+    },
+  });
+  const [clearOptions, setClearOptions] = useState({
+    title: {
+      display: true,
+      text: "시도별 완치자 비율",
+      padding: 20,
+    },
+    legend: {
+      position: "right",
+    },
+    tooltips: {
+      callbacks: {
+        label: (tooltipItem, data) => {
+          const dataset = data.datasets[tooltipItem.datasetIndex];
+          const meta = dataset._meta[Object.keys(dataset._meta)[0]];
+          const total = meta.total;
+          const currentValue = dataset.data[tooltipItem.index];
+          const percentage = parseFloat(
+            ((currentValue / total) * 100).toFixed(1)
+          );
+          return currentValue + " (" + percentage + "%)";
+        },
+        title: function (tooltipItem, data) {
+          return data.labels[tooltipItem[0].index];
+        },
+      },
+    },
+  });
+  const [deathOptions, setDeathOptions] = useState({
+    title: {
+      display: true,
+      text: "시도별 사망자 비율",
+      padding: 20,
+    },
+    legend: {
+      position: "right",
+    },
+    tooltips: {
+      callbacks: {
+        label: (tooltipItem, data) => {
+          const dataset = data.datasets[tooltipItem.datasetIndex];
+          const meta = dataset._meta[Object.keys(dataset._meta)[0]];
+          const total = meta.total;
+          const currentValue = dataset.data[tooltipItem.index];
+          const percentage = parseFloat(
+            ((currentValue / total) * 100).toFixed(1)
+          );
+          return currentValue + " (" + percentage + "%)";
+        },
+        title: function (tooltipItem, data) {
+          return data.labels[tooltipItem[0].index];
+        },
+      },
+    },
+  });
   useEffect(() => {
     const dataHandler = (items) => {
       const arr = items.reduce((prev, curr) => {
@@ -92,41 +200,142 @@ const KoreaCityData = () => {
       const totalIngCnt = [...mainIngCnt, otherIngCnt];
       const totalClearCnt = [...mainClearCnt, otherClearCnt];
       const totalDeathCnt = [...mainDeathCnt, otherDeathCnt];
-      // setDoughnutData({
-      //   labels: totalCategory,
-      //   datasets: [
-      //     {
-      //       label: totalCategory,
-      //       data: totalConfirmed,
-      //       backgroundColor: [
-      //         "rgba(255, 255, 0, 0.6)",
-      //         "rgba(255, 153, 0, 0.6)",
-      //         "rgba(153, 204, 0, 0.6)",
-      //         "rgba(153, 153, 0, 0.6)",
-      //         "rgba(51, 102, 0, 0.6)",
-      //         "rgba(255, 102, 0, 0.6)",
-      //         "rgba(153, 255, 0, 0.6)",
-      //         "rgba(153, 51, 0, 0.6)",
-      //         "rgba(255, 0, 0, 0.6)",
-      //         "rgba(158, 158, 158, 0.6)",
-      //       ],
-      //       hoverBackgroundColor: [
-      //         "rgba(255, 255, 0, 1)",
-      //         "rgba(255, 153, 0, 1)",
-      //         "rgba(153, 204, 0, 1)",
-      //         "rgba(153, 153, 0, 1)",
-      //         "rgba(51, 102, 0, 1)",
-      //         "rgba(255, 102, 0, 1)",
-      //         "rgba(153, 255, 0, 1)",
-      //         "rgba(153, 51, 0, 1)",
-      //         "rgba(255, 0, 0, 1)",
-      //         "rgba(158, 158, 158, 1)",
-      //       ],
-      //       borderWidth: 1,
-      //       hoverOffset: 4,
-      //     },
-      //   ],
-      // });
+      setConfirmeData({
+        labels: totalCategory,
+        datasets: [
+          {
+            label: totalCategory,
+            data: totalConfirmeCnt,
+            backgroundColor: [
+              "rgba(255, 255, 0, 0.6)",
+              "rgba(255, 153, 0, 0.6)",
+              "rgba(153, 204, 0, 0.6)",
+              "rgba(153, 153, 0, 0.6)",
+              "rgba(51, 102, 0, 0.6)",
+              "rgba(255, 102, 0, 0.6)",
+              "rgba(153, 255, 0, 0.6)",
+              "rgba(153, 51, 0, 0.6)",
+              "rgba(255, 0, 0, 0.6)",
+              "rgba(158, 158, 158, 0.6)",
+            ],
+            hoverBackgroundColor: [
+              "rgba(255, 255, 0, 1)",
+              "rgba(255, 153, 0, 1)",
+              "rgba(153, 204, 0, 1)",
+              "rgba(153, 153, 0, 1)",
+              "rgba(51, 102, 0, 1)",
+              "rgba(255, 102, 0, 1)",
+              "rgba(153, 255, 0, 1)",
+              "rgba(153, 51, 0, 1)",
+              "rgba(255, 0, 0, 1)",
+              "rgba(158, 158, 158, 1)",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      });
+      setIngData({
+        labels: totalCategory,
+        datasets: [
+          {
+            label: totalCategory,
+            data: totalIngCnt,
+            backgroundColor: [
+              "rgba(255, 255, 0, 0.6)",
+              "rgba(255, 153, 0, 0.6)",
+              "rgba(153, 204, 0, 0.6)",
+              "rgba(153, 153, 0, 0.6)",
+              "rgba(51, 102, 0, 0.6)",
+              "rgba(255, 102, 0, 0.6)",
+              "rgba(153, 255, 0, 0.6)",
+              "rgba(153, 51, 0, 0.6)",
+              "rgba(255, 0, 0, 0.6)",
+              "rgba(158, 158, 158, 0.6)",
+            ],
+            hoverBackgroundColor: [
+              "rgba(255, 255, 0, 1)",
+              "rgba(255, 153, 0, 1)",
+              "rgba(153, 204, 0, 1)",
+              "rgba(153, 153, 0, 1)",
+              "rgba(51, 102, 0, 1)",
+              "rgba(255, 102, 0, 1)",
+              "rgba(153, 255, 0, 1)",
+              "rgba(153, 51, 0, 1)",
+              "rgba(255, 0, 0, 1)",
+              "rgba(158, 158, 158, 1)",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      });
+      setClearData({
+        labels: totalCategory,
+        datasets: [
+          {
+            label: totalCategory,
+            data: totalClearCnt,
+            backgroundColor: [
+              "rgba(255, 255, 0, 0.6)",
+              "rgba(255, 153, 0, 0.6)",
+              "rgba(153, 204, 0, 0.6)",
+              "rgba(153, 153, 0, 0.6)",
+              "rgba(51, 102, 0, 0.6)",
+              "rgba(255, 102, 0, 0.6)",
+              "rgba(153, 255, 0, 0.6)",
+              "rgba(153, 51, 0, 0.6)",
+              "rgba(255, 0, 0, 0.6)",
+              "rgba(158, 158, 158, 0.6)",
+            ],
+            hoverBackgroundColor: [
+              "rgba(255, 255, 0, 1)",
+              "rgba(255, 153, 0, 1)",
+              "rgba(153, 204, 0, 1)",
+              "rgba(153, 153, 0, 1)",
+              "rgba(51, 102, 0, 1)",
+              "rgba(255, 102, 0, 1)",
+              "rgba(153, 255, 0, 1)",
+              "rgba(153, 51, 0, 1)",
+              "rgba(255, 0, 0, 1)",
+              "rgba(158, 158, 158, 1)",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      });
+      setDeathData({
+        labels: totalCategory,
+        datasets: [
+          {
+            label: totalCategory,
+            data: totalDeathCnt,
+            backgroundColor: [
+              "rgba(255, 255, 0, 0.6)",
+              "rgba(255, 153, 0, 0.6)",
+              "rgba(153, 204, 0, 0.6)",
+              "rgba(153, 153, 0, 0.6)",
+              "rgba(51, 102, 0, 0.6)",
+              "rgba(255, 102, 0, 0.6)",
+              "rgba(153, 255, 0, 0.6)",
+              "rgba(153, 51, 0, 0.6)",
+              "rgba(255, 0, 0, 0.6)",
+              "rgba(158, 158, 158, 0.6)",
+            ],
+            hoverBackgroundColor: [
+              "rgba(255, 255, 0, 1)",
+              "rgba(255, 153, 0, 1)",
+              "rgba(153, 204, 0, 1)",
+              "rgba(153, 153, 0, 1)",
+              "rgba(51, 102, 0, 1)",
+              "rgba(255, 102, 0, 1)",
+              "rgba(153, 255, 0, 1)",
+              "rgba(153, 51, 0, 1)",
+              "rgba(255, 0, 0, 1)",
+              "rgba(158, 158, 158, 1)",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      });
     };
 
     axios
