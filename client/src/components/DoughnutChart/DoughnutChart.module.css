@@ -1,7 +1,8 @@
 @value glassBackground,glassBlur,glassBorder,contentShadow from "../../common/colors.module.css";
-@value glassRadius,panelPadding,panelBottom from "../../common/sizes.module.css";
+@value glassRadius,contentBottom,panelPadding,panelBottom from "../../common/sizes.module.css";
 
 .wrap {
+  width: 100%;
   padding: panelPadding;
   background: glassBackground;
   backdrop-filter: glassBlur;
@@ -9,10 +10,53 @@
   border: glassBorder;
   border-radius: glassRadius;
   box-shadow: contentShadow;
-  flex: 1;
 }
 .wrap:not(:last-child) {
   margin-bottom: panelBottom;
+}
+
+canvas {
+  margin-bottom: panelBottom;
+}
+.legends {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 12px;
+}
+.legend {
+  display: flex;
+  width: 50%;
+}
+.legend {
+  margin-bottom: 5px;
+}
+.label {
+  display: flex;
+  align-items: center;
+  margin-right: 3px;
+}
+.color {
+  width: 20px;
+  height: 100%;
+  margin-right: 3px;
+  background-color: red;
+  border-radius: 2px;
+}
+.per {
+  margin-left: 2px;
+  font-size: 11px;
+}
+
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .wrap {
+    width: 48%;
+  }
+  .wrap:nth-child(2n + 1) {
+    margin-right: 2%;
+  }
+  .wrap:last-child {
+    margin-bottom: panelBottom;
+  }
 }
 
 @media all and (min-width: 1024px) {

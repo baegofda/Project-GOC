@@ -21,7 +21,7 @@ const KoreaCityData = () => {
         text: "시도별 확진자 비율",
       },
       legend: {
-        position: "right",
+        display: false,
       },
       tooltips: {
         callbacks: {
@@ -47,7 +47,7 @@ const KoreaCityData = () => {
         text: "시도별 치료중 비율",
       },
       legend: {
-        position: "right",
+        display: false,
       },
       tooltips: {
         callbacks: {
@@ -73,7 +73,7 @@ const KoreaCityData = () => {
         text: "시도별 완치자 비율",
       },
       legend: {
-        position: "right",
+        display: false,
       },
       tooltips: {
         callbacks: {
@@ -99,7 +99,7 @@ const KoreaCityData = () => {
         text: "시도별 사망자 비율",
       },
       legend: {
-        position: "right",
+        display: false,
       },
       tooltips: {
         callbacks: {
@@ -196,9 +196,23 @@ const KoreaCityData = () => {
       const totalClearCnt = [...mainClearCnt, otherClearCnt];
       const totalDeathCnt = [...mainDeathCnt, otherDeathCnt];
 
+      const sumFirmeCnt = totalConfirmeCnt.reduce(
+        (prev, curr) => Number(prev) + Number(curr)
+      );
+      const sumIngCnt = totalIngCnt.reduce(
+        (prev, curr) => Number(prev) + Number(curr)
+      );
+      const sumClearCnt = totalClearCnt.reduce(
+        (prev, curr) => Number(prev) + Number(curr)
+      );
+      const sumDeathCnt = totalDeathCnt.reduce(
+        (prev, curr) => Number(prev) + Number(curr)
+      );
+
       setData([
         {
           key: 0,
+          total: sumFirmeCnt,
           labels: totalCategory,
           datasets: [
             {
@@ -234,6 +248,7 @@ const KoreaCityData = () => {
         },
         {
           key: 1,
+          total: sumIngCnt,
           labels: totalCategory,
           datasets: [
             {
@@ -270,6 +285,7 @@ const KoreaCityData = () => {
 
         {
           key: 2,
+          total: sumClearCnt,
           labels: totalCategory,
           datasets: [
             {
@@ -306,6 +322,7 @@ const KoreaCityData = () => {
 
         {
           key: 3,
+          total: sumDeathCnt,
           labels: totalCategory,
           datasets: [
             {
@@ -364,7 +381,7 @@ const KoreaCityData = () => {
           ) : (
             <>
               <ContentTitle data={title} />
-              <section className={styles.container}>
+              <section className={styles.wrap}>
                 <DoughnutChart data={data} options={options} />
               </section>
             </>

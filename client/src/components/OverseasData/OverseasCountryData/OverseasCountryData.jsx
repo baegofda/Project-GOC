@@ -234,7 +234,9 @@ const OverseasCountryData = () => {
           ) : (
             <>
               <ContentTitle data={title} />
-              <DoughnutChart data={data} options={options} />
+              <section className={styles.wrap}>
+                <DoughnutChart data={data} options={options} />
+              </section>
             </>
           )}
         </>
