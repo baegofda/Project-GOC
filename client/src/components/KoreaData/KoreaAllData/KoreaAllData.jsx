@@ -7,8 +7,6 @@ import ContentTitle from "../../ContentTitle/ContentTitle";
 import ContentPanel from "./ContentPanel/ContentPanel";
 import Err from "../../Err/Err";
 import Loading from "../../Loading/Loading";
-import "chart.piecelabel.js";
-import "chartjs-plugin-datalabels";
 
 const KoreaAllData = (props) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -48,22 +46,6 @@ const KoreaAllData = (props) => {
         },
       },
     },
-    plugins: {
-      datalabels: {
-        anchor: "center",
-        color: "#333",
-        display: function (context) {
-          const dataset = context.dataset;
-          const count = dataset.data.length;
-          const value = dataset.data[context.dataIndex];
-          return value > count * 1.5;
-        },
-        font: {
-          weight: "bold",
-        },
-        formatter: Math.round,
-      },
-    },
   });
   const [barOptions, setBarOptions] = useState({
     title: {
@@ -74,22 +56,6 @@ const KoreaAllData = (props) => {
     legend: {
       position: "right",
       padding: 10,
-    },
-    plugins: {
-      datalabels: {
-        align: "end",
-        color: "#333",
-        display: function (context) {
-          const dataset = context.dataset;
-          const count = dataset.data.length;
-          const value = dataset.data[context.dataIndex];
-          return value > count * 1.5;
-        },
-        font: {
-          weight: "bold",
-        },
-        formatter: Math.round,
-      },
     },
   });
   useEffect(() => {
@@ -215,11 +181,10 @@ const KoreaAllData = (props) => {
       const doughnutObjs = arr.slice(9, 18).map((item) => {
         return item;
       });
-      const doughnutObjsRe = doughnutObjs;
-      const category = doughnutObjsRe.map((obj) => {
+      const category = doughnutObjs.map((obj) => {
         return obj.category;
       });
-      const confirmed = doughnutObjsRe.map((obj) => {
+      const confirmed = doughnutObjs.map((obj) => {
         return obj.confirmed;
       });
       const totalCategory = [...category, "기타"];
@@ -231,13 +196,14 @@ const KoreaAllData = (props) => {
         .map((item) => {
           return item;
         });
-      const date = barObjs.map((obj) => {
+      const reBarObjs = barObjs.reverse();
+      const date = reBarObjs.map((obj) => {
         return obj.date;
       });
-      const localData = barObjs.map((obj) => {
+      const localData = reBarObjs.map((obj) => {
         return Number(obj.localData).toLocaleString();
       });
-      const overFlowData = barObjs.map((obj) => {
+      const overFlowData = reBarObjs.map((obj) => {
         return Number(obj.overFlowData).toLocaleString();
       });
 
