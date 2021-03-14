@@ -23,7 +23,7 @@ const OverseasCountryData = () => {
         text: "주변 국가별 확진자 비율",
       },
       legend: {
-        position: "right",
+        display: false,
       },
       tooltips: {
         callbacks: {
@@ -49,7 +49,7 @@ const OverseasCountryData = () => {
         text: "주변 국가별 완치자 비율",
       },
       legend: {
-        position: "right",
+        display: false,
       },
       tooltips: {
         callbacks: {
@@ -75,7 +75,7 @@ const OverseasCountryData = () => {
         text: "주변 국가별 사망자 비율",
       },
       legend: {
-        position: "right",
+        display: false,
       },
       tooltips: {
         callbacks: {
@@ -135,9 +135,21 @@ const OverseasCountryData = () => {
       const recovered = reArr.map((item) => {
         return item.recovered;
       });
+
+      const sumFirmeCnt = cases.reduce(
+        (prev, curr) => Number(prev) + Number(curr)
+      );
+      const sumIngCnt = deaths.reduce(
+        (prev, curr) => Number(prev) + Number(curr)
+      );
+      const sumClearCnt = recovered.reduce(
+        (prev, curr) => Number(prev) + Number(curr)
+      );
+
       setData([
         {
           key: 0,
+          total: sumFirmeCnt,
           labels: country,
           datasets: [
             {
@@ -163,6 +175,7 @@ const OverseasCountryData = () => {
         },
         {
           key: 1,
+          total: sumIngCnt,
           labels: country,
           datasets: [
             {
@@ -188,6 +201,7 @@ const OverseasCountryData = () => {
         },
         {
           key: 2,
+          total: sumClearCnt,
           labels: country,
           datasets: [
             {

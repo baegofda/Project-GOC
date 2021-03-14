@@ -25,15 +25,20 @@ canvas {
 }
 .legend {
   display: flex;
-  width: 50%;
+  width: 48%;
+  margin-bottom: 10px;
 }
-.legend {
-  margin-bottom: 5px;
+.legend:nth-child(2n + 1) {
+  margin-right: 2%;
 }
 .label {
   display: flex;
   align-items: center;
   margin-right: 3px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
 }
 .color {
   width: 20px;
@@ -41,6 +46,13 @@ canvas {
   margin-right: 3px;
   background-color: red;
   border-radius: 2px;
+  flex-shrink: 0;
+}
+.cnt {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
 }
 .per {
   margin-left: 2px;
