@@ -1,38 +1,4 @@
-@value linkColor,glassBackground,glassBlur,glassBorder,contentShadow from "../../../common/colors.module.css";
-@value glassRadius,panelPadding,panelBottom from "../../../common/sizes.module.css";
-
 .container {
   display: flex;
-  flex-direction: column;
-}
-
-.wrap {
-  padding: panelPadding;
-  background: glassBackground;
-  backdrop-filter: glassBlur;
-  -webkit-backdrop-filter: glassBlur;
-  border: glassBorder;
-  border-radius: glassRadius;
-  box-shadow: contentShadow;
-  flex: 1;
-}
-.wrap:not(:last-child) {
-  margin-bottom: panelBottom;
-}
-
-@media all and (min-width: 1024px) {
-  .container {
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-
-  .wrap {
-    width: 48%;
-  }
-  .wrap:nth-child(2n + 1) {
-    margin-right: 2%;
-  }
-  .wrap:last-child {
-    margin-bottom: panelBottom;
-  }
+  flex-wrap: wrap;
 }

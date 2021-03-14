@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Doughnut } from "react-chartjs-2";
 import ContentTitle from "../../ContentTitle/ContentTitle";
 import Err from "../../Err/Err";
 import Loading from "../../Loading/Loading";
 import axios from "axios";
 import styles from "./KoreaCityData.module.css";
+import DoughnutChart from "../../DoughnutChart/DoughnutChart";
 
 const KoreaCityData = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -41,7 +41,6 @@ const KoreaCityData = () => {
         },
       },
     },
-
     {
       title: {
         display: true,
@@ -199,158 +198,144 @@ const KoreaCityData = () => {
 
       setData([
         {
-          0: [
-            { key: 0 },
+          key: 0,
+          labels: totalCategory,
+          datasets: [
             {
-              labels: totalCategory,
-              datasets: [
-                {
-                  label: totalCategory,
-                  data: totalConfirmeCnt,
-                  backgroundColor: [
-                    "rgba(255, 255, 0, 0.6)",
-                    "rgba(255, 153, 0, 0.6)",
-                    "rgba(153, 204, 0, 0.6)",
-                    "rgba(153, 153, 0, 0.6)",
-                    "rgba(51, 102, 0, 0.6)",
-                    "rgba(255, 102, 0, 0.6)",
-                    "rgba(153, 255, 0, 0.6)",
-                    "rgba(153, 51, 0, 0.6)",
-                    "rgba(255, 0, 0, 0.6)",
-                    "rgba(158, 158, 158, 0.6)",
-                  ],
-                  hoverBackgroundColor: [
-                    "rgba(255, 255, 0, 1)",
-                    "rgba(255, 153, 0, 1)",
-                    "rgba(153, 204, 0, 1)",
-                    "rgba(153, 153, 0, 1)",
-                    "rgba(51, 102, 0, 1)",
-                    "rgba(255, 102, 0, 1)",
-                    "rgba(153, 255, 0, 1)",
-                    "rgba(153, 51, 0, 1)",
-                    "rgba(255, 0, 0, 1)",
-                    "rgba(158, 158, 158, 1)",
-                  ],
-                  borderWidth: 1,
-                },
+              label: totalCategory,
+              data: totalConfirmeCnt,
+              backgroundColor: [
+                "rgba(255, 255, 0, 0.6)",
+                "rgba(255, 153, 0, 0.6)",
+                "rgba(153, 204, 0, 0.6)",
+                "rgba(153, 153, 0, 0.6)",
+                "rgba(51, 102, 0, 0.6)",
+                "rgba(255, 102, 0, 0.6)",
+                "rgba(153, 255, 0, 0.6)",
+                "rgba(153, 51, 0, 0.6)",
+                "rgba(255, 0, 0, 0.6)",
+                "rgba(158, 158, 158, 0.6)",
               ],
+              hoverBackgroundColor: [
+                "rgba(255, 255, 0, 1)",
+                "rgba(255, 153, 0, 1)",
+                "rgba(153, 204, 0, 1)",
+                "rgba(153, 153, 0, 1)",
+                "rgba(51, 102, 0, 1)",
+                "rgba(255, 102, 0, 1)",
+                "rgba(153, 255, 0, 1)",
+                "rgba(153, 51, 0, 1)",
+                "rgba(255, 0, 0, 1)",
+                "rgba(158, 158, 158, 1)",
+              ],
+              borderWidth: 1,
             },
           ],
         },
         {
-          1: [
-            { key: 1 },
+          key: 1,
+          labels: totalCategory,
+          datasets: [
             {
-              labels: totalCategory,
-              datasets: [
-                {
-                  label: totalCategory,
-                  data: totalIngCnt,
-                  backgroundColor: [
-                    "rgba(255, 255, 0, 0.6)",
-                    "rgba(255, 153, 0, 0.6)",
-                    "rgba(153, 204, 0, 0.6)",
-                    "rgba(153, 153, 0, 0.6)",
-                    "rgba(51, 102, 0, 0.6)",
-                    "rgba(255, 102, 0, 0.6)",
-                    "rgba(153, 255, 0, 0.6)",
-                    "rgba(153, 51, 0, 0.6)",
-                    "rgba(255, 0, 0, 0.6)",
-                    "rgba(158, 158, 158, 0.6)",
-                  ],
-                  hoverBackgroundColor: [
-                    "rgba(255, 255, 0, 1)",
-                    "rgba(255, 153, 0, 1)",
-                    "rgba(153, 204, 0, 1)",
-                    "rgba(153, 153, 0, 1)",
-                    "rgba(51, 102, 0, 1)",
-                    "rgba(255, 102, 0, 1)",
-                    "rgba(153, 255, 0, 1)",
-                    "rgba(153, 51, 0, 1)",
-                    "rgba(255, 0, 0, 1)",
-                    "rgba(158, 158, 158, 1)",
-                  ],
-                  borderWidth: 1,
-                },
+              label: totalCategory,
+              data: totalIngCnt,
+              backgroundColor: [
+                "rgba(255, 255, 0, 0.6)",
+                "rgba(255, 153, 0, 0.6)",
+                "rgba(153, 204, 0, 0.6)",
+                "rgba(153, 153, 0, 0.6)",
+                "rgba(51, 102, 0, 0.6)",
+                "rgba(255, 102, 0, 0.6)",
+                "rgba(153, 255, 0, 0.6)",
+                "rgba(153, 51, 0, 0.6)",
+                "rgba(255, 0, 0, 0.6)",
+                "rgba(158, 158, 158, 0.6)",
               ],
+              hoverBackgroundColor: [
+                "rgba(255, 255, 0, 1)",
+                "rgba(255, 153, 0, 1)",
+                "rgba(153, 204, 0, 1)",
+                "rgba(153, 153, 0, 1)",
+                "rgba(51, 102, 0, 1)",
+                "rgba(255, 102, 0, 1)",
+                "rgba(153, 255, 0, 1)",
+                "rgba(153, 51, 0, 1)",
+                "rgba(255, 0, 0, 1)",
+                "rgba(158, 158, 158, 1)",
+              ],
+              borderWidth: 1,
             },
           ],
         },
+
         {
-          2: [
-            { key: 2 },
+          key: 2,
+          labels: totalCategory,
+          datasets: [
             {
-              labels: totalCategory,
-              datasets: [
-                {
-                  label: totalCategory,
-                  data: totalClearCnt,
-                  backgroundColor: [
-                    "rgba(255, 255, 0, 0.6)",
-                    "rgba(255, 153, 0, 0.6)",
-                    "rgba(153, 204, 0, 0.6)",
-                    "rgba(153, 153, 0, 0.6)",
-                    "rgba(51, 102, 0, 0.6)",
-                    "rgba(255, 102, 0, 0.6)",
-                    "rgba(153, 255, 0, 0.6)",
-                    "rgba(153, 51, 0, 0.6)",
-                    "rgba(255, 0, 0, 0.6)",
-                    "rgba(158, 158, 158, 0.6)",
-                  ],
-                  hoverBackgroundColor: [
-                    "rgba(255, 255, 0, 1)",
-                    "rgba(255, 153, 0, 1)",
-                    "rgba(153, 204, 0, 1)",
-                    "rgba(153, 153, 0, 1)",
-                    "rgba(51, 102, 0, 1)",
-                    "rgba(255, 102, 0, 1)",
-                    "rgba(153, 255, 0, 1)",
-                    "rgba(153, 51, 0, 1)",
-                    "rgba(255, 0, 0, 1)",
-                    "rgba(158, 158, 158, 1)",
-                  ],
-                  borderWidth: 1,
-                },
+              label: totalCategory,
+              data: totalClearCnt,
+              backgroundColor: [
+                "rgba(255, 255, 0, 0.6)",
+                "rgba(255, 153, 0, 0.6)",
+                "rgba(153, 204, 0, 0.6)",
+                "rgba(153, 153, 0, 0.6)",
+                "rgba(51, 102, 0, 0.6)",
+                "rgba(255, 102, 0, 0.6)",
+                "rgba(153, 255, 0, 0.6)",
+                "rgba(153, 51, 0, 0.6)",
+                "rgba(255, 0, 0, 0.6)",
+                "rgba(158, 158, 158, 0.6)",
               ],
+              hoverBackgroundColor: [
+                "rgba(255, 255, 0, 1)",
+                "rgba(255, 153, 0, 1)",
+                "rgba(153, 204, 0, 1)",
+                "rgba(153, 153, 0, 1)",
+                "rgba(51, 102, 0, 1)",
+                "rgba(255, 102, 0, 1)",
+                "rgba(153, 255, 0, 1)",
+                "rgba(153, 51, 0, 1)",
+                "rgba(255, 0, 0, 1)",
+                "rgba(158, 158, 158, 1)",
+              ],
+              borderWidth: 1,
             },
           ],
         },
+
         {
-          3: [
-            { key: 3 },
+          key: 3,
+          labels: totalCategory,
+          datasets: [
             {
-              labels: totalCategory,
-              datasets: [
-                {
-                  label: totalCategory,
-                  data: totalDeathCnt,
-                  backgroundColor: [
-                    "rgba(255, 255, 0, 0.6)",
-                    "rgba(255, 153, 0, 0.6)",
-                    "rgba(153, 204, 0, 0.6)",
-                    "rgba(153, 153, 0, 0.6)",
-                    "rgba(51, 102, 0, 0.6)",
-                    "rgba(255, 102, 0, 0.6)",
-                    "rgba(153, 255, 0, 0.6)",
-                    "rgba(153, 51, 0, 0.6)",
-                    "rgba(255, 0, 0, 0.6)",
-                    "rgba(158, 158, 158, 0.6)",
-                  ],
-                  hoverBackgroundColor: [
-                    "rgba(255, 255, 0, 1)",
-                    "rgba(255, 153, 0, 1)",
-                    "rgba(153, 204, 0, 1)",
-                    "rgba(153, 153, 0, 1)",
-                    "rgba(51, 102, 0, 1)",
-                    "rgba(255, 102, 0, 1)",
-                    "rgba(153, 255, 0, 1)",
-                    "rgba(153, 51, 0, 1)",
-                    "rgba(255, 0, 0, 1)",
-                    "rgba(158, 158, 158, 1)",
-                  ],
-                  borderWidth: 1,
-                },
+              label: totalCategory,
+              data: totalDeathCnt,
+              backgroundColor: [
+                "rgba(255, 255, 0, 0.6)",
+                "rgba(255, 153, 0, 0.6)",
+                "rgba(153, 204, 0, 0.6)",
+                "rgba(153, 153, 0, 0.6)",
+                "rgba(51, 102, 0, 0.6)",
+                "rgba(255, 102, 0, 0.6)",
+                "rgba(153, 255, 0, 0.6)",
+                "rgba(153, 51, 0, 0.6)",
+                "rgba(255, 0, 0, 0.6)",
+                "rgba(158, 158, 158, 0.6)",
               ],
+              hoverBackgroundColor: [
+                "rgba(255, 255, 0, 1)",
+                "rgba(255, 153, 0, 1)",
+                "rgba(153, 204, 0, 1)",
+                "rgba(153, 153, 0, 1)",
+                "rgba(51, 102, 0, 1)",
+                "rgba(255, 102, 0, 1)",
+                "rgba(153, 255, 0, 1)",
+                "rgba(153, 51, 0, 1)",
+                "rgba(255, 0, 0, 1)",
+                "rgba(158, 158, 158, 1)",
+              ],
+              borderWidth: 1,
             },
           ],
         },
@@ -380,12 +365,7 @@ const KoreaCityData = () => {
             <>
               <ContentTitle data={title} />
               <section className={styles.container}>
-                {data.map((item, index) => (
-                  <article key={item[index][0].key} className={styles.wrap}>
-                    <h3 className="sr-only">{options[index].title.text}</h3>
-                    <Doughnut data={item[index][1]} options={options[index]} />
-                  </article>
-                ))}
+                <DoughnutChart data={data} options={options} />
               </section>
             </>
           )}
