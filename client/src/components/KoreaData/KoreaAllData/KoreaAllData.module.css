@@ -19,6 +19,50 @@
   margin-bottom: panelBottom;
 }
 
+canvas {
+  margin-bottom: panelBottom;
+}
+.legends {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 12px;
+}
+.legend {
+  display: flex;
+  width: 48%;
+  margin-bottom: 10px;
+}
+.legend:nth-child(2n + 1) {
+  margin-right: 2%;
+}
+.label {
+  display: flex;
+  align-items: center;
+  margin-right: 3px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
+}
+.color {
+  width: 20px;
+  height: 100%;
+  margin-right: 3px;
+  border: 1px solid white;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.cnt {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
+}
+.per {
+  margin-left: 2px;
+  font-size: 11px;
+}
+
 .tooltip {
   display: flex;
   align-items: center;

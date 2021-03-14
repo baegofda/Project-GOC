@@ -44,7 +44,7 @@ canvas {
   width: 20px;
   height: 100%;
   margin-right: 3px;
-  background-color: red;
+  border: 1px solid white;
   border-radius: 2px;
   flex-shrink: 0;
 }

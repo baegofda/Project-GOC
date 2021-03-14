@@ -27,7 +27,7 @@ const KoreaAllData = (props) => {
       text: "일일 시도별 확진자 증감 비율",
     },
     legend: {
-      position: "right",
+      display: false,
     },
     tooltips: {
       callbacks: {
@@ -55,7 +55,6 @@ const KoreaAllData = (props) => {
     },
     legend: {
       position: "right",
-      padding: 10,
     },
   });
   useEffect(() => {
@@ -87,17 +86,17 @@ const KoreaAllData = (props) => {
 
       setPanelData([
         {
-          id: "1",
+          id: 0,
           category: "일일 현황",
           cnt: Number(totalIncCnt).toLocaleString(),
         },
         {
-          id: "2",
+          id: 1,
           category: "지역 발생",
           cnt: Number(totalLocalCnt).toLocaleString(),
         },
         {
-          id: "3",
+          id: 2,
           category: "해외 유입",
           cnt: Number(totalOverflowCnt).toLocaleString(),
         },
@@ -125,25 +124,25 @@ const KoreaAllData = (props) => {
 
       setCardsData([
         {
-          id: "1",
+          id: 0,
           title: "확진자 수",
           count: Number(totalDefCnt).toLocaleString(),
           new: Number(newDefCnt).toLocaleString(),
         },
         {
-          id: "2",
+          id: 1,
           title: "치료 중",
           count: Number(totalIngCnt).toLocaleString(),
           new: Number(newIngCnt).toLocaleString(),
         },
         {
-          id: "3",
+          id: 2,
           title: "완치자 수",
           count: Number(totalClearCnt).toLocaleString(),
           new: Number(newClearCnt).toLocaleString(),
         },
         {
-          id: "4",
+          id: 3,
           title: "사망자 수",
           count: Number(totalDeathCnt).toLocaleString(),
           new: Number(newDeathCnt).toLocaleString(),
@@ -189,6 +188,9 @@ const KoreaAllData = (props) => {
       });
       const totalCategory = [...category, "기타"];
       const totalConfirmed = [...confirmed, otherConfirmed];
+      const total = totalConfirmed.reduce(
+        (prev, curr) => Number(prev) + Number(curr)
+      );
 
       //막대 차트 데이터
       const barObjs = arr
@@ -209,6 +211,7 @@ const KoreaAllData = (props) => {
 
       setDoughnutData({
         labels: totalCategory,
+        total: total,
         datasets: [
           {
             label: totalCategory,
@@ -237,15 +240,12 @@ const KoreaAllData = (props) => {
               "rgba(255, 0, 0, 1)",
               "rgba(158, 158, 158, 1)",
             ],
-
             borderWidth: 1,
           },
         ],
       });
-
       setBarData({
         labels: date,
-
         datasets: [
           {
             label: "지역 발생",
@@ -300,6 +300,37 @@ const KoreaAllData = (props) => {
                   <article className={styles.wrap}>
                     <h3 className="sr-only">일일 시도별 확진자 증감 비율</h3>
                     <Doughnut data={doughnutData} options={doughnutOptions} />
+                    <dl className={styles.legends}>
+                      {doughnutData.labels.map((label, idx) => (
+                        <div key={idx} className={styles.legend}>
+                          <dt className={styles.label}>
+                            <span
+                              className={styles.color}
+                              style={{
+                                background:
+                                  doughnutData.datasets[0].backgroundColor[idx],
+                              }}
+                            ></span>
+                            {label}
+                          </dt>
+                          <dd className={styles.cnt}>
+                            {doughnutData.datasets[0].data[
+                              idx
+                            ].toLocaleString()}{" "}
+                            명
+                            <span className={styles.per}>
+                              (
+                              {(
+                                (doughnutData.datasets[0].data[idx] /
+                                  doughnutData.total) *
+                                100
+                              ).toFixed(1)}
+                              %)
+                            </span>
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
                   </article>
                   <article className={styles.wrap}>
                     <h3 className="sr-only">일별 현황 차트</h3>
