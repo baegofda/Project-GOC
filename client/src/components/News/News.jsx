@@ -75,7 +75,6 @@ const News = () => {
               date: curr.pubDate,
               site: "naver",
             });
-
             return prev;
           }, []);
 
@@ -89,9 +88,7 @@ const News = () => {
             });
             return prev;
           }, []);
-
           const arr = [...naverArr, ...daumArr];
-
           dataHandler(arr);
         })
       )

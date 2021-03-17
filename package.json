@@ -2,8 +2,7 @@
   "scripts": {
     "server": "cd server && nodemon server",
     "client": "cd client && yarn start",
-    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "postinstall": "bower install"
+    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   },
   "dependencies": {
     "concurrently": "^6.0.0",
@@ -12,8 +11,7 @@
     "express": "^4.17.1",
     "lodash.debounce": "^4.0.8",
     "request": "^2.88.2",
-    "xml-js": "^1.6.11",
-    "bower": "~1.7.1"
+    "xml-js": "^1.6.11"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
