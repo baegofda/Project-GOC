@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ContentTitle from "../ContentTitle/ContentTitle";
 import styles from "./Center.module.css";
