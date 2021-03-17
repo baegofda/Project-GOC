@@ -33,10 +33,9 @@
 }
 .item {
   padding: panelPadding;
-  opacity: 0.8;
 }
-.item:hover {
-  opacity: 1;
+.item:hover .link {
+  color: linkColor;
 }
 .item:not(:last-child) {
   border-bottom: glassBorder;
@@ -62,18 +61,17 @@
 .title {
   margin-bottom: 3px;
   color: categoryBlack;
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
 }
 .desc {
   margin-bottom: 5px;
-  font-size: 13px;
+  font-size: 0.8125rem;
   color: panelBlack;
 }
 
 .link {
-  font-size: 13px;
-  color: linkColor;
+  font-size: 0.8125rem;
 }
 .link::before {
   content: "👉";
