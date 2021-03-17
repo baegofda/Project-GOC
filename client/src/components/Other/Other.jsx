@@ -11,7 +11,7 @@ const Other = () => {
   });
   const [resource, setResource] = useState({
     title: [
-      { id: "1", title: "데이터시각화", category: "visual" },
+      { id: "1", title: "데이터 시각화", category: "visual" },
       {
         id: "2",
         title: "데이터 출처",
@@ -28,34 +28,41 @@ const Other = () => {
       },
       {
         id: "2",
+        name: "카카오맵 API",
+        url: "https://apis.map.kakao.com/",
+        desc: "백신 예방센터 위치를 표시하기 위한 지도 API",
+        category: "visual",
+      },
+      {
+        id: "3",
         name: "공공데이터포털 OPEN API",
         url: "https://www.data.go.kr/",
         desc: "국내 종합현황, 시도별 현황, 백신 접종 센터 정보",
         category: "resource",
       },
       {
-        id: "3",
+        id: "4",
         name: "NovelCOVID API",
         url: "https://github.com/disease-sh/API",
         desc: "해외 종합현황, 주변국가별 현황",
         category: "resource",
       },
       {
-        id: "4",
+        id: "5",
         name: "Johns Hopkins CSSE",
         url: "https://systems.jhu.edu/",
         desc: "전 세계 대시보드",
         category: "resource",
       },
       {
-        id: "5",
+        id: "6",
         name: "네이버 뉴스 API",
         url: "https://developers.naver.com/docs/search/news/",
         desc: "주요 뉴스 (네이버 뉴스)",
         category: "resource",
       },
       {
-        id: "6",
+        id: "7",
         name: "다음 검색 API",
         url:
           "https://developers.kakao.com/docs/latest/ko/daum-search/dev-guide",
