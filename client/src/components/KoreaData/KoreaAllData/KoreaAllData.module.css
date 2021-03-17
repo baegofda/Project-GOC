@@ -1,5 +1,5 @@
 @value linkColor,panelBlack,glassBackground,glassBlur,glassBorder,contentShadow from "../../../common/colors.module.css";
-@value glassRadius,panelPadding,panelBottom from "../../../common/sizes.module.css";
+@value glassRadius,widthSize,marginRight,panelPadding,panelBottom from "../../../common/sizes.module.css";
 
 .container {
   display: flex;
@@ -30,11 +30,11 @@ canvas {
 }
 .legend {
   display: flex;
-  width: 48%;
+  width: widthSize;
   margin-bottom: 10px;
 }
 .legend:nth-child(2n + 1) {
-  margin-right: 2%;
+  margin-right: marginRight;
 }
 .label {
   display: flex;
@@ -94,10 +94,10 @@ canvas {
   }
 
   .wrap {
-    width: 49%;
+    width: widthSize;
   }
   .wrap:nth-child(2n + 1) {
     margin-bottom: 0;
-    margin-right: 2%;
+    margin-right: marginRight;
   }
 }

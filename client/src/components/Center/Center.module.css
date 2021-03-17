@@ -1,5 +1,5 @@
 @value categoryBlack,linkColor,glassBackground,glassBlur,glassBorder,panelBlack,contentShadow from "../../common/colors.module.css";
-@value glassRadius,panelPadding,panelBottom from "../../common/sizes.module.css";
+@value glassRadius,widthSize,marginRight,panelPadding,panelBottom from "../../common/sizes.module.css";
 
 .container {
   display: flex;
@@ -41,10 +41,10 @@
   flex-wrap: wrap;
 }
 .content {
-  width: 49%;
+  width: widthSize;
 }
 .content:nth-child(2n + 1) {
-  margin-right: 2%;
+  margin-right: marginRight;
 }
 .title,
 .desc {

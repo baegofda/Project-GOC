@@ -1,5 +1,5 @@
 @value panelBlack,glassBackground,glassBlur,glassBorder,contentShadow from "../../common/colors.module.css";
-@value glassRadius,panelPadding,panelBottom from "../../common/sizes.module.css";
+@value glassRadius,widthSize,marginRight,panelPadding,panelBottom from "../../common/sizes.module.css";
 
 .wrap {
   width: 100%;
@@ -26,11 +26,11 @@ canvas {
 }
 .legend {
   display: flex;
-  width: 48%;
+  width: widthSize;
   margin-bottom: 10px;
 }
 .legend:nth-child(2n + 1) {
-  margin-right: 2%;
+  margin-right: marginRight;
 }
 .color {
   width: 20px;
@@ -59,10 +59,10 @@ canvas {
 
 @media all and (min-width: 768px) and (max-width: 1023px) {
   .wrap {
-    width: 48%;
+    width: widthSize;
   }
   .wrap:nth-child(2n + 1) {
-    margin-right: 2%;
+    margin-right: marginRight;
   }
   .wrap:last-child {
     margin-bottom: panelBottom;
@@ -76,10 +76,10 @@ canvas {
   }
 
   .wrap {
-    width: 48%;
+    width: widthSize;
   }
   .wrap:nth-child(2n + 1) {
-    margin-right: 2%;
+    margin-right: marginRight;
   }
   .wrap:last-child {
     margin-bottom: panelBottom;
