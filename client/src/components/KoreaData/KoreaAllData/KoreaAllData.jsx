@@ -8,7 +8,7 @@ import ContentPanel from "./ContentPanel/ContentPanel";
 import Err from "../../Err/Err";
 import Loading from "../../Loading/Loading";
 
-const KoreaAllData = (props) => {
+const KoreaAllData = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [display, setDisplay] = useState();
   const [status, setStatus] = useState(true);
@@ -54,7 +54,7 @@ const KoreaAllData = (props) => {
       padding: 20,
     },
     legend: {
-      position: "right",
+      position: "bottom",
     },
   });
   useEffect(() => {
