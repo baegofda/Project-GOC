@@ -5,10 +5,10 @@ import { Doughnut } from "react-chartjs-2";
 const DoughnutChart = ({ data, options }) => {
   return (
     <>
-      {data.map((item, index) => (
+      {data.map((item) => (
         <article key={item.key} className={styles.wrap}>
-          <h3 className="sr-only">{options[index].title.text}</h3>
-          <Doughnut data={item} options={options[index]} />
+          <h3 className="sr-only">{options[item.key].title.text}</h3>
+          <Doughnut data={item} options={options[item.key]} />
           <dl className={styles.legends}>
             {item.labels.map((label, idx) => (
               <div key={idx} className={styles.legend}>

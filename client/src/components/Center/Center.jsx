@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import ContentTitle from "../ContentTitle/ContentTitle";
 import styles from "./Center.module.css";
@@ -21,7 +21,6 @@ const Center = () => {
         level: 10, // 지도의 확대 레벨
       };
       const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
       // ------------------- 다중마커 생성
       centers.forEach((center) => {
         //마커 이미지 url
@@ -41,10 +40,6 @@ const Center = () => {
           clickable: true,
           image: markerImage, // 마커 이미지
         });
-
-        // 아래 코드는 위의 마커를 생성하는 코드에서 clickable: true 와 같이
-        // 마커를 클릭했을 때 지도의 클릭 이벤트가 발생하지 않도록 설정합니다
-        // marker.setClickable(true);
 
         // 마커를 지도에 표시합니다.
         marker.setMap(map);
@@ -126,6 +121,9 @@ const Center = () => {
           sido: item.sido,
           sigungu: item.sigungu,
           zipCode: item.zipCode,
+          url: `https://map.kakao.com/link/map/${item.org || sp},${item.lng},${
+            item.lat
+          }`,
           latlng: new kakao.maps.LatLng(item.lng, item.lat),
           info: `<div style="width:200px; padding:5px; font-size:12px;">${
             item.org || sp
@@ -162,9 +160,11 @@ const Center = () => {
       {status ? (
         <>
           <ContentTitle data={title} />
-          <section className={styles.wrap}>
+          <section className={styles.container}>
             <h3 className="sr-only">백신 접종센터 정보</h3>
-            <div id="map" className={styles.map}></div>
+            <div className={styles.wrap}>
+              <div id="map" className={styles.map}></div>
+            </div>
             <ul className={styles.items}>
               {centers.map((center) => (
                 <li key={center.id} className={styles.item}>
@@ -188,6 +188,9 @@ const Center = () => {
                       <dd className={styles.desc}>{center.facilityName}</dd>
                     </div>
                   </dl>
+                  <a className={styles.link} href={center.url} target="blank">
+                    <span className={styles.text}>지도로 확인하기</span>
+                  </a>
                 </li>
               ))}
             </ul>

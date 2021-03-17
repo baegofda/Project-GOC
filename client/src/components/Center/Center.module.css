@@ -1,13 +1,35 @@
 @value categoryBlack,linkColor,glassBackground,glassBlur,glassBorder,panelBlack,contentShadow from "../../common/colors.module.css";
 @value glassRadius,panelPadding,panelBottom from "../../common/sizes.module.css";
 
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap,
 .items {
+  height: 500px;
   background: glassBackground;
   backdrop-filter: glassBlur;
   -webkit-backdrop-filter: glassBlur;
   border: glassBorder;
   border-radius: glassRadius;
   box-shadow: contentShadow;
+  overflow-y: scroll;
+}
+.wrap {
+  width: 100%;
+  padding: panelPadding;
+  order: 2;
+}
+.map {
+  height: 100%;
+  border-radius: glassRadius;
+}
+
+.items {
+  margin-bottom: panelBottom;
+  order: 1;
 }
 .item {
   padding: panelPadding;
@@ -22,9 +44,8 @@
   width: 49%;
 }
 .content:nth-child(2n + 1) {
-  margin-right: 2px;
+  margin-right: 2%;
 }
-
 .title,
 .desc {
   text-overflow: ellipsis;
@@ -33,11 +54,107 @@
   overflow: hidden;
 }
 .title {
+  margin-bottom: 3px;
   color: categoryBlack;
   font-size: 12px;
   font-weight: 500;
 }
 .desc {
+  margin-bottom: 5px;
   font-size: 13px;
   color: panelBlack;
+}
+
+.link {
+  font-size: 13px;
+  color: linkColor;
+}
+.link::before {
+  content: "👉";
+  position: relative;
+  margin-right: 3px;
+  bottom: 3px;
+}
+.link:hover .text {
+  text-decoration: underline;
+}
+
+/* tablet */
+@media all and (min-width: 768px) and (max-width: 1023px) {
+  .container {
+    flex-direction: row;
+    padding: panelPadding;
+    background: glassBackground;
+    backdrop-filter: glassBlur;
+    -webkit-backdrop-filter: glassBlur;
+    border: glassBorder;
+    border-radius: glassRadius;
+    box-shadow: contentShadow;
+    overflow-y: scroll;
+  }
+
+  .wrap,
+  .items {
+    background: inherit;
+    backdrop-filter: inherit;
+    -webkit-backdrop-filter: inherit;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    overflow-y: scroll;
+  }
+  .wrap {
+    padding: 0;
+    flex: 1;
+    order: 1;
+  }
+  .map {
+    border-radius: 0;
+  }
+
+  .items {
+    margin-bottom: 0;
+    flex: 1;
+    order: 2;
+  }
+}
+
+/* desktop */
+@media all and (min-width: 1024px) {
+  .container {
+    flex-direction: row;
+    padding: panelPadding;
+    background: glassBackground;
+    backdrop-filter: glassBlur;
+    -webkit-backdrop-filter: glassBlur;
+    border: glassBorder;
+    border-radius: glassRadius;
+    box-shadow: contentShadow;
+    overflow-y: scroll;
+  }
+
+  .wrap,
+  .items {
+    background: inherit;
+    backdrop-filter: inherit;
+    -webkit-backdrop-filter: inherit;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    overflow-y: scroll;
+  }
+  .wrap {
+    padding: 0;
+    flex: 2;
+    order: 1;
+  }
+  .map {
+    border-radius: 0;
+  }
+
+  .items {
+    margin-bottom: 0;
+    flex: 1;
+    order: 2;
+  }
 }
