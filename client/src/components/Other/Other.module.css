@@ -1,4 +1,4 @@
-@value glassBackground,glassBlur,glassBorder,contentShadow,linkColor from "../../common/colors.module.css";
+@value categoryBlack,glassBackground,glassBlur,glassBorder,contentShadow,linkColor from "../../common/colors.module.css";
 @value panelFont,glassRadius,panelPadding,panelTitleBottom,contentBottom,panelBottom from "../../common/sizes.module.css";
 
 .wrap {
@@ -16,6 +16,7 @@
 
 .title {
   margin-bottom: panelTitleBottom;
+  color: categoryBlack;
   font-size: panelFont;
   font-weight: 500;
 }

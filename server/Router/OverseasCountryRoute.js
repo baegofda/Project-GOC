@@ -5,7 +5,7 @@ const request = require("request");
 const options = {
   method: "GET",
   url:
-    "https://corona.lmao.ninja/v2/historical/Japan,China,USA,Russia,kr?lastdays=30",
+    "https://corona.lmao.ninja/v2/historical/Japan,China,USA,Russia,kr?lastdays=1",
   headers: {
     Cookie: "__cfduid=d58c27a867343ef9ed1741405f09c6e8e1614119574",
   },

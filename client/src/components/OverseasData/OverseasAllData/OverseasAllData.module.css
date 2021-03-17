@@ -1,5 +1,5 @@
-@value glassBackground,glassBlur,glassBorder,panelRed,panelOrange,panelGreen,panelBlack,linkColor,contentShadow from "../../../common/colors.module.css";
-@value glassRadius,panelPadding,panelTitleBottom,contentBottom,panelBottom from "../../../common/sizes.module.css";
+@value categoryBlack,glassBackground,glassBlur,glassBorder,panelRed,panelOrange,panelGreen,panelBlack,linkColor,contentShadow from "../../../common/colors.module.css";
+@value glassRadius,panelPadding,panelTitleBottom,panelBottom from "../../../common/sizes.module.css";
 
 .wrap {
   margin-bottom: panelBottom;
@@ -29,6 +29,9 @@
   margin-bottom: 0;
 }
 
+.title {
+  color: categoryBlack;
+}
 .title,
 .count {
   width: 50%;

@@ -1,5 +1,5 @@
-@value glassBackground,glassBlur,glassBorder,contentShadow from "../../common/colors.module.css";
-@value glassRadius,contentBottom,panelPadding,panelBottom from "../../common/sizes.module.css";
+@value panelBlack,glassBackground,glassBlur,glassBorder,contentShadow from "../../common/colors.module.css";
+@value glassRadius,panelPadding,panelBottom from "../../common/sizes.module.css";
 
 .wrap {
   width: 100%;
@@ -22,6 +22,7 @@ canvas {
   display: flex;
   flex-wrap: wrap;
   font-size: 12px;
+  color: panelBlack;
 }
 .legend {
   display: flex;
@@ -31,21 +32,18 @@ canvas {
 .legend:nth-child(2n + 1) {
   margin-right: 2%;
 }
-.label {
-  display: flex;
-  align-items: center;
-  margin-right: 3px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  word-wrap: normal;
-  overflow: hidden;
-}
 .color {
   width: 20px;
   height: 100%;
   margin-right: 3px;
   border: 1px solid white;
   border-radius: 2px;
+  flex-shrink: 0;
+}
+.label {
+  display: flex;
+  align-items: center;
+  margin-right: 3px;
   flex-shrink: 0;
 }
 .cnt {

@@ -58,7 +58,7 @@ const Center = () => {
         });
 
         // 마커에 클릭이벤트를 등록합니다
-        kakao.maps.event.addListener(marker, "click", function () {
+        kakao.maps.event.addListener(marker, "click", () => {
           // 마커 위에 인포윈도우를 표시합니다
           infowindow.open(map, marker);
         });
@@ -117,6 +117,7 @@ const Center = () => {
         const name = item.centerName;
         const sp = name.split("코로나19")[1];
         const center = {
+          id: item.id,
           centerName: sp,
           orgName: item.org,
           centerType: item.centerType,
@@ -162,7 +163,34 @@ const Center = () => {
         <>
           <ContentTitle data={title} />
           <section className={styles.wrap}>
+            <h3 className="sr-only">백신 접종센터 정보</h3>
             <div id="map" className={styles.map}></div>
+            <ul className={styles.items}>
+              {centers.map((center) => (
+                <li key={center.id} className={styles.item}>
+                  <dl className={styles.contents}>
+                    <div className={styles.content}>
+                      <dt className={styles.title}>센터 이름</dt>
+                      <dd className={styles.desc}>
+                        {center.orgName || center.centerName}
+                      </dd>
+                    </div>
+                    <div className={styles.content}>
+                      <dt className={styles.title}>센터종류</dt>
+                      <dd className={styles.desc}>{center.centerType}</dd>
+                    </div>
+                    <div className={styles.content}>
+                      <dt className={styles.title}>센터 주소</dt>
+                      <dd className={styles.desc}>{center.address}</dd>
+                    </div>
+                    <div className={styles.content}>
+                      <dt className={styles.title}>시설 위치</dt>
+                      <dd className={styles.desc}>{center.facilityName}</dd>
+                    </div>
+                  </dl>
+                </li>
+              ))}
+            </ul>
           </section>
         </>
       ) : (

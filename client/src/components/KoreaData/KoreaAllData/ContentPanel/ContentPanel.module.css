@@ -1,5 +1,5 @@
-@value customWhite,glassBackground,glassBlur,glassBorder,panelRed,panelOrange,panelBlue,panelGreen,panelBlack,contentShadow from "../../../../common/colors.module.css";
-@value panelFont,glassRadius,panelPadding,contentBlack,descBlack,panelTitleBottom,contentBottom,panelBottom from "../../../../common/sizes.module.css";
+@value customWhite,categoryBlack,glassBackground,glassBlur,glassBorder,panelRed,panelOrange,panelBlue,panelGreen,panelBlack,contentShadow from "../../../../common/colors.module.css";
+@value glassRadius,panelPadding,panelTitleBottom,contentBottom,panelBottom from "../../../../common/sizes.module.css";
 
 .wrap {
   margin-bottom: panelBottom;
@@ -34,6 +34,11 @@
 }
 .panel:nth-child(3) .cnt {
   color: #bc31e0;
+}
+
+.category,
+.title {
+  color: categoryBlack;
 }
 .category {
   margin-bottom: panelTitleBottom;

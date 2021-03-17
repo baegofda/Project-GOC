@@ -7,7 +7,7 @@ const NotFound = (props) => {
     Swal.fire({
       title: "잘못된 접근입니다 !",
       html: "<b></b>초 후에 자동으로 닫힙니다.",
-      timer: 5000,
+      timer: 3000,
       timerProgressBar: true,
       didOpen: () => {
         Swal.showLoading();

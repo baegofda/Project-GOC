@@ -1,4 +1,43 @@
-.map {
-  width: 1000px;
-  height: 500px;
+@value categoryBlack,linkColor,glassBackground,glassBlur,glassBorder,panelBlack,contentShadow from "../../common/colors.module.css";
+@value glassRadius,panelPadding,panelBottom from "../../common/sizes.module.css";
+
+.items {
+  background: glassBackground;
+  backdrop-filter: glassBlur;
+  -webkit-backdrop-filter: glassBlur;
+  border: glassBorder;
+  border-radius: glassRadius;
+  box-shadow: contentShadow;
+}
+.item {
+  padding: panelPadding;
+  border-bottom: glassBorder;
+}
+
+.contents {
+  display: flex;
+  flex-wrap: wrap;
+}
+.content {
+  width: 49%;
+}
+.content:nth-child(2n + 1) {
+  margin-right: 2px;
+}
+
+.title,
+.desc {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+  overflow: hidden;
+}
+.title {
+  color: categoryBlack;
+  font-size: 12px;
+  font-weight: 500;
+}
+.desc {
+  font-size: 13px;
+  color: panelBlack;
 }

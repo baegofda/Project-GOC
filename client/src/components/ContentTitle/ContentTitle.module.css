@@ -1,5 +1,5 @@
-@value glassBackground,glassBlur,glassBorder,contentBlack,descBlack,contentShadow from "../../common/colors.module.css";
-@value subFont,titleFont,titleWeight,glassRadius,pannelPadding,titleMargin from "../../common/sizes.module.css";
+@value contentBlack,descBlack from "../../common/colors.module.css";
+@value subFont,titleFont,titleWeight,titleMargin from "../../common/sizes.module.css";
 
 .wrap {
   margin-bottom: titleMargin;

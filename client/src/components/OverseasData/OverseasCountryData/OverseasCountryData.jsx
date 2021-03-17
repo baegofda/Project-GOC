@@ -119,7 +119,12 @@ const OverseasCountryData = () => {
         const recovered = curr.timeline.recovered[date]
           ? curr.timeline.recovered[date]
           : curr.timeline.recovered[beforeDate];
-        prev.push({ country, cases, deaths, recovered });
+        prev.push({
+          country: country || 0,
+          cases: cases || 0,
+          deaths: deaths || 0,
+          recovered: recovered || 0,
+        });
         return prev;
       }, []);
       const reArr = arr.reverse();
@@ -135,7 +140,6 @@ const OverseasCountryData = () => {
       const recovered = reArr.map((item) => {
         return item.recovered;
       });
-
       const sumFirmeCnt = cases.reduce(
         (prev, curr) => Number(prev) + Number(curr)
       );
@@ -145,7 +149,6 @@ const OverseasCountryData = () => {
       const sumClearCnt = recovered.reduce(
         (prev, curr) => Number(prev) + Number(curr)
       );
-
       setData([
         {
           key: 0,

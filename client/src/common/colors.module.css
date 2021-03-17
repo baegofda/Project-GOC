@@ -1,7 +1,7 @@
 /* font color */
 @value customWhite: #fff;
 @value categoryBlack: #333;
-@value menuBlack: rgba(0,0,0,0.8);
+@value menuBlack: rgba(0,0,0,0.7);
 
 /* glass */
 @value glassBackground: linear-gradient(to bottom,rgb(255, 255, 255, 0.4),rgb(255, 255, 255, 0.2));
@@ -16,7 +16,7 @@
 @value panelOrange: #e9c158;
 @value panelBlue: #118eff;
 @value panelGreen: #58e319;
-@value panelBlack: #333;
+@value panelBlack: rgba(0,0,0,0.8);
 
 /* content */
 @value contentBlack: #363636;
