@@ -33,6 +33,12 @@
 }
 .item {
   padding: panelPadding;
+  opacity: 0.8;
+}
+.item:hover {
+  opacity: 1;
+}
+.item:not(:last-child) {
   border-bottom: glassBorder;
 }
 
