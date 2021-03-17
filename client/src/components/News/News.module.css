@@ -23,17 +23,17 @@
 .item:not(:last-child) {
   margin-bottom: contentBottom;
 }
+.item:hover .title {
+  color: linkColor;
+  text-decoration: underline;
+}
 .link {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
-.link:hover .title,
-.link:hover .desc {
-  text-decoration: underline;
-}
 .title {
-  color: linkColor;
+  font-weight: 500;
   text-overflow: ellipsis;
   white-space: nowrap;
   word-wrap: normal;
