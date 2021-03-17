@@ -340,14 +340,16 @@ const KoreaAllData = () => {
               ) : (
                 <div className={styles.tooltip}>
                   <span className={styles.text}>일주일 현황 차트 보러가기</span>
-                  <a
-                    className={styles.link}
-                    href="https://www.naver.com"
-                    target="blank"
-                  >
-                    Naver
-                  </a>
-                  에서 알아보기
+                  <span>
+                    <a
+                      className={styles.link}
+                      href="https://www.naver.com"
+                      target="blank"
+                    >
+                      Naver
+                    </a>
+                    에서 알아보기
+                  </span>
                 </div>
               )}
             </>

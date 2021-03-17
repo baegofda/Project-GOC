@@ -79,7 +79,7 @@ canvas {
   text-decoration: underline;
   cursor: pointer;
 }
-.text::after {
+.link::before {
   content: "👉";
   position: relative;
   bottom: 3px;

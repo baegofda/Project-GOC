@@ -99,7 +99,7 @@ const News = () => {
         setStatus(false);
         console.log(err);
       });
-  }, []);
+  }, [i]);
 
   return (
     <>
