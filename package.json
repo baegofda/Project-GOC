@@ -6,7 +6,8 @@
   "scripts": {
     "server": "cd server && nodemon server",
     "client": "cd client && yarn start",
-    "start": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "start": "cd server && node sever.js"
   },
   "dependencies": {
     "concurrently": "^6.0.0",
