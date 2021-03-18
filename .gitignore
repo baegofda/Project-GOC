@@ -2,5 +2,7 @@ node_modules
 
 # API_KEYS
 .env
+dev.js
+
 # Local Netlify folder
 .netlify
