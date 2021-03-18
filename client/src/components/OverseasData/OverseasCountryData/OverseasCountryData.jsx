@@ -143,7 +143,7 @@ const OverseasCountryData = () => {
       const sumFirmeCnt = cases.reduce(
         (prev, curr) => Number(prev) + Number(curr)
       );
-      const sumIngCnt = deaths.reduce(
+      const sumDeathsCnt = deaths.reduce(
         (prev, curr) => Number(prev) + Number(curr)
       );
       const sumClearCnt = recovered.reduce(
@@ -178,7 +178,7 @@ const OverseasCountryData = () => {
         },
         {
           key: 1,
-          total: sumIngCnt,
+          total: sumClearCnt,
           labels: country,
           datasets: [
             {
@@ -204,7 +204,7 @@ const OverseasCountryData = () => {
         },
         {
           key: 2,
-          total: sumClearCnt,
+          total: sumDeathsCnt,
           labels: country,
           datasets: [
             {
