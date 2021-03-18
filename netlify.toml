@@ -1,2 +1,2 @@
 [build]
-command = “CI= npm build”
+“CI= npm build”
