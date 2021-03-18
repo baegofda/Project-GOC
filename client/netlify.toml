@@ -1,8 +1,12 @@
+[build] 
+  command = "npm  build"
+  build = "build"
+
 [[redirects]]
-/api              https://projectgoc.herokuapp.com/api
-/api/city         https://projectgoc.herokuapp.com/api/city
-/api/all          https://projectgoc.herokuapp.com/api/all
-/api/country      https://projectgoc.herokuapp.com/api/country
-/api/center       https://projectgoc.herokuapp.com/api/center
-/news/naver       https://projectgoc.herokuapp.com/api/news/naver
-/news/daum        https://projectgoc.herokuapp.com/api/news/daum
+  /api              https://projectgoc.herokuapp.com/api
+  /api/city         https://projectgoc.herokuapp.com/api/city
+  /api/all          https://projectgoc.herokuapp.com/api/all
+  /api/country      https://projectgoc.herokuapp.com/api/country
+  /api/center       https://projectgoc.herokuapp.com/api/center
+  /news/naver       https://projectgoc.herokuapp.com/api/news/naver
+  /news/daum        https://projectgoc.herokuapp.com/api/news/daum
