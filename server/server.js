@@ -10,7 +10,7 @@ const overseasAllRoute = require("./Router/OverseasAllRoute");
 const overseasCountryRoute = require("./Router/OverseasCountryRoute");
 app.use(cors());
 
-app.use("/api", koreaAllRoute);
+app.use("/", koreaAllRoute);
 app.use("/api/city", koreaCityRoute);
 app.use("/api/center", centerRoute);
 app.use("/api/news/naver", naverNewsRoute);
