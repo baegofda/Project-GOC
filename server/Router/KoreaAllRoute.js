@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const request = require("request");
 const converter = require("xml-js");
-require("dotenv").config({ path: "../.env" });
+const config = require("./config/key");
+// require("dotenv").config({ path: "../.env" });
 
 // 날짜 구하기 위함
 const date = new Date();
@@ -15,7 +16,7 @@ const today = year + "" + month + "" + day;
 const options = {
   method: "GET",
   url: `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=${
-    process.env.OPENAPI_KEY
+    config.OPENAPI_KEY
   }&pageNo=1&numOfRows=10&startCreateDt=${today - 7}&endCreateDt=${today}`,
   headers: {},
 };

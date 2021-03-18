@@ -8,6 +8,7 @@ const daumNewsRoute = require("./Router/DaumNewsRoute");
 const centerRoute = require("./Router/CenterRoute");
 const overseasAllRoute = require("./Router/OverseasAllRoute");
 const overseasCountryRoute = require("./Router/OverseasCountryRoute");
+const config = require("./config/key");
 
 app.use(cors());
 
