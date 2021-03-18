@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const request = require("request");
-const config = require("./config/key");
+const config = require("../config/key");
 // require("dotenv").config({ path: "../.env" });
 
 const options = {
