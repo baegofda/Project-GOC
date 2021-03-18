@@ -3,7 +3,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 module.exports = (app) => {
   app.use(
     createProxyMiddleware("/api", {
-      target: "https://git.heroku.com/projectgoc.git",
+      target: "http://localhost:5000",
       changeOrigin: true,
     })
   );
