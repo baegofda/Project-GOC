@@ -16,7 +16,7 @@
     "lodash.debounce": "^4.0.8",
     "request": "^2.88.2",
     "xml-js": "^1.6.11",
-    "yarn": "1.22.5"
+    "yarn": "^1.22.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"
