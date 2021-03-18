@@ -1,4 +1,7 @@
 [[redirects]]
-  /api/*              https://projectgoc.herokuapp.com/api/:splat 200
-  /*                  /index.html 200
-
+  from = "/api"
+  to = "https://projectgoc.herokuapp.com/"
+  status = 200
+  force = true # COMMENT: ensure that we always redirect
+  headers = {X-From = "Netlify"}
+  signed = "11def0bf-1950-4b4c-a9a2-f4ccb32e034d"
