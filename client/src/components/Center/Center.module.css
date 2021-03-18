@@ -4,6 +4,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .wrap,
@@ -20,6 +21,7 @@
 .wrap {
   width: 100%;
   padding: panelPadding;
+  overflow: hidden;
   order: 2;
 }
 .map {
@@ -94,7 +96,6 @@
     border: glassBorder;
     border-radius: glassRadius;
     box-shadow: contentShadow;
-    overflow-y: scroll;
   }
 
   .wrap,
@@ -105,7 +106,6 @@
     border: 0;
     border-radius: 0;
     box-shadow: none;
-    overflow-y: scroll;
   }
   .wrap {
     padding: 0;
@@ -120,6 +120,7 @@
     margin-bottom: 0;
     flex: 1;
     order: 2;
+    overflow-y: scroll;
   }
 }
 
@@ -134,7 +135,6 @@
     border: glassBorder;
     border-radius: glassRadius;
     box-shadow: contentShadow;
-    overflow-y: scroll;
   }
 
   .wrap,
@@ -145,7 +145,6 @@
     border: 0;
     border-radius: 0;
     box-shadow: none;
-    overflow-y: scroll;
   }
   .wrap {
     padding: 0;
@@ -160,5 +159,6 @@
     margin-bottom: 0;
     flex: 1;
     order: 2;
+    overflow-y: scroll;
   }
 }

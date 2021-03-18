@@ -54,7 +54,7 @@
   backdrop-filter: glassBlur;
   -webkit-backdrop-filter: glassBlur;
   box-shadow: boxShadow;
-  overflow-y: scroll;
+  overflow-y: overlay;
   transform: translateX(-250px);
   transition: transform 300ms ease-in-out;
 }
