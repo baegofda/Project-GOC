@@ -41,7 +41,7 @@ const OverseasAllData = () => {
     };
 
     axios
-      .get("/api/all")
+      .get("https://projectgoc.herokuapp.com/api/all")
       .then((res) => {
         const item = res.data;
         dataHandler(item);

@@ -60,7 +60,10 @@ const News = () => {
     };
 
     axios
-      .all([axios.get("/api/news/naver"), axios.get("/api/news/daum")])
+      .all([
+        axios.get("https://projectgoc.herokuapp.com/api/news/naver"),
+        axios.get("https://projectgoc.herokuapp.com/api/news/daum"),
+      ])
       .then(
         axios.spread((res1, res2) => {
           const naverArr = res1.data.items.reduce((prev, curr) => {

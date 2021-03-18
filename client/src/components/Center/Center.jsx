@@ -145,7 +145,7 @@ const Center = () => {
       kakaoMaps(arr);
     };
     axios
-      .get("/api/center")
+      .get("https://projectgoc.herokuapp.com/api/center")
       .then((res) => {
         const items = res.data.data;
         setIsLoading(false);

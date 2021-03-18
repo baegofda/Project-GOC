@@ -360,7 +360,7 @@ const KoreaCityData = () => {
     };
 
     axios
-      .get("/api/city")
+      .get("https://projectgoc.herokuapp.com/api/city")
       .then((res) => {
         const data = res.data.elements[0].elements[1].elements[0].elements;
         const items = data.slice(0, 19);

@@ -231,7 +231,7 @@ const OverseasCountryData = () => {
       ]);
     };
     axios
-      .get("/api/country")
+      .get("https://projectgoc.herokuapp.com/api/country")
       .then((res) => {
         const items = res.data;
         dataHandler(items);
