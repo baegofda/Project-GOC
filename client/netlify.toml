@@ -3,10 +3,6 @@
   build = "build"
 
 [[redirects]]
-  /api/*              https://projectgoc.herokuapp.com/api 200
-  /api/city/*          https://projectgoc.herokuapp.com/api/city 200
-  /api/all/*           https://projectgoc.herokuapp.com/api/all 200
-  /api/country/*       https://projectgoc.herokuapp.com/api/country 200
-  /api/center/*        https://projectgoc.herokuapp.com/api/center 200
-  /news/naver/*        https://projectgoc.herokuapp.com/api/news/naver 200
-  /news/daum/*        https://projectgoc.herokuapp.com/api/news/daum 200
+  /api/*              https://projectgoc.herokuapp.com/api/:splat 200
+  /*                  /index.html 200
+
