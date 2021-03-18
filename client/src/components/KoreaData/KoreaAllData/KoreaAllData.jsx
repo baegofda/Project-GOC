@@ -269,7 +269,7 @@ const KoreaAllData = () => {
     };
 
     axios
-      .get("https://projectgoc.herokuapp.com/api")
+      .get("/api")
       .then((res) => {
         const data = res.data.elements[0].elements[1].elements[0].elements;
         const items = data.slice(0, 133);
