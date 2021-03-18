@@ -4,7 +4,7 @@
 @value menuBlack: rgba(0,0,0,0.7);
 
 /* glass */
-@value glassBackground: linear-gradient(to bottom,rgb(255, 255, 255, 0.4),rgb(255, 255, 255, 0.2));
+@value glassBackground: linear-gradient(to bottom,rgb(255, 255, 255, 0.6),rgb(255, 255, 255, 0.2));
 @value glassBlur: blur(4px);
 @value glassBorder: 1px solid rgba(255, 255, 255, 0.5);
 
