@@ -10,6 +10,10 @@ const overseasAllRoute = require("./Router/OverseasAllRoute");
 const overseasCountryRoute = require("./Router/OverseasCountryRoute");
 app.use(cors());
 
+app.get("/", (req, res) => {
+  res.send("server testing ok");
+});
+
 app.use("/api", koreaAllRoute);
 app.use("/api/city", koreaCityRoute);
 app.use("/api/center", centerRoute);
