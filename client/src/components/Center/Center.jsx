@@ -3,9 +3,11 @@ import axios from "axios";
 import ContentTitle from "../ContentTitle/ContentTitle";
 import styles from "./Center.module.css";
 import Err from "../Err/Err";
+import Loading from "../Loading/Loading";
 const { kakao } = window;
 
 const Center = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [status, setStatus] = useState(true);
   const [title, setTitle] = useState({
     title: "백신 접종센터 정보",
@@ -139,7 +141,6 @@ const Center = () => {
         };
         return center;
       });
-
       setCenters(arr);
       kakaoMaps(arr);
     };
@@ -147,6 +148,7 @@ const Center = () => {
       .get("/api/center")
       .then((res) => {
         const items = res.data.data;
+        setIsLoading(false);
         dataHandler(items);
       })
       .catch((err) => {
@@ -159,42 +161,52 @@ const Center = () => {
     <>
       {status ? (
         <>
-          <ContentTitle data={title} />
-          <section className={styles.container}>
-            <h3 className="sr-only">백신 접종센터 정보</h3>
-            <div className={styles.wrap}>
-              <div id="map" className={styles.map}></div>
-            </div>
-            <ul className={styles.items}>
-              {centers.map((center) => (
-                <li key={center.id} className={styles.item}>
-                  <dl className={styles.contents}>
-                    <div className={styles.content}>
-                      <dt className={styles.title}>센터 이름</dt>
-                      <dd className={styles.desc}>
-                        {center.orgName || center.centerName}
-                      </dd>
-                    </div>
-                    <div className={styles.content}>
-                      <dt className={styles.title}>센터종류</dt>
-                      <dd className={styles.desc}>{center.centerType}</dd>
-                    </div>
-                    <div className={styles.content}>
-                      <dt className={styles.title}>센터 주소</dt>
-                      <dd className={styles.desc}>{center.address}</dd>
-                    </div>
-                    <div className={styles.content}>
-                      <dt className={styles.title}>시설 위치</dt>
-                      <dd className={styles.desc}>{center.facilityName}</dd>
-                    </div>
-                  </dl>
-                  <a className={styles.link} href={center.url} target="blank">
-                    <span className={styles.text}>지도로 확인하기</span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <>
+              <ContentTitle data={title} />
+              <section className={styles.container}>
+                <h3 className="sr-only">백신 접종센터 정보</h3>
+                <div className={styles.wrap}>
+                  <div id="map" className={styles.map}></div>
+                </div>
+                <ul className={styles.items}>
+                  {centers.map((center) => (
+                    <li key={center.id} className={styles.item}>
+                      <dl className={styles.contents}>
+                        <div className={styles.content}>
+                          <dt className={styles.title}>센터 이름</dt>
+                          <dd className={styles.desc}>
+                            {center.orgName || center.centerName}
+                          </dd>
+                        </div>
+                        <div className={styles.content}>
+                          <dt className={styles.title}>센터종류</dt>
+                          <dd className={styles.desc}>{center.centerType}</dd>
+                        </div>
+                        <div className={styles.content}>
+                          <dt className={styles.title}>센터 주소</dt>
+                          <dd className={styles.desc}>{center.address}</dd>
+                        </div>
+                        <div className={styles.content}>
+                          <dt className={styles.title}>시설 위치</dt>
+                          <dd className={styles.desc}>{center.facilityName}</dd>
+                        </div>
+                      </dl>
+                      <a
+                        className={styles.link}
+                        href={center.url}
+                        target="blank"
+                      >
+                        <span className={styles.text}>지도로 확인하기</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            </>
+          )}
         </>
       ) : (
         <Err />

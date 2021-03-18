@@ -18,10 +18,6 @@ const News = () => {
   const [news, setNews] = useState({});
 
   useEffect(() => {
-    setInterval(() => {
-      setIsLoading(false);
-    }, 500);
-
     const dataHandler = (items) => {
       const arr = items.reduce((prev, curr) => {
         const reg = /[<b>|</b>|&qout|amp|lt|gt;]/g;
@@ -90,6 +86,7 @@ const News = () => {
           }, []);
           const arr = [...naverArr, ...daumArr];
           dataHandler(arr);
+          setIsLoading(false);
         })
       )
       .catch((err) => {
