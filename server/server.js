@@ -10,13 +10,13 @@ const overseasAllRoute = require("./Router/OverseasAllRoute");
 const overseasCountryRoute = require("./Router/OverseasCountryRoute");
 app.use(cors());
 
-app.use("/", koreaAllRoute);
-app.use("/city", koreaCityRoute);
-app.use("/center", centerRoute);
-app.use("/news/naver", naverNewsRoute);
-app.use("/news/daum", daumNewsRoute);
-app.use("/all", overseasAllRoute);
-app.use("/country", overseasCountryRoute);
+app.use("/api", koreaAllRoute);
+app.use("/api/city", koreaCityRoute);
+app.use("/api/center", centerRoute);
+app.use("/api/news/naver", naverNewsRoute);
+app.use("/api/news/daum", daumNewsRoute);
+app.use("/api/all", overseasAllRoute);
+app.use("/api/country", overseasCountryRoute);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
