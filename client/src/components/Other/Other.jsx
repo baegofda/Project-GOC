@@ -7,7 +7,7 @@ const Other = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [title, setTitle] = useState({
     title: "데이터 출처",
-    desc: "사이트에 사용된 자료 & 데이터들의 출처등을 나타냅니다.",
+    desc: "사이트에 사용된 자료와 데이터들의 출처등을 나타냅니다.",
   });
   const [resource, setResource] = useState({
     title: [
