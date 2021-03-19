@@ -15,7 +15,7 @@ const KoreaAllData = () => {
   const [title, setTitle] = useState({
     title: "국내 종합 현황",
     desc:
-      "국내 코로나 종합 현황판과 일일 시도별 확진자 증감 비율과 일별 현황 차트를 제공합니다. (단위: 명)",
+      "국내 코로나 종합 현황판과 일일 시도별 확진자 증감 비율, 일별 현황 차트를 제공합니다. (단위: 명)",
   });
   const [panelData, setPanelData] = useState([]);
   const [cardsData, setCardsData] = useState([]);

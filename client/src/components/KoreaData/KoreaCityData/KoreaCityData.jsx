@@ -11,7 +11,7 @@ const KoreaCityData = () => {
   const [status, setStatus] = useState(true);
   const [title, setTitle] = useState({
     title: "시도별 현황",
-    desc: "시도별 현황 차트를 제공합니다. (단위: 명)",
+    desc: "시도별 종합 현황 차트를 제공합니다. (단위: 명)",
   });
   const [data, setData] = useState({});
   const [options, setOptions] = useState([

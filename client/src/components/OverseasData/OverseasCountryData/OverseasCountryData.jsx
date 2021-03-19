@@ -13,7 +13,7 @@ const OverseasCountryData = () => {
   const [title, setTitle] = useState({
     title: "주변 국가별 현황",
     desc:
-      "주변 국가(미국, 일본, 중국, 러시아)의 현황 차트를 제공합니다. (단위: 명)",
+      "주변 국가(미국, 일본, 중국, 러시아)와 대한민국의 종합 현황 차트를 제공합니다. (단위: 명)",
   });
   const [data, setData] = useState({});
   const [options, setOptions] = useState([
