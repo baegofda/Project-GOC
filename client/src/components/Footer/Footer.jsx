@@ -8,7 +8,7 @@ const Footer = memo(() => {
         코로나19로 인해 피해를 입은 모든 분들을 응원하며 확산 방지에 힘써주시는
         모든 분들 감사합니다. by 개발자 이준호 <br />
         <span className={styles.copy}>
-          Copyright © 2021. Dale All rights reserved.
+          Copyright © 2021. Juno All rights reserved.
         </span>
       </p>
     </footer>
