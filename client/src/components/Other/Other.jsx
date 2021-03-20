@@ -72,7 +72,6 @@ const Other = () => {
     ],
   });
   setTimeout(() => {
-    console.log("loading");
     setIsLoading(false);
   }, 500);
   return (
