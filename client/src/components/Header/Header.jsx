@@ -64,7 +64,7 @@ const Header = memo((props) => {
           ))}
         </ul>
         <footer className={styles.footer}>
-          <strong className={styles.auth}>개발자 : 이준호(Dale)</strong>
+          <strong className={styles.auth}>개발자 : 이준호(Juno)</strong>
         </footer>
       </nav>
     </header>
