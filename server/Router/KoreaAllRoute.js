@@ -3,7 +3,6 @@ const router = express.Router();
 const request = require("request");
 const converter = require("xml-js");
 const config = require("../config/key");
-// require("dotenv").config({ path: "../.env" });
 
 // 날짜 구하기 위함
 const date = new Date();
