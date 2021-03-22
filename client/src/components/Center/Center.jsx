@@ -14,7 +14,6 @@ const Center = () => {
     desc: "국내 백신 접종 센터의 위치를 지도에 표시해 줍니다.",
   });
   const [centers, setCenters] = useState([]);
-
   useEffect(() => {
     const kakaoMaps = (centers) => {
       const mapContainer = document.getElementById("map"); // 지도를 표시할 div
@@ -108,7 +107,6 @@ const Center = () => {
         map.setCenter(locPosition);
       }
     };
-
     const dataHandler = (items) => {
       const arr = items.map((item) => {
         const name = item.centerName;

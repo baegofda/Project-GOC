@@ -57,6 +57,7 @@ const KoreaAllData = () => {
       position: "bottom",
     },
   });
+
   useEffect(() => {
     setDisplay(window.innerWidth);
 
