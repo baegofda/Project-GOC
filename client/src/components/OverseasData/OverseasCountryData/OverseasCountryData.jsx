@@ -98,7 +98,6 @@ const OverseasCountryData = () => {
   ]);
   useEffect(() => {
     const dataHandler = (items) => {
-      console.log("items", items);
       const arr = items.reduce((prev, curr) => {
         // const date = moment()
         //   .subtract(1, "day")
@@ -132,7 +131,6 @@ const OverseasCountryData = () => {
         });
         return prev;
       }, []);
-      // console.log("arr", arr);
       const reArr = arr.reverse();
       const country = reArr.map((item) => {
         return item.country;

@@ -25,12 +25,15 @@ const News = () => {
           .replace(reg, "")
           .replace(/#39/g, "'")
           .replace(/#34/g, '"');
-        const itemDate = moment(curr.date).format("L");
-        const itemYear = itemDate.split("/")[2];
-        const itemMonth = itemDate.split("/")[0];
-        const itemDay = itemDate.split("/")[1];
+        // const itemDate = moment(curr.date).format("YYYY.DD.MM");
+        // const itemDate = moment(curr.date).format("L");
+        // console.log(itemDate);
+        // const itemYear = itemDate.split("/")[2];
+        // const itemMonth = itemDate.split("/")[0];
+        // const itemDay = itemDate.split("/")[1];
         const itemDesc = curr.desc;
-        const articleDate = `${itemYear}.${itemMonth}.${itemDay}`;
+        const articleDate = moment(curr.date).format("YYYY.DD.MM");
+        console.log(articleDate);
         const articleDesc = itemDesc
           .replace(reg, "")
           .replace(/#39/g, "'")
