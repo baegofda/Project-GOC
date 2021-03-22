@@ -4,7 +4,6 @@ import styles from "./OverseasCountryData.module.css";
 import ContentTitle from "../../ContentTitle/ContentTitle";
 import Err from "../../Err/Err";
 import Loading from "../../Loading/Loading";
-import moment from "moment";
 import DoughnutChart from "../../DoughnutChart/DoughnutChart";
 
 const OverseasCountryData = () => {
@@ -99,30 +98,11 @@ const OverseasCountryData = () => {
   useEffect(() => {
     const dataHandler = (items) => {
       const arr = items.reduce((prev, curr) => {
-        // const date = moment()
-        //   .subtract(1, "day")
-        //   .format("l")
-        //   .split("20")
-        //   .join("");
-        // const beforeDate = moment()
-        //   .subtract(2, "day")
-        //   .format("l")
-        //   .split("20")
-        //   .join("");
-        const date = moment(moment().subtract(1, "day")).format("M/DD/YY");
-        const beforeDate = moment(moment().subtract(2, "day")).format(
-          "M/DD/YY"
-        );
         const country = curr.country;
-        const cases = curr.timeline.cases[date]
-          ? curr.timeline.cases[date]
-          : curr.timeline.cases[beforeDate];
-        const deaths = curr.timeline.deaths[date]
-          ? curr.timeline.deaths[date]
-          : curr.timeline.deaths[beforeDate];
-        const recovered = curr.timeline.recovered[date]
-          ? curr.timeline.recovered[date]
-          : curr.timeline.recovered[beforeDate];
+        const cases = curr.timeline.cases[Object.keys(curr.timeline.cases)];
+        const deaths = curr.timeline.deaths[Object.keys(curr.timeline.deaths)];
+        const recovered =
+          curr.timeline.recovered[Object.keys(curr.timeline.recovered)];
         prev.push({
           country: country || 0,
           cases: cases || 0,
