@@ -98,17 +98,22 @@ const OverseasCountryData = () => {
   ]);
   useEffect(() => {
     const dataHandler = (items) => {
+      console.log("items", items);
       const arr = items.reduce((prev, curr) => {
-        const date = moment()
-          .subtract(1, "day")
-          .format("l")
-          .split("20")
-          .join("");
-        const beforeDate = moment()
-          .subtract(2, "day")
-          .format("l")
-          .split("20")
-          .join("");
+        // const date = moment()
+        //   .subtract(1, "day")
+        //   .format("l")
+        //   .split("20")
+        //   .join("");
+        // const beforeDate = moment()
+        //   .subtract(2, "day")
+        //   .format("l")
+        //   .split("20")
+        //   .join("");
+        const date = moment(moment().subtract(1, "day")).format("M/DD/YY");
+        const beforeDate = moment(moment().subtract(2, "day")).format(
+          "M/DD/YY"
+        );
         const country = curr.country;
         const cases = curr.timeline.cases[date]
           ? curr.timeline.cases[date]
@@ -127,6 +132,7 @@ const OverseasCountryData = () => {
         });
         return prev;
       }, []);
+      // console.log("arr", arr);
       const reArr = arr.reverse();
       const country = reArr.map((item) => {
         return item.country;
