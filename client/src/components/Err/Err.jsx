@@ -19,6 +19,7 @@ const Err = () => {
         <a
           className={styles.link}
           href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%EC%BD%94%EB%A1%9C%EB%82%98"
+          title="코로나 현황 보러가기"
           target="blank"
         >
           코로나 현황 보러가기

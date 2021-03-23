@@ -78,6 +78,7 @@ const OverseasAllData = () => {
                 <a
                   className={styles.link}
                   href="https://covid19.who.int/"
+                  title="WHO지도에서 알아보기"
                   target="blank"
                 >
                   <dfn>

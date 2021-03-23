@@ -113,6 +113,7 @@ const News = () => {
                           <a
                             className={styles.link}
                             href={article.url}
+                            title={article.title}
                             target="blank"
                           >
                             <strong className={styles.title}>

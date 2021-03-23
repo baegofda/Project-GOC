@@ -89,7 +89,12 @@ const Other = () => {
                   .filter((link) => link.category === title.category)
                   .map((link) => (
                     <li key={link.id} className={styles.items}>
-                      <a className={styles.link} href={link.url} target="blank">
+                      <a
+                        className={styles.link}
+                        href={link.url}
+                        title={link.name + link.desc}
+                        target="blank"
+                      >
                         <span className={styles.site}>{link.name}</span> -{" "}
                         {link.desc}
                       </a>

@@ -345,6 +345,7 @@ const KoreaAllData = () => {
                     <a
                       className={styles.link}
                       href="https://www.naver.com"
+                      title="네이버 현황차트 보러가기"
                       target="blank"
                     >
                       Naver

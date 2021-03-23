@@ -195,6 +195,9 @@ const Center = () => {
                       <a
                         className={styles.link}
                         href={center.url}
+                        title={
+                          center.orgName || center.centerName + "지도 검색"
+                        }
                         target="blank"
                       >
                         <span className={styles.text}>지도로 확인하기</span>
