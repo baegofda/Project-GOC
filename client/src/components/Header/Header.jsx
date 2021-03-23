@@ -4,7 +4,7 @@ import styles from "./Header.module.css";
 import List from "./List/List";
 const LOGO = "/assets/images/main-logo.png";
 
-const Header = memo((props) => {
+const Header = memo(() => {
   const gnb = useRef();
   const [category, setCategory] = useState([
     { id: 1, categoryName: "국내", type: "korea" },
@@ -24,7 +24,13 @@ const Header = memo((props) => {
     <header className={styles.header}>
       <div className={styles.wrap}>
         <span className={styles.gnb}>
-          <Link ref={gnb} className={styles.btn} to="#" onClick={onToggle}>
+          <Link
+            ref={gnb}
+            className={styles.btn}
+            to="#"
+            onClick={onToggle}
+            title="메뉴 리스트"
+          >
             {isToggle ? (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -49,8 +55,8 @@ const Header = memo((props) => {
           </Link>
         </span>
         <h1 className={styles.logo}>
-          <Link className={styles.link} to="/">
-            <img className={styles.img} src={LOGO} alt="코로나야 사라져라 ~!" />
+          <Link className={styles.link} to="/" title="코로나야 사라져라">
+            <img className={styles.img} src={LOGO} alt="" />
           </Link>
         </h1>
       </div>

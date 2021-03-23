@@ -98,6 +98,7 @@ const List = ({ type }) => {
                 className={styles.link}
                 to={list.link}
                 activeClassName={styles.selected}
+                title={list.listName}
               >
                 <svg
                   className={styles.ico}
