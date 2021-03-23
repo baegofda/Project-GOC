@@ -26,7 +26,7 @@ const News = () => {
           .replace(/#39/g, "'")
           .replace(/#34/g, '"');
         const itemDesc = curr.desc;
-        const articleDate = moment(curr.date).format("YYYY.DD.MM");
+        const articleDate = moment(curr.date).format("YYYY.MM.DD");
         const articleDesc = itemDesc
           .replace(reg, "")
           .replace(/#39/g, "'")
