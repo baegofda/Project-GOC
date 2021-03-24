@@ -117,6 +117,7 @@ const List = ({ type }) => {
               <a
                 className={styles.link}
                 href="http://ncov.mohw.go.kr/regSocdisBoardView.do?brdId=6&brdGubun=68&ncvContSeq=495"
+                title="거리두기 정보"
                 target="blank"
               >
                 <svg
