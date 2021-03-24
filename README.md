@@ -1,8 +1,18 @@
 # Project GOC
 
-![랜딩페이지](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbI9QAP%2Fbtq0Q9RoyVJ%2F1fL8gYzpfIianHr8NsPkI0%2Fimg.png)
+<br/>
+
+&nbsp;국내외 코로나에대한 정보와 데이터를 제공하는 사이트입니다.
+
+<br/>
+
+![랜딩페이지](https://blog.kakaocdn.net/dn/G34mc/btq0SlYOt5B/QbPejVAxGOgKxLKqRHa5QK/img.gif)
+
+<br/>
 
 [프로젝트 구경가기](https://project-goc.netlify.app/)
+
+<br/>
 
 ## **✨ 목표**
 
@@ -28,6 +38,7 @@
 <br/>
 
 - HTML, CSS(PostCSS), Reactjs, Nodejs(Expressjs)
+- 호스팅서버 : 프론트엔드 서버(Netlify), 백엔드 서버(heroku)
 - 공공데이터포털 OPEN API (국내 종합현황, 시도별현황, 백신 접종 센터)
 - 카카오맵 API (백신 접종 센터 위치제공)
 - 네이버 뉴스 API (주요소식 - 네이버 검색결과)
@@ -45,7 +56,7 @@
 
 <br/>
 
-## **👀 주요기능 & 코드**
+## **👀 주요기능 & 부분 코드**
 
 <br/>
 
@@ -535,7 +546,7 @@ axios
 
 <br/>
 
-<p align="center"><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcAJAsf%2Fbtq0XoNpRQR%2FK3tpSxKfBJ30SOnTsKlPnK%2Fimg.png"/></p>
+<p align="center"><img src="https://blog.kakaocdn.net/dn/GmeeE/btq0Vp6YCtm/iz2PRKUacLEguLEBXHKNBK/img.gif"/></p>
 
 <br/>
 
@@ -706,7 +717,7 @@ axios
 
 <br/>
 
-<p align="center"><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2Fb6Hlpe%2Fbtq0Xpr2io1%2FqhGuNxMyw8fDqdDp1LHYrK%2Fimg.png"/></p>
+<p align="center"><img src="https://blog.kakaocdn.net/dn/LFVkq/btq0XQJK1ci/HE8MkWYdkufhZqLJfjkxX0/img.gif"/></p>
 
 <br/>
 
@@ -810,163 +821,174 @@ axios
 
 <br/>
 
-<p align="center"><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FcAJAsf%2Fbtq0XoNpRQR%2FK3tpSxKfBJ30SOnTsKlPnK%2Fimg.png"/></p>
+<p align="center"><img src="https://blog.kakaocdn.net/dn/FzQcy/btq0Tut80l1/7N7LnpZvzviytkwKZhF8OK/img.gif"/></p>
 
 <br/>
 
-### 📂 client>src>components>Center>Center.jsx
+### 📂 client>src>components>Loading>Loading.jsx
 
 ---
 
 <br/>
 
-&nbsp;받은 데이터를 기반으로 센터의 위치를 카카오map으로 전달하여 보여줍니다.
+&nbsp;데이터가 로드되기 전에 로딩 스피너를 보여준 후 로드가 되면 state를 업데이트하여 스피너가 사라집니다.
 
 <br/>
 
 ```js
-// 카카오맵 API 호출
-const kakaoMaps = (centers) => {
-  const mapContainer = document.getElementById("map"); // 지도를 표시할 div
-  const mapOption = {
-    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-    level: 10, // 지도의 확대 레벨
-  };
-  const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+const [isLoading, setIsLoading] = useState(true);
 
-  // set된 센터 데이터를 기반으로 map으로 전달
-  centers.forEach((center) => {
-    //마커 이미지 url
-    const imageSrc =
-      "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png";
-
-    // 마커 이미지의 이미지 크기 입니다
-    const imageSize = new kakao.maps.Size(24, 35);
-
-    // 마커 이미지를 생성합니다
-    const markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize);
-
-    // 마커를 생성합니다
-    const marker = new kakao.maps.Marker({
-      map: map, // 마커를 표시할 지도
-      position: center.latlng, // 마커를 표시할 위치
-      clickable: true,
-      image: markerImage, // 마커 이미지
-    });
-
-    // 마커를 지도에 표시합니다.
-    marker.setMap(map);
-
-    const iwRemoveable = true;
-
-    // 인포윈도우를 생성합니다
-    const infowindow = new kakao.maps.InfoWindow({
-      content: center.info,
-      removable: iwRemoveable,
-    });
-
-    // 마커에 클릭이벤트를 등록합니다
-    kakao.maps.event.addListener(marker, "click", () => {
-      // 마커 위에 인포윈도우를 표시합니다
-      infowindow.open(map, marker);
-    });
-  });
-
-  // --------------------------- 사용자 위치 인식
-  // HTML5의 geolocation으로 사용할 수 있는지 확인합니다
-  if (navigator.geolocation) {
-    // GeoLocation을 이용해서 접속 위치를 얻어옵니다
-    navigator.geolocation.getCurrentPosition((position) => {
-      let lat = position.coords.latitude; // 위도
-      let lon = position.coords.longitude; // 경도
-
-      let locPosition = new kakao.maps.LatLng(lat, lon); // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
-      const message = '<div style="padding:5px;">여기에 계신가요?!</div>'; // 인포윈도우에 표시될 내용입니다
-
-      // 마커와 인포윈도우를 표시합니다
-      displayMarker(locPosition, message);
-    });
-  } else {
-    // HTML5의 GeoLocation을 사용할 수 없을때 마커 표시 위치와 인포윈도우 내용을 설정합니다
-
-    const locPosition = new kakao.maps.LatLng(33.450701, 126.570667);
-    const message = "geolocation을 사용할수 없어요..";
-
-    displayMarker(locPosition, message);
-  }
-
-  // 지도에 마커와 인포윈도우를 표시하는 함수입니다
-  function displayMarker(locPosition, message) {
-    // 마커를 생성합니다
-    const marker = new kakao.maps.Marker({
-      map: map,
-      position: locPosition,
-    });
-
-    const iwContent = message; // 인포윈도우에 표시할 내용
-    const iwRemoveable = true;
-
-    // 인포윈도우를 생성합니다
-    const infowindow = new kakao.maps.InfoWindow({
-      content: iwContent,
-      removable: iwRemoveable,
-    });
-
-    // 인포윈도우를 마커위에 표시합니다
-    infowindow.open(map, marker);
-
-    // 지도 중심좌표를 접속위치로 변경합니다
-    map.setCenter(locPosition);
-  }
-};
-
-// 받은 데이터 가공 밑 state set
-const dataHandler = (items) => {
-  const arr = items.map((item) => {
-    const name = item.centerName;
-    const sp = name.split("코로나19")[1];
-    const center = {
-      id: item.id,
-      centerName: sp,
-      orgName: item.org,
-      centerType: item.centerType,
-      facilityName: item.facilityName,
-      address: item.address,
-      sido: item.sido,
-      sigungu: item.sigungu,
-      zipCode: item.zipCode,
-      url: `https://map.kakao.com/link/map/${item.org || sp},${item.lng},${
-        item.lat
-      }`,
-      latlng: new kakao.maps.LatLng(item.lng, item.lat),
-      info: `<div style="width:200px; padding:5px; font-size:12px;">${
-        item.org || sp
-      } <br><a href="https://map.kakao.com/link/map/${item.org || sp},${
-        item.lng
-      },${
-        item.lat
-      }" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/${
-        item.org || sp
-      },${item.lng},${
-        item.lat
-      }" style="color:blue" target="_blank">길찾기</a></div>`,
-    };
-    return center;
-  });
-  setCenters(arr);
-  kakaoMaps(arr);
-};
-
-//API에서 받은 데이터 Handler에 인자값으로
 axios
-  .get("https://projectgoc.herokuapp.com/api/center")
+  .get("https://projectgoc.herokuapp.com/api/country")
   .then((res) => {
-    const items = res.data.data;
-    setIsLoading(false);
+    const items = res.data;
     dataHandler(items);
+    setIsLoading(false);
   })
   .catch((err) => {
     setStatus(false);
     console.log(err);
   });
+
+return (
+  <>
+    {status ? (
+      <>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <ContentTitle data={title} />
+            <section className={styles.wrap}>
+              <DoughnutChart data={data} options={options} />
+            </section>
+          </>
+        )}
+      </>
+    ) : (
+      <Err />
+    )}
+  </>
+);
 ```
+
+<br/>
+
+### **💻 코드살펴보기 (Error))**
+
+<br/>
+
+> API서버에 문제가 생겼을 경우 alert과 함께 문구를 보여줍니다.
+
+<br/>
+
+<p align="center"><img src="https://blog.kakaocdn.net/dn/beyQiD/btq0SGuTsx7/lPgNyJ9eEDqsRFL9zIk1k0/img.gif"/></p>
+
+<br/>
+
+### 📂 client>src>components>Err>Err.jsx
+
+---
+
+<br/>
+
+&nbsp;API서버에 문제가 생겨 데이터로드가 불가능하다면 .catch문에서 state를 업데이트합니다.
+
+<br/>
+
+```js
+const [status, setStatus] = useState(true);
+
+axios
+  .get("https://projectgoc.herokuapp.com/api/country")
+  .then((res) => {
+    const items = res.data;
+    dataHandler(items);
+    setIsLoading(false);
+  })
+  .catch((err) => {
+    setStatus(false);
+    console.log(err);
+  });
+
+return (
+  <>
+    {status ? (
+      <>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <ContentTitle data={title} />
+            <section className={styles.wrap}>
+              <DoughnutChart data={data} options={options} />
+            </section>
+          </>
+        )}
+      </>
+    ) : (
+      <Err />
+    )}
+  </>
+);
+```
+
+<br/>
+
+### **💻 코드살펴보기 (404 Error))**
+
+<br/>
+
+> 잘못된 경로로 접근시 404 페이지로 라우트 됩니다.
+
+<br/>
+
+<p align="center"><img src="https://blog.kakaocdn.net/dn/dJ24gk/btq0ZK9TA3F/OgwTEMQTLbRE3VbFoM1H7K/img.gif"/></p>
+
+<br/>
+
+### 📂 client>src>components>NotFound>NotFound.jsx
+
+---
+
+<br/>
+
+&nbsp;react-router-dom의 Route를 이용하여 404 페이지로 라우트 됩니다.
+
+<br/>
+
+```js
+const App = () => {
+  return (
+    <>
+      <Header />
+      <main className="main">
+        <Switch>
+          <Route exact path={"/"} component={KoreaAllData} />
+          <Route path={"/city"} component={KoreaCityData} />
+          <Route path={"/all"} component={OverseasAllData} />
+          <Route path={"/country"} component={OverseasCountryData} />
+          <Route path={"/dashboard"} component={JHUDashboard} />
+          <Route path={"/center"} component={Center} />
+          <Route path={"/news"} component={News} />
+          <Route path={"/other"} component={Other} />
+          <Route to={"/404"} component={NotFound} />
+        </Switch>
+      </main>
+      <Footer />
+    </>
+  );
+};
+```
+
+<br/>
+
+## 👋 마무리 소감
+
+<br/>
+
+> 리액트 학습 이후 처음 만들어본 사이트였다.
+>
+> Expressjs와 연동이 제대로 되지않아 Proxy에 관해 좀더 생각해보고 API 데이터 가공법, 데이터 시각화를 위한 Chartjs, momentjs 라이브러리 사용을 해보며 API와 라이브러리에 대한 막연한 두려움 또한 없앨 수 있었고 프로젝트 구성부터 컴포넌트 분리, 백엔드 서버 구축 및 연동, 공공데이터 API 사용법, 서버 호스팅까지 해보며 전체적인 플로우를 이해하는데 많은 도움이 된것 같다.
+>
+> 또한 호스팅 후 커뮤니티와 지인들의 피드백을 통하여 미쳐 생각치못했던 부분들에 대해 알아가고 코드를 한번 더 보며 유저의 경험과 리팩토링에대한 중요성 또한 느낄 수 있었다.
