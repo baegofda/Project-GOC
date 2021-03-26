@@ -8,7 +8,7 @@ import DoughnutChart from "../../DoughnutChart/DoughnutChart";
 
 const KoreaCityData = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [status, setStatus] = useState(true);
+  const [isStatus, setIsStatus] = useState(true);
   const [title, setTitle] = useState({
     title: "시도별 현황",
     desc: "시도별 종합 현황 차트를 제공합니다. (단위: 명)",
@@ -368,13 +368,13 @@ const KoreaCityData = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        setStatus(false);
+        setIsStatus(false);
         console.log(err);
       });
   }, []);
   return (
     <>
-      {status ? (
+      {isStatus ? (
         <>
           {isLoading ? (
             <Loading />

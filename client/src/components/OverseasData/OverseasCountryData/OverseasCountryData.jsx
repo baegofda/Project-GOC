@@ -8,7 +8,7 @@ import DoughnutChart from "../../DoughnutChart/DoughnutChart";
 
 const OverseasCountryData = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [status, setStatus] = useState(true);
+  const [isStatus, setIsStatus] = useState(true);
   const [title, setTitle] = useState({
     title: "주변 국가별 현황",
     desc:
@@ -96,7 +96,7 @@ const OverseasCountryData = () => {
     },
   ]);
   useEffect(() => {
-    const dataHandler = (items) => {
+    const OverseasCountryDataHandler = (items) => {
       const arr = items.reduce((prev, curr) => {
         const country = curr.country;
         const cases = curr.timeline.cases[Object.keys(curr.timeline.cases)];
@@ -218,17 +218,17 @@ const OverseasCountryData = () => {
       .get("https://projectgoc.herokuapp.com/api/country")
       .then((res) => {
         const items = res.data;
-        dataHandler(items);
+        OverseasCountryDataHandler(items);
         setIsLoading(false);
       })
       .catch((err) => {
-        setStatus(false);
+        setIsStatus(false);
         console.log(err);
       });
   }, []);
   return (
     <>
-      {status ? (
+      {isStatus ? (
         <>
           {isLoading ? (
             <Loading />

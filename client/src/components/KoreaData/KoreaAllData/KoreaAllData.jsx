@@ -11,7 +11,7 @@ import Loading from "../../Loading/Loading";
 const KoreaAllData = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [display, setDisplay] = useState();
-  const [status, setStatus] = useState(true);
+  const [isStatus, setIsStatus] = useState(true);
   const [title, setTitle] = useState({
     title: "국내 종합 현황",
     desc:
@@ -282,13 +282,13 @@ const KoreaAllData = () => {
         setIsLoading(false);
       })
       .catch((err) => {
-        setStatus(false);
+        setIsStatus(false);
         console.log(err);
       });
   }, []);
   return (
     <>
-      {status ? (
+      {isStatus ? (
         <>
           {isLoading ? (
             <Loading />

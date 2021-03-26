@@ -8,7 +8,7 @@ const { kakao } = window;
 
 const Center = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [status, setStatus] = useState(true);
+  const [isStatus, setIsStatus] = useState(true);
   const [title, setTitle] = useState({
     title: "백신 접종센터 정보",
     desc: "국내 백신 접종 센터의 위치를 지도에 표시해 줍니다.",
@@ -107,7 +107,7 @@ const Center = () => {
         map.setCenter(locPosition);
       }
     };
-    const dataHandler = (items) => {
+    const centersDataHandler = (items) => {
       const arr = items.map((item) => {
         const name = item.centerName;
         const sp = name.split("코로나19")[1];
@@ -147,17 +147,17 @@ const Center = () => {
       .then((res) => {
         const items = res.data.data;
         setIsLoading(false);
-        dataHandler(items);
+        centersDataHandler(items);
       })
       .catch((err) => {
-        setStatus(false);
+        setIsStatus(false);
         console.log(err);
       });
   }, []);
 
   return (
     <>
-      {status ? (
+      {isStatus ? (
         <>
           {isLoading ? (
             <Loading />

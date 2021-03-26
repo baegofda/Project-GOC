@@ -8,7 +8,7 @@ import Loading from "../Loading/Loading";
 
 const News = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [status, setStatus] = useState(true);
+  const [isStatus, setIsStatus] = useState(true);
   let i = 0;
   const [title, setTitle] = useState({
     title: "주요 소식",
@@ -18,7 +18,7 @@ const News = () => {
   const [news, setNews] = useState({});
 
   useEffect(() => {
-    const dataHandler = (items) => {
+    const newsDataHandler = (items) => {
       const arr = items.reduce((prev, curr) => {
         const reg = /[<b>|</b>|&qout|amp|lt|gt;]/g;
         const regTitle = curr.title
@@ -83,19 +83,19 @@ const News = () => {
             return prev;
           }, []);
           const arr = [...naverArr, ...daumArr];
-          dataHandler(arr);
+          newsDataHandler(arr);
           setIsLoading(false);
         })
       )
       .catch((err) => {
-        setStatus(false);
+        setIsStatus(false);
         console.log(err);
       });
   }, [i]);
 
   return (
     <>
-      {status ? (
+      {isStatus ? (
         <>
           {isLoading ? (
             <Loading />

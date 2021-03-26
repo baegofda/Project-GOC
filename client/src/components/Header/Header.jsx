@@ -1,12 +1,11 @@
-import React, { memo, useRef, useState } from "react";
+import React, { memo, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import List from "./List/List";
 const LOGO = "/assets/images/main-logo.png";
 
 const Header = memo(() => {
-  const gnb = useRef();
-  const [category, setCategory] = useState([
+  const [categories, setCategory] = useState([
     { id: 1, categoryName: "국내", type: "korea" },
     { id: 2, categoryName: "해외", type: "overseas" },
     { id: 3, categoryName: "정보", type: "information" },
@@ -25,7 +24,6 @@ const Header = memo(() => {
       <div className={styles.wrap}>
         <span className={styles.gnb}>
           <Link
-            ref={gnb}
             className={styles.btn}
             to="#"
             onClick={onToggle}
@@ -62,7 +60,7 @@ const Header = memo(() => {
       </div>
       <nav className={`${styles.nav} ${toggle}`}>
         <ul className={styles.container}>
-          {category.map((category) => (
+          {categories.map((category) => (
             <li key={category.id} className={styles.list}>
               <span className={styles.category}>{category.categoryName}</span>
               <List type={category.type} />

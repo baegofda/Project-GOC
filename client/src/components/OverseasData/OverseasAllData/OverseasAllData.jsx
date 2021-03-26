@@ -7,7 +7,7 @@ import styles from "./OverseasAllData.module.css";
 
 const OverseasAllData = () => {
   const [isLoading, setIsLoading] = useState(true);
-  const [status, setStatus] = useState(true);
+  const [isStatus, setIsStatus] = useState(true);
   const [cardsData, setCardsData] = useState([]);
   const [title, setTitle] = useState({
     title: "해외 종합 현황",
@@ -15,7 +15,7 @@ const OverseasAllData = () => {
   });
 
   useEffect(() => {
-    const dataHandler = (item) => {
+    const OverseasAllDataHandler = (item) => {
       setCardsData([
         {
           id: "1",
@@ -44,18 +44,18 @@ const OverseasAllData = () => {
       .get("https://projectgoc.herokuapp.com/api/all")
       .then((res) => {
         const item = res.data;
-        dataHandler(item);
+        OverseasAllDataHandler(item);
         setIsLoading(false);
       })
       .catch((err) => {
-        setStatus(false);
+        setIsStatus(false);
         console.log(err);
       });
   }, []);
 
   return (
     <>
-      {status ? (
+      {isStatus ? (
         <>
           {isLoading ? (
             <Loading />
