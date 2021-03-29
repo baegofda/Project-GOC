@@ -1,7 +1,7 @@
-import React, { memo } from "react";
+import React from "react";
 import styles from "./Footer.module.css";
 
-const Footer = memo(() => {
+const Footer = () => {
   return (
     <footer className={styles.footer}>
       <p className={styles.text}>
@@ -13,6 +13,6 @@ const Footer = memo(() => {
       </p>
     </footer>
   );
-});
+};
 
 export default Footer;

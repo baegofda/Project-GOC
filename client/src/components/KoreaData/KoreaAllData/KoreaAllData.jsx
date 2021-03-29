@@ -286,6 +286,7 @@ const KoreaAllData = () => {
         console.log(err);
       });
   }, []);
+
   return (
     <>
       {isStatus ? (
