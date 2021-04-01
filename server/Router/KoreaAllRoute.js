@@ -6,15 +6,8 @@ const config = require("../config/key");
 const moment = require("moment");
 
 // 날짜 구하기 위함
-// const date = new Date();
-// const year = date.getFullYear();
-// const month =
-//   date.getMonth() + 1 > 10 ? date.getMonth() + 1 : "0" + (date.getMonth() + 1);
-// const day = date.getDate() >= 10 ? date.getDate() : "0" + date.getDate();
-// const today = year + "" + month + "" + day;
 const today = moment().format("YYYYMMDD");
 const week = moment(moment().subtract(7, "day")).format("YYYYMMDD");
-console.log(week);
 const options = {
   method: "GET",
   url: `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=${config.OPENAPI_KEY}&pageNo=1&numOfRows=10&startCreateDt=${week}&endCreateDt=${today}`,
