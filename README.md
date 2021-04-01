@@ -108,18 +108,19 @@
 
 ```js
 // 날짜 구하기 위함 (7~8일간의 데이터)
-const date = new Date();
-const year = date.getFullYear();
-const month =
-  date.getMonth() + 1 > 10 ? date.getMonth() + 1 : "0" + (date.getMonth() + 1);
-const day = date.getDate() >= 10 ? date.getDate() : "0" + date.getDate();
-const today = year + "" + month + "" + day;
+const express = require("express");
+const router = express.Router();
+const request = require("request");
+const converter = require("xml-js");
+const config = require("../config/key");
+const moment = require("moment");
 
+// 날짜 구하기 위함
+const today = moment().format("YYYYMMDD");
+const week = moment(moment().subtract(7, "day")).format("YYYYMMDD");
 const options = {
   method: "GET",
-  url: `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=${
-    config.OPENAPI_KEY
-  }&pageNo=1&numOfRows=10&startCreateDt=${today - 7}&endCreateDt=${today}`,
+  url: `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=${config.OPENAPI_KEY}&pageNo=1&numOfRows=10&startCreateDt=${week}&endCreateDt=${today}`,
   headers: {},
 };
 router.get("/", (req, res) => {
@@ -129,6 +130,8 @@ router.get("/", (req, res) => {
     res.send(xmlToJson);
   });
 });
+
+module.exports = router;
 ```
 
 <br/>
@@ -194,6 +197,53 @@ const cardsDataHandler = (totalData, yesterDayData) => {
 };
 
 // 차트데이터 제공을 위한 reduce를 이용하여 데이터 가공
+const cardsDataHandler = (totalData, yesterDayData) => {
+  const totalDefCnt = totalData[2].elements[0].text;
+  const totalIngCnt = totalData[8].elements[0].text;
+  const totalClearCnt = totalData[7].elements[0].text;
+  const totalDeathCnt = totalData[1].elements[0].text;
+  const yesterDayDefCnt = yesterDayData[2].elements[0].text;
+  const yesterDayIngCnt = yesterDayData[8].elements[0].text;
+  const yesterDayClearCnt = yesterDayData[7].elements[0].text;
+  const yesterDayDeathCnt = yesterDayData[1].elements[0].text;
+
+  //확진자
+  const newDefCnt = totalDefCnt - yesterDayDefCnt;
+  //검사진행
+  const newIngCnt = totalIngCnt - yesterDayIngCnt;
+  //격리해제
+  const newClearCnt = totalClearCnt - yesterDayClearCnt;
+  //사망자
+  const newDeathCnt = totalDeathCnt - yesterDayDeathCnt;
+
+  setCardsData([
+    {
+      id: 0,
+      title: "확진자 수",
+      count: Number(totalDefCnt).toLocaleString(),
+      new: Number(newDefCnt).toLocaleString(),
+    },
+    {
+      id: 1,
+      title: "치료 중",
+      count: Number(totalIngCnt).toLocaleString(),
+      new: Number(newIngCnt).toLocaleString(),
+    },
+    {
+      id: 2,
+      title: "완치자 수",
+      count: Number(totalClearCnt).toLocaleString(),
+      new: Number(newClearCnt).toLocaleString(),
+    },
+    {
+      id: 3,
+      title: "사망자 수",
+      count: Number(totalDeathCnt).toLocaleString(),
+      new: Number(newDeathCnt).toLocaleString(),
+    },
+  ]);
+};
+
 const chartDataHandler = (items) => {
   const arr = items.reduce((prev, curr) => {
     const currDate = curr.elements[13].elements[0].text;
@@ -209,7 +259,7 @@ const chartDataHandler = (items) => {
     return prev;
   }, []);
 
-  // 기타 카테고리 확진자 데이터 취합
+  // 기타 카테고리 확진자
   const otherObjs = arr.slice(0, 9).map((item) => {
     return item;
   });
@@ -220,7 +270,7 @@ const chartDataHandler = (items) => {
     (prev, curr) => Number(prev) + Number(curr)
   );
 
-  // 기타 카테고리 이외의 데이터 취합
+  // 도넛 차트 데이터
   const doughnutObjs = arr.slice(9, 18).map((item) => {
     return item;
   });
@@ -230,15 +280,13 @@ const chartDataHandler = (items) => {
   const confirmed = doughnutObjs.map((obj) => {
     return obj.confirmed;
   });
-
-  // 모든 카테고리의 데이터 취합
   const totalCategory = [...category, "기타"];
   const totalConfirmed = [...confirmed, otherConfirmed];
   const total = totalConfirmed.reduce(
     (prev, curr) => Number(prev) + Number(curr)
   );
 
-  //막대 차트 데이터 (합계데이터만 취합)
+  //막대 차트 데이터
   const barObjs = arr
     .filter((item) => item.category === "합계")
     .map((item) => {
@@ -277,7 +325,7 @@ axios
     setIsLoading(false);
   })
   .catch((err) => {
-    setStatus(false);
+    setIsStatus(false);
     console.log(err);
   });
 ```
@@ -307,19 +355,18 @@ axios
 <br/>
 
 ```js
-// 날짜 구하기 위함(당일 기준 2일전 까지의 데이터 로드)
-const date = new Date();
-const year = date.getFullYear();
-const month =
-  date.getMonth() + 1 > 10 ? date.getMonth() + 1 : "0" + (date.getMonth() + 1);
-const day = date.getDate() >= 10 ? date.getDate() : "0" + date.getDate();
-const today = year + "" + month + "" + day;
+const express = require("express");
+const router = express.Router();
+const request = require("request");
+const converter = require("xml-js");
+const config = require("../config/key");
+const moment = require("moment");
 
+const today = moment().format("YYYYMMDD");
+const week = moment(moment().subtract(2, "day")).format("YYYYMMDD");
 const options = {
   method: "GET",
-  url: `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=${
-    config.OPENAPI_KEY
-  }&pageNo=1&numOfRows=10&startCreateDt=${today - 2}&endCreateDt=${today}`,
+  url: `http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19SidoInfStateJson?serviceKey=${config.OPENAPI_KEY}&pageNo=1&numOfRows=10&startCreateDt=${week}&endCreateDt=${today}`,
   headers: {},
 };
 router.get("/", (req, res) => {
@@ -329,6 +376,8 @@ router.get("/", (req, res) => {
     res.send(xmlToJson);
   });
 });
+
+module.exports = router;
 ```
 
 <br/>
@@ -413,7 +462,6 @@ const dataHandler = (items) => {
   const category = mainObjs.map((obj) => {
     return obj.category;
   });
-
   //통합 데이터
   const totalCategory = [...category, "기타"];
   const totalConfirmeCnt = [...mainConfirmeCnt, otherConfirmeCnt];
@@ -449,7 +497,7 @@ axios
     setIsLoading(false);
   })
   .catch((err) => {
-    setStatus(false);
+    setIsStatus(false);
     console.log(err);
   });
 ```
@@ -480,7 +528,7 @@ axios
 
 ```js
 // 주변 국가별 데이터 가공
-const dataHandler = (items) => {
+const OverseasCountryDataHandler = (items) => {
   const arr = items.reduce((prev, curr) => {
     const country = curr.country;
     const cases = curr.timeline.cases[Object.keys(curr.timeline.cases)];
@@ -523,11 +571,11 @@ axios
   .get("https://projectgoc.herokuapp.com/api/country")
   .then((res) => {
     const items = res.data;
-    dataHandler(items);
+    OverseasCountryDataHandler(items);
     setIsLoading(false);
   })
   .catch((err) => {
-    setStatus(false);
+    setIsStatus(false);
     console.log(err);
   });
 ```
@@ -569,8 +617,7 @@ const kakaoMaps = (centers) => {
     level: 10, // 지도의 확대 레벨
   };
   const map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-  // set된 센터 데이터를 기반으로 map으로 전달
+  // ------------------- 다중마커 생성
   centers.forEach((center) => {
     //마커 이미지 url
     const imageSrc =
@@ -657,7 +704,7 @@ const kakaoMaps = (centers) => {
 };
 
 // 받은 데이터 가공 밑 state set
-const dataHandler = (items) => {
+const centersDataHandler = (items) => {
   const arr = items.map((item) => {
     const name = item.centerName;
     const sp = name.split("코로나19")[1];
@@ -692,17 +739,15 @@ const dataHandler = (items) => {
   setCenters(arr);
   kakaoMaps(arr);
 };
-
-//API에서 받은 데이터 Handler에 인자값으로
 axios
   .get("https://projectgoc.herokuapp.com/api/center")
   .then((res) => {
     const items = res.data.data;
     setIsLoading(false);
-    dataHandler(items);
+    centersDataHandler(items);
   })
   .catch((err) => {
-    setStatus(false);
+    setIsStatus(false);
     console.log(err);
   });
 ```
@@ -733,7 +778,7 @@ axios
 
 ```js
 // 받아온 문서데이터 가공
-const dataHandler = (items) => {
+const newsDataHandler = (items) => {
   const arr = items.reduce((prev, curr) => {
     // 문서들의 title과 desc의 불필요한 특수문자를 제거하기위한 정규식
     const reg = /[<b>|</b>|&qout|amp|lt|gt;]/g;
@@ -797,12 +842,12 @@ axios
         return prev;
       }, []);
       const arr = [...naverArr, ...daumArr];
-      dataHandler(arr);
+      newsDataHandler(arr);
       setIsLoading(false);
     })
   )
   .catch((err) => {
-    setStatus(false);
+    setIsStatus(false);
     console.log(err);
   });
 ```
@@ -842,17 +887,17 @@ axios
   .get("https://projectgoc.herokuapp.com/api/country")
   .then((res) => {
     const items = res.data;
-    dataHandler(items);
+    OverseasCountryDataHandler(items);
     setIsLoading(false);
   })
   .catch((err) => {
-    setStatus(false);
+    setIsStatus(false);
     console.log(err);
   });
 
 return (
   <>
-    {status ? (
+    {isStatus ? (
       <>
         {isLoading ? (
           <Loading />
@@ -897,17 +942,17 @@ return (
 <br/>
 
 ```js
-const [status, setStatus] = useState(true);
+const [isStatus, setIsStatus] = useState(true);
 
 axios
   .get("https://projectgoc.herokuapp.com/api/country")
   .then((res) => {
     const items = res.data;
-    dataHandler(items);
+    OverseasCountryDataHandler(items);
     setIsLoading(false);
   })
   .catch((err) => {
-    setStatus(false);
+    setIsStatus(false);
     console.log(err);
   });
 

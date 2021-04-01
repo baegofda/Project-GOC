@@ -274,11 +274,8 @@ const KoreaAllData = () => {
       .then((res) => {
         const data = res.data.elements[0].elements[1].elements[0].elements;
         const items = data.slice(0, 133);
-        console.log(items);
-        debugger;
         const totalData = items[18].elements;
         const yesterDayData = items[37].elements;
-
         panelDataHandler(totalData);
         cardsDataHandler(totalData, yesterDayData);
         chartDataHandler(items);
