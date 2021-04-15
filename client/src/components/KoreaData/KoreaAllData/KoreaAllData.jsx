@@ -345,7 +345,7 @@ const KoreaAllData = () => {
                   <span>
                     <a
                       className={styles.link}
-                      href="https://www.naver.com"
+                      href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%EC%BD%94%EB%A1%9C%EB%82%98"
                       title="네이버 현황차트 보러가기"
                       target="blank"
                     >
