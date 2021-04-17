@@ -1010,13 +1010,13 @@ const App = () => {
       <main className="main">
         <Switch>
           <Route exact path={"/"} component={KoreaAllData} />
-          <Route path={"/city"} component={KoreaCityData} />
-          <Route path={"/all"} component={OverseasAllData} />
-          <Route path={"/country"} component={OverseasCountryData} />
-          <Route path={"/dashboard"} component={JHUDashboard} />
-          <Route path={"/center"} component={Center} />
-          <Route path={"/news"} component={News} />
-          <Route path={"/other"} component={Other} />
+          <Route exact path={"/city"} component={KoreaCityData} />
+          <Route exact path={"/all"} component={OverseasAllData} />
+          <Route exact path={"/country"} component={OverseasCountryData} />
+          <Route exact path={"/dashboard"} component={JHUDashboard} />
+          <Route exact path={"/center"} component={Center} />
+          <Route exact path={"/news"} component={News} />
+          <Route exact path={"/other"} component={Other} />
           <Route to={"/404"} component={NotFound} />
         </Switch>
       </main>
