@@ -4,15 +4,12 @@ import ContentTitle from "../../ContentTitle/ContentTitle";
 import Err from "../../Err/Err";
 import Loading from "../../Loading/Loading";
 import styles from "./OverseasAllData.module.css";
+import { titleContents } from "../../../const";
 
 const OverseasAllData = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isStatus, setIsStatus] = useState(true);
   const [cardsData, setCardsData] = useState([]);
-  const [title, setTitle] = useState({
-    title: "해외 종합 현황",
-    desc: "해외 코로나 종합 현황판을 제공합니다. (단위: 명)",
-  });
 
   useEffect(() => {
     const OverseasAllDataHandler = (item) => {
@@ -61,7 +58,7 @@ const OverseasAllData = () => {
             <Loading />
           ) : (
             <>
-              <ContentTitle data={title} />
+              <ContentTitle data={titleContents.Overseas.All} />
               <section className={styles.wrap}>
                 <h3 className="sr-only">전 세계 현황 수</h3>
                 <dl className={styles.cards}>

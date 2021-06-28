@@ -4,17 +4,49 @@ import ContentTitle from "../ContentTitle/ContentTitle";
 import styles from "./Center.module.css";
 import Err from "../Err/Err";
 import Loading from "../Loading/Loading";
+import { titleContents } from "../../const";
 const { kakao } = window;
 
 const Center = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isStatus, setIsStatus] = useState(true);
-  const [title, setTitle] = useState({
-    title: "백신 접종센터 정보",
-    desc: "국내 백신 접종 센터의 위치를 지도에 표시해 줍니다.",
-  });
   const [centers, setCenters] = useState([]);
   useEffect(() => {
+    const centersDataHandler = (items) => {
+      const arr = items.map((item) => {
+        const name = item.centerName;
+        const sp = name.split("코로나19")[1];
+        const center = {
+          id: item.id,
+          centerName: sp,
+          orgName: item.org,
+          centerType: item.centerType,
+          facilityName: item.facilityName,
+          address: item.address,
+          sido: item.sido,
+          sigungu: item.sigungu,
+          zipCode: item.zipCode,
+          url: `https://map.kakao.com/link/map/${item.org || sp},${item.lat},${
+            item.lng
+          }`,
+          latlng: new kakao.maps.LatLng(item.lat, item.lng),
+          info: `<div style="width:200px; padding:5px; font-size:12px;">${
+            item.org || sp
+          } <br><a href="https://map.kakao.com/link/map/${item.org || sp},${
+            item.lat
+          },${
+            item.lng
+          }" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/${
+            item.org || sp
+          },${item.lat},${
+            item.lng
+          }" style="color:blue" target="_blank">길찾기</a></div>`,
+        };
+        return center;
+      });
+      setCenters(arr);
+      kakaoMaps(arr);
+    };
     const kakaoMaps = (centers) => {
       const mapContainer = document.getElementById("map"); // 지도를 표시할 div
       const mapOption = {
@@ -107,41 +139,6 @@ const Center = () => {
         map.setCenter(locPosition);
       }
     };
-    const centersDataHandler = (items) => {
-      const arr = items.map((item) => {
-        const name = item.centerName;
-        const sp = name.split("코로나19")[1];
-        const center = {
-          id: item.id,
-          centerName: sp,
-          orgName: item.org,
-          centerType: item.centerType,
-          facilityName: item.facilityName,
-          address: item.address,
-          sido: item.sido,
-          sigungu: item.sigungu,
-          zipCode: item.zipCode,
-          url: `https://map.kakao.com/link/map/${item.org || sp},${item.lng},${
-            item.lat
-          }`,
-          latlng: new kakao.maps.LatLng(item.lng, item.lat),
-          info: `<div style="width:200px; padding:5px; font-size:12px;">${
-            item.org || sp
-          } <br><a href="https://map.kakao.com/link/map/${item.org || sp},${
-            item.lng
-          },${
-            item.lat
-          }" style="color:blue" target="_blank">큰지도보기</a> <a href="https://map.kakao.com/link/to/${
-            item.org || sp
-          },${item.lng},${
-            item.lat
-          }" style="color:blue" target="_blank">길찾기</a></div>`,
-        };
-        return center;
-      });
-      setCenters(arr);
-      kakaoMaps(arr);
-    };
     axios
       .get("https://projectgoc.herokuapp.com/api/center")
       .then((res) => {
@@ -163,7 +160,7 @@ const Center = () => {
             <Loading />
           ) : (
             <>
-              <ContentTitle data={title} />
+              <ContentTitle data={titleContents.Center} />
               <section className={styles.container}>
                 <h3 className="sr-only">백신 접종센터 정보</h3>
                 <div className={styles.wrap}>

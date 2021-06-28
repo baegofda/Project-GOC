@@ -5,16 +5,12 @@ import ContentTitle from "../ContentTitle/ContentTitle";
 import styles from "./News.module.css";
 import Err from "../Err/Err";
 import Loading from "../Loading/Loading";
+import { titleContents } from "../../const";
 
 const News = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isStatus, setIsStatus] = useState(true);
   let i = 0;
-  const [title, setTitle] = useState({
-    title: "주요 소식",
-    desc:
-      "'코로나 백신'과 관련된 웹 문서들을 보여줍니다. (최신 문서 10개 기준)",
-  });
   const [news, setNews] = useState({});
 
   useEffect(() => {
@@ -101,7 +97,7 @@ const News = () => {
             <Loading />
           ) : (
             <>
-              <ContentTitle data={title} />
+              <ContentTitle data={titleContents.News} />
               {news.categories.map((category) => (
                 <section key={category.id} className={styles.wrap}>
                   <h3 className={styles.category}>{category.name}</h3>

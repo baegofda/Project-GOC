@@ -3,15 +3,11 @@ import styles from "./JHUDashboard.module.css";
 import debounce from "lodash.debounce";
 import ContentTitle from "../../ContentTitle/ContentTitle";
 import Loading from "../../Loading/Loading";
+import { titleContents } from "../../../const";
 
 const JHUDashboard = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [display, setCurrentWidth] = useState(true);
-  const [title, setTitle] = useState({
-    title: "전 세계 대시보드",
-    desc:
-      "Johns Hopkins CSSE(존스 홉킨스 대학교)의 전세계 코로나 현황판을 보여줍니다.",
-  });
   setInterval(() => {
     setIsLoading(false);
   }, 500);
@@ -32,7 +28,7 @@ const JHUDashboard = () => {
         <Loading />
       ) : (
         <>
-          <ContentTitle data={title} />
+          <ContentTitle data={titleContents.Overseas.Dashboard} />
           <article className={styles.wrap}>
             <h3 className="sr-only">전 세계 대시보드</h3>
             <iframe

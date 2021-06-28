@@ -5,96 +5,12 @@ import ContentTitle from "../../ContentTitle/ContentTitle";
 import Err from "../../Err/Err";
 import Loading from "../../Loading/Loading";
 import DoughnutChart from "../../DoughnutChart/DoughnutChart";
+import { titleContents, OverseasCountryOptions } from "../../../const";
 
 const OverseasCountryData = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isStatus, setIsStatus] = useState(true);
-  const [title, setTitle] = useState({
-    title: "주변 국가별 현황",
-    desc:
-      "주변 국가(미국, 일본, 중국, 러시아)와 대한민국의 종합 현황 차트를 제공합니다. (단위: 명)",
-  });
   const [data, setData] = useState({});
-  const [options, setOptions] = useState([
-    {
-      title: {
-        display: true,
-        text: "주변 국가별 확진자 비율",
-      },
-      legend: {
-        display: false,
-      },
-      tooltips: {
-        callbacks: {
-          label: (tooltipItem, data) => {
-            const dataset = data.datasets[tooltipItem.datasetIndex];
-            const meta = dataset._meta[Object.keys(dataset._meta)[0]];
-            const total = meta.total;
-            const currentValue = dataset.data[tooltipItem.index];
-            const percentage = parseFloat(
-              ((currentValue / total) * 100).toFixed(1)
-            );
-            return currentValue + " (" + percentage + "%)";
-          },
-          title: function (tooltipItem, data) {
-            return data.labels[tooltipItem[0].index];
-          },
-        },
-      },
-    },
-    {
-      title: {
-        display: true,
-        text: "주변 국가별 완치자 비율",
-      },
-      legend: {
-        display: false,
-      },
-      tooltips: {
-        callbacks: {
-          label: (tooltipItem, data) => {
-            const dataset = data.datasets[tooltipItem.datasetIndex];
-            const meta = dataset._meta[Object.keys(dataset._meta)[0]];
-            const total = meta.total;
-            const currentValue = dataset.data[tooltipItem.index];
-            const percentage = parseFloat(
-              ((currentValue / total) * 100).toFixed(1)
-            );
-            return currentValue + " (" + percentage + "%)";
-          },
-          title: function (tooltipItem, data) {
-            return data.labels[tooltipItem[0].index];
-          },
-        },
-      },
-    },
-    {
-      title: {
-        display: true,
-        text: "주변 국가별 사망자 비율",
-      },
-      legend: {
-        display: false,
-      },
-      tooltips: {
-        callbacks: {
-          label: (tooltipItem, data) => {
-            const dataset = data.datasets[tooltipItem.datasetIndex];
-            const meta = dataset._meta[Object.keys(dataset._meta)[0]];
-            const total = meta.total;
-            const currentValue = dataset.data[tooltipItem.index];
-            const percentage = parseFloat(
-              ((currentValue / total) * 100).toFixed(1)
-            );
-            return currentValue + " (" + percentage + "%)";
-          },
-          title: function (tooltipItem, data) {
-            return data.labels[tooltipItem[0].index];
-          },
-        },
-      },
-    },
-  ]);
   useEffect(() => {
     const OverseasCountryDataHandler = (items) => {
       const arr = items.reduce((prev, curr) => {
@@ -234,9 +150,9 @@ const OverseasCountryData = () => {
             <Loading />
           ) : (
             <>
-              <ContentTitle data={title} />
+              <ContentTitle data={titleContents.Overseas.Country} />
               <section className={styles.wrap}>
-                <DoughnutChart data={data} options={options} />
+                <DoughnutChart data={data} options={OverseasCountryOptions} />
               </section>
             </>
           )}

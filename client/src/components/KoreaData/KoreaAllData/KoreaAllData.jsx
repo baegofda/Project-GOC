@@ -7,56 +7,16 @@ import ContentTitle from "../../ContentTitle/ContentTitle";
 import ContentPanel from "./ContentPanel/ContentPanel";
 import Err from "../../Err/Err";
 import Loading from "../../Loading/Loading";
+import { titleContents, KoreaAllOptions } from "../../../const";
 
 const KoreaAllData = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [display, setDisplay] = useState();
   const [isStatus, setIsStatus] = useState(true);
-  const [title, setTitle] = useState({
-    title: "국내 종합 현황",
-    desc:
-      "국내 코로나 종합 현황판과 일일 시도별 확진자 증감 비율, 일별 현황 차트를 제공합니다. (단위: 명)",
-  });
   const [panelData, setPanelData] = useState([]);
   const [cardsData, setCardsData] = useState([]);
   const [doughnutData, setDoughnutData] = useState({});
   const [barData, setBarData] = useState({});
-  const [doughnutOptions, setDoughnutOptions] = useState({
-    title: {
-      display: true,
-      text: "일일 시도별 확진자 증감 비율",
-    },
-    legend: {
-      display: false,
-    },
-    tooltips: {
-      callbacks: {
-        label: (tooltipItem, data) => {
-          const dataset = data.datasets[tooltipItem.datasetIndex];
-          const meta = dataset._meta[Object.keys(dataset._meta)[0]];
-          const total = meta.total;
-          const currentValue = dataset.data[tooltipItem.index];
-          const percentage = parseFloat(
-            ((currentValue / total) * 100).toFixed(1)
-          );
-          return currentValue + " (" + percentage + "%)";
-        },
-        title: function (tooltipItem, data) {
-          return data.labels[tooltipItem[0].index];
-        },
-      },
-    },
-  });
-  const [barOptions, setBarOptions] = useState({
-    title: {
-      display: true,
-      text: "일별 현황 차트",
-      padding: 20,
-    },
-    legend: {
-      position: "bottom",
-    },
-  });
 
   useEffect(() => {
     setDisplay(window.innerWidth);
@@ -295,13 +255,16 @@ const KoreaAllData = () => {
             <Loading />
           ) : (
             <>
-              <ContentTitle data={title} />
+              <ContentTitle data={titleContents.Korea.All} />
               <ContentPanel panelData={panelData} cardsData={cardsData} />
               {display >= 500 ? (
                 <section className={styles.container}>
                   <article className={styles.wrap}>
                     <h3 className="sr-only">일일 시도별 확진자 증감 비율</h3>
-                    <Doughnut data={doughnutData} options={doughnutOptions} />
+                    <Doughnut
+                      data={doughnutData}
+                      options={KoreaAllOptions.DoughnutOptions}
+                    />
                     <dl className={styles.legends}>
                       {doughnutData.labels.map((label, idx) => (
                         <div key={idx} className={styles.legend}>
@@ -336,7 +299,7 @@ const KoreaAllData = () => {
                   </article>
                   <article className={styles.wrap}>
                     <h3 className="sr-only">일별 현황 차트</h3>
-                    <Bar data={barData} options={barOptions} />
+                    <Bar data={barData} options={KoreaAllOptions.BarOptions} />
                   </article>
                 </section>
               ) : (

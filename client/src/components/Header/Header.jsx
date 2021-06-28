@@ -2,15 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import List from "./List/List";
+import { headerData } from "../../const";
 const LOGO = "/assets/images/main-logo.png";
 
 const Header = () => {
-  const [categories, setCategory] = useState([
-    { id: 1, categoryName: "국내", type: "korea" },
-    { id: 2, categoryName: "해외", type: "overseas" },
-    { id: 3, categoryName: "정보", type: "information" },
-    { id: 4, categoryName: "기타", type: "other" },
-  ]);
   const [isToggle, setIsToggle] = useState(false);
   const toggle = isToggle ? styles.toggle : "";
 
@@ -60,7 +55,7 @@ const Header = () => {
       </div>
       <nav className={`${styles.nav} ${toggle}`}>
         <ul className={styles.container}>
-          {categories.map((category) => (
+          {headerData.map((category) => (
             <li key={category.id} className={styles.list}>
               <span className={styles.category}>{category.categoryName}</span>
               <List type={category.type} />
