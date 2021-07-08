@@ -164,12 +164,11 @@ const KoreaAllData = () => {
         return obj.date;
       });
       const localData = reBarObjs.map((obj) => {
-        return Number(obj.localData).toLocaleString();
+        return Number(obj.localData);
       });
       const overFlowData = reBarObjs.map((obj) => {
-        return Number(obj.overFlowData).toLocaleString();
+        return Number(obj.overFlowData);
       });
-
       setDoughnutData({
         labels: totalCategory,
         total: total,
